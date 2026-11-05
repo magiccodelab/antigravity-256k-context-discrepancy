@@ -117,4 +117,4 @@ This repository applies different terms to original and quoted material (see [LI
 
 Our sincere gratitude goes to the Google DeepMind Gemini team for training such a genuinely remarkable 1M-context model (Gemini 4 Argon) capable of synthesizing this entire forensic archive.
 
-Equally, a special thank-you to the Google Antigravity Product & Monetization team for their truly visionary product decisions—most notably their commitment to "Getting Out of the Model's Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.
+Equally, a special thank-you to the Google Antigravity Product & Monetization team for their truly visionary product decisions—most notably their commitment to "Get Out of the Model's Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.

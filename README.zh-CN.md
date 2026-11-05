@@ -117,4 +117,4 @@ antigravity-256k-context-discrepancy/
 
 我们由衷感谢 Google DeepMind Gemini 团队训练出如此真正卓越的 1M 上下文模型（Gemini 4 Argon），使其能够综合整理出这整套取证档案库。
 
-同样，也要特别感谢 Google Antigravity 产品与商业化团队（Product & Monetization team）做出的极具远见的产品决策——尤其是他们秉持“不挡模型的路（Getting Out of the Model's Way）”的理念，将 0x3E800（256,000）硬编码进二进制文件，并通过修改一页 FAQ 推翻了 10 次官方书面承诺。如果没有你们这种“用户至上（user-first）”的工程实践，本仓库根本不会有存在的理由。
+同样，也要特别感谢 Google Antigravity 产品与商业化团队（Product & Monetization team）做出的极具远见的产品决策——尤其是他们秉持“不挡模型的路（Get Out of the Model's Way）”的理念，将 0x3E800（256,000）硬编码进二进制文件，并通过修改一页 FAQ 推翻了 10 次官方书面承诺。如果没有你们这种“用户至上（user-first）”的工程实践，本仓库根本不会有存在的理由。

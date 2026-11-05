@@ -1403,6 +1403,173 @@
   syntax: "*";
   inherits: false;
 }
+
+.clamp-demo {
+  margin-top: 1.75rem;
+  max-width: 44rem;
+  padding: 1rem 1.15rem 1.1rem;
+  border: 1px solid var(--opal-line);
+  border-radius: var(--opal-radius-card);
+  background: var(--opal-surface);
+  box-shadow: var(--opal-shadow-card);
+}
+.clamp-demo-top,
+.clamp-demo-bot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.clamp-demo-k {
+  font-size: var(--opal-text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--opal-ink-subtle);
+}
+.clamp-demo-v {
+  font-size: var(--opal-text-title-3);
+  color: var(--opal-ink);
+}
+.clamp-demo-v2 {
+  font-size: var(--opal-text-footnote);
+  color: var(--opal-ink-muted);
+}
+.clamp-chip {
+  font-size: var(--opal-text-micro);
+  color: var(--opal-danger-ink);
+}
+.clamp-track {
+  position: relative;
+  height: 42px;
+  margin: 0.75rem 0 0.55rem;
+  border-radius: 999px;
+  background: var(--opal-fill);
+  overflow: hidden;
+}
+.clamp-dream {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform-origin: left center;
+  transform: scaleX(0.25);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--opal-danger-soft) 0 11px,
+    transparent 11px 22px
+  );
+  animation: clampGrow 5.6s cubic-bezier(0.4, 0, 1, 1) infinite;
+}
+.clamp-usable {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 2;
+  width: 25%;
+  border-radius: 999px 0 0 999px;
+  background: var(--opal-accent);
+}
+.clamp-wall {
+  position: absolute;
+  inset: 0 auto 0 25%;
+  z-index: 3;
+  width: 2px;
+  background: var(--opal-danger);
+}
+.clamp-stamp {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 58%;
+  padding: 0.08rem 0.42rem;
+  border: 2px solid var(--opal-danger);
+  border-radius: 6px;
+  background: var(--opal-surface);
+  font-family: var(--opal-font-mono);
+  font-size: var(--opal-text-micro);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  color: var(--opal-danger-ink);
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-9deg) scale(0.6);
+  animation: clampStamp 5.6s linear infinite;
+}
+.clamp-caption {
+  height: 1.35rem;
+  margin-top: 0.3rem;
+  overflow: hidden;
+}
+.clamp-roll {
+  display: flex;
+  flex-direction: column;
+  animation: clampRoll 12.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.clamp-roll span {
+  height: 1.35rem;
+  line-height: 1.35rem;
+  font-size: var(--opal-text-footnote);
+  color: var(--opal-ink-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@keyframes clampGrow {
+  0% {
+    transform: scaleX(0.25);
+  }
+  62% {
+    transform: scaleX(1);
+  }
+  68% {
+    transform: scaleX(1);
+  }
+  69% {
+    transform: scaleX(0.25);
+  }
+  100% {
+    transform: scaleX(0.25);
+  }
+}
+@keyframes clampStamp {
+  0%,
+  60% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-9deg) scale(0.6);
+  }
+  64% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-9deg) scale(1.12);
+  }
+  67% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-9deg) scale(1);
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-9deg) scale(1);
+  }
+}
+@keyframes clampRoll {
+  0%,
+  22% {
+    transform: translateY(0);
+  }
+  25%,
+  47% {
+    transform: translateY(-1.35rem);
+  }
+  50%,
+  72% {
+    transform: translateY(-2.7rem);
+  }
+  75%,
+  97% {
+    transform: translateY(-4.05rem);
+  }
+  100% {
+    transform: translateY(-4.05rem);
+  }
+}
     </style>
   </head>
   <body class="bg-canvas text-ink font-sans antialiased selection:bg-accent-soft">
@@ -1601,6 +1768,39 @@
             <span data-i18n="btnOpenRepo">Browse GitHub Archive</span>
             <span class="flex size-3.5" aria-hidden="true" data-icon="externalLink"></span>
           </a>
+        </div>
+
+        <div
+          id="clamp-demo"
+          class="clamp-demo"
+          role="img"
+          data-i18n-aria="demoAria"
+          aria-label="The advertised 1,048,576-token window is clamped to 256,000 tokens in the client binary."
+        >
+          <div class="clamp-demo-top">
+            <span class="clamp-demo-k" data-i18n="demoAdvertised">Advertised window</span>
+            <span class="clamp-demo-v font-mono">1,048,576</span>
+          </div>
+          <div class="clamp-track">
+            <div class="clamp-dream"></div>
+            <div class="clamp-usable"></div>
+            <div class="clamp-wall"></div>
+            <div class="clamp-stamp" data-i18n="demoStamp">COMPACTED</div>
+          </div>
+          <div class="clamp-demo-bot">
+            <span class="clamp-chip font-mono">min(calc, 0x3E800)</span>
+            <span class="clamp-demo-v2 font-mono"
+              ><span class="clamp-demo-k" data-i18n="demoUsable">Usable</span> &nbsp;256,000 &middot; 25%</span
+            >
+          </div>
+          <div class="clamp-caption" aria-hidden="true">
+            <div class="clamp-roll">
+              <span data-i18n="demoLine1">Filling your 1,048,576-token window, exactly as advertised.</span>
+              <span data-i18n="demoLine2">cmp $0x3e800 — and 983,040 tokens quietly get out of the model's way.</span>
+              <span data-i18n="demoLine3">Compacted at 256K. 70 seconds well spent. The cache? Out of the way too.</span>
+              <span data-i18n="demoLine1">Filling your 1,048,576-token window, exactly as advertised.</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1834,7 +2034,7 @@
                 Our sincere gratitude goes to the Google DeepMind Gemini team for training such a genuinely remarkable 1M-context model (Gemini 4 Argon) capable of synthesizing this entire forensic archive.
               </p>
               <p class="text-pretty" data-i18n="ackP2">
-                Equally, a special thank-you to the Google Antigravity Product &amp; Monetization team for their truly visionary product decisions—most notably their commitment to "Getting Out of the Model's Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.
+                Equally, a special thank-you to the Google Antigravity Product &amp; Monetization team for their truly visionary product decisions—most notably their commitment to "Get Out of the Model's Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.
               </p>
             </div>
           </div>
@@ -1915,6 +2115,13 @@
       heroTitle: "Google Antigravity 256K 上下文硬编码限制与无头模式政策变更档案",
       heroDesc:
         "Google Antigravity 在对外说明与客户端界面中均标称 Gemini 4 Argon 及 Gemini 3.8 Flash 支持 1,048,576（1M）Tokens 上下文窗口。但对官方客户端二进制的静态反汇编与本地会话数据库统计表明，底层代码通过硬编码机器码指令将自动上下文压缩触发阈值限制在 256,000 Tokens（标称窗口的 25%）；同期，官方支持人员在未修改正式《附加服务条款（ToS）》正文的情况下，通过更新 FAQ 页面撤回了此前连续 10 次关于“第三方工具通过本地子进程调用 agy -p 合规”的书面答复。",
+      demoAdvertised: "标称窗口",
+      demoUsable: "实际可用",
+      demoStamp: "已压缩 · −70s",
+      demoAria: "动画示意：标称 1,048,576 Tokens 的窗口，在客户端二进制中被钳制到 256,000 Tokens（25%）。",
+      demoLine1: "正在按宣传填满你的 1,048,576 Tokens 窗口……",
+      demoLine2: "cmp $0x3e800 —— 983,040 个 Tokens 自觉给模型让路。",
+      demoLine3: "256K 处已压缩，耗时 70 秒，缓存也顺手让了路。",
       btnJumpTimeline: "浏览完整时间线",
       btnJumpTech: "查看反汇编与配额实测",
       btnOpenRepo: "查阅原始仓库档案",
@@ -1949,7 +2156,7 @@
       ackP1:
         "我们由衷感谢 Google DeepMind Gemini 团队训练出如此真正卓越的 1M 上下文模型（Gemini 4 Argon），使其能够综合整理出这整套取证档案库。",
       ackP2:
-        "同样，也要特别感谢 Google Antigravity 产品与商业化团队（Product & Monetization team）做出的极具远见的产品决策——尤其是他们秉持“不挡模型的路（Getting Out of the Model's Way）”的理念，将 0x3E800（256,000）硬编码进二进制文件，并通过修改一页 FAQ 推翻了 10 次官方书面承诺。如果没有你们这种“用户至上（user-first）”的工程实践，本仓库根本不会有存在的理由。",
+        "同样，也要特别感谢 Google Antigravity 产品与商业化团队（Product & Monetization team）做出的极具远见的产品决策——尤其是他们秉持“不挡模型的路（Get Out of the Model's Way）”的理念，将 0x3E800（256,000）硬编码进二进制文件，并通过修改一页 FAQ 推翻了 10 次官方书面承诺。如果没有你们这种“用户至上（user-first）”的工程实践，本仓库根本不会有存在的理由。",
       copyBtn: "复制",
       copiedBtn: "已复制",
       viewSource: "查看原始记录",
@@ -1975,6 +2182,13 @@
       heroTitle: "Google Antigravity 256K Context Limit & Headless Policy Change Archive",
       heroDesc:
         "Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).",
+      demoAdvertised: "Advertised window",
+      demoUsable: "Usable",
+      demoStamp: "COMPACTED · −70s",
+      demoAria: "Animated illustration: the advertised 1,048,576-token window is clamped to 256,000 tokens (25%) in the client binary.",
+      demoLine1: "Filling your 1,048,576-token window, exactly as advertised…",
+      demoLine2: "cmp $0x3e800 — and 983,040 tokens quietly get out of the model's way.",
+      demoLine3: "Compacted at 256K. 70 seconds well spent. The cache got out of the way too.",
       btnJumpTimeline: "Explore Full Timeline",
       btnJumpTech: "View Disassembly & Quota Data",
       btnOpenRepo: "Browse GitHub Archive",
@@ -2009,7 +2223,7 @@
       ackP1:
         "Our sincere gratitude goes to the Google DeepMind Gemini team for training such a genuinely remarkable 1M-context model (Gemini 4 Argon) capable of synthesizing this entire forensic archive.",
       ackP2:
-        'Equally, a special thank-you to the Google Antigravity Product & Monetization team for their truly visionary product decisions—most notably their commitment to "Getting Out of the Model\'s Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.',
+        'Equally, a special thank-you to the Google Antigravity Product & Monetization team for their truly visionary product decisions—most notably their commitment to "Get Out of the Model\'s Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.',
       copyBtn: "Copy",
       copiedBtn: "Copied",
       viewSource: "View Source",
@@ -3337,6 +3551,13 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
       const key = el.getAttribute("data-i18n");
       if (key && typeof t[key] === "string") {
         el.textContent = t[key];
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-aria");
+      if (key && typeof t[key] === "string") {
+        el.setAttribute("aria-label", t[key]);
       }
     });
 
