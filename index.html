@@ -2562,8 +2562,8 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
               <p class="mt-1.5 text-footnote text-ink-muted">
                 ${
                   lang === "zh"
-                    ? "本机补丁前（< 2026-11-04 00:00 UTC+8）237 个 CLI 会话库中，209 个 1M-Gemini 会话共 15,575 次调用（3.8 Flash 11,110 次、4 Argon 2,826 次、3.7/3.6/3.5 Flash 1,639 次）max_context_tokens 100.0% 为 256,000（含 79 次 CHECKPOINT 与 52 次 truncation_reason=2）；与 Issue #878 @murias002 的 310 会话 65,613 次调用（最高输入 255,999，超 300K 均为 0 次）完全吻合。"
-                    : "Across 237 local pre-patch CLI DBs (< 2026-11-04 00:00 UTC+8), all 15,575 calls across 209 1M-Gemini sessions (11,110 on 3.8 Flash, 2,826 on 4 Argon, 1,639 on 3.7/3.6/3.5 Flash) recorded max_context_tokens = 256,000 at 100.0% (79 CHECKPOINTs, 52 truncation_reason=2), matching @murias002's 310-session / 65,613-call audit in Issue #878."
+                    ? "本机补丁前（< 2026-11-04 00:00 UTC+8）237 个 CLI 会话库中，209 个 1M-Gemini 会话共 15,575 次调用（3.8 Flash 11,110 次、4 Argon 2,826 次、3.7/3.6/3.5 Flash 1,639 次）max_context_tokens 100.0% 为 256,000（含 79 次 CHECKPOINT 与 52 次 truncation_reason=2）；与 Issue #878 @murias002 的 310 会话 65,613 次调用（最高输入 255,999，超 300K 均为 0 次）结论一致。"
+                    : "Across 237 local pre-patch CLI DBs (< 2026-11-04 00:00 UTC+8), all 15,575 calls across 209 1M-Gemini sessions (11,110 on 3.8 Flash, 2,826 on 4 Argon, 1,639 on 3.7/3.6/3.5 Flash) recorded max_context_tokens = 256,000 at 100.0% (79 CHECKPOINTs, 52 truncation_reason=2), consistent with @murias002's 310-session / 65,613-call audit in Issue #878 (max input 255,999, 0 calls > 300K)."
                 }
               </p>
             </div>
