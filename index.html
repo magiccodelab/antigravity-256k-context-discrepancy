@@ -1,0 +1,3492 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f5f7" />
+    <title>Google Antigravity 256K Context Limit &amp; Headless Policy Archive</title>
+    <meta
+      name="description"
+      content="Technical archive documenting the 256,000-token (0x3E800) hardcoded auto-compaction clamp on 1M-context models and the 26.5-hour agy -p headless policy reversal in Google Antigravity."
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNWI0YmZmIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwZWE1YTAiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJzIiBjeD0iMC4zMiIgY3k9IjAuMjgiIHI9IjAuNiI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjg1IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIgLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjEwIiBmaWxsPSJ1cmwoI2cpIiAvPgogIDxlbGxpcHNlIGN4PSIxNiIgY3k9IjE2IiByeD0iOC41IiByeT0iMTAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4yMiIgLz4KICA8ZWxsaXBzZSBjeD0iMTYiIGN5PSIxNiIgcng9IjguNSIgcnk9IjEwIiBmaWxsPSJ1cmwoI3MpIiAvPgo8L3N2Zz4=" />
+    <script>
+      (function () {
+        var p = null;
+        try {
+          p = localStorage.getItem("opal-theme");
+        } catch (e) {}
+        try {
+          var t =
+            p === "light" || p === "dark"
+              ? p
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          var r = document.documentElement;
+          r.classList.remove("light", "dark");
+          r.classList.add(t);
+          r.style.colorScheme = t;
+          var c = t === "dark" ? "#111215" : "#f5f5f7";
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+            m.setAttribute("content", c);
+          });
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --spacing: 0.25rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-4xl: 56rem;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --leading-relaxed: 1.625;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--opal-font-sans);
+    --default-mono-font-family: var(--opal-font-mono);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring:where(:not(iframe)) {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .top-0 {
+    top: 0px;
+  }
+  .top-1\/2 {
+    top: calc(1 / 2 * 100%);
+  }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
+  .top-5 {
+    top: calc(var(--spacing) * 5);
+  }
+  .bottom-0 {
+    bottom: 0px;
+  }
+  .left-0 {
+    left: 0px;
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
+  }
+  .left-\[0\.4375rem\] {
+    left: 0.4375rem;
+  }
+  .z-40 {
+    z-index: 40;
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
+  .mt-1 {
+    margin-top: var(--spacing);
+  }
+  .mt-1\.5 {
+    margin-top: calc(var(--spacing) * 1.5);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-2\.5 {
+    margin-top: calc(var(--spacing) * 2.5);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-3\.5 {
+    margin-top: calc(var(--spacing) * 3.5);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+  .mt-14 {
+    margin-top: calc(var(--spacing) * 14);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .size-3 {
+    width: calc(var(--spacing) * 3);
+    height: calc(var(--spacing) * 3);
+  }
+  .size-3\.5 {
+    width: calc(var(--spacing) * 3.5);
+    height: calc(var(--spacing) * 3.5);
+  }
+  .size-4 {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+  }
+  .size-8 {
+    width: calc(var(--spacing) * 8);
+    height: calc(var(--spacing) * 8);
+  }
+  .size-9 {
+    width: calc(var(--spacing) * 9);
+    height: calc(var(--spacing) * 9);
+  }
+  .size-full {
+    width: 100%;
+    height: 100%;
+  }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+  .h-control-md {
+    height: var(--opal-control-md);
+  }
+  .w-0\.5 {
+    width: calc(var(--spacing) * 0.5);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+  .max-w-page {
+    max-width: var(--opal-container-page);
+  }
+  .min-w-0 {
+    min-width: 0px;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .border-collapse {
+    border-collapse: collapse;
+  }
+  .origin-top {
+    transform-origin: top;
+  }
+  .-translate-y-1\/2 {
+    --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .pressable {
+    transition-property: color, background-color, border-color, outline-color, box-shadow, opacity, scale, translate;
+    transition-duration: var(--opal-duration-fast);
+    transition-timing-function: var(--opal-ease-smooth);
+    &:active:not(:disabled, [data-disabled], [aria-disabled="true"]) {
+      scale: 0.97;
+    }
+  }
+  .rotate-180 {
+    rotate: 180deg;
+  }
+  .scroll-mt-24 {
+    scroll-margin-top: calc(var(--spacing) * 24);
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1 {
+    gap: var(--spacing);
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-2\.5 {
+    gap: calc(var(--spacing) * 2.5);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  :where(.space-y-2 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  :where(.divide-y > :not(:last-child)) {
+    --tw-divide-y-reverse: 0;
+    border-bottom-style: var(--tw-border-style);
+    border-top-style: var(--tw-border-style);
+    border-top-width: calc(1px * var(--tw-divide-y-reverse));
+    border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  }
+  :where(.divide-line > :not(:last-child)) {
+    border-color: var(--opal-line);
+  }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-card {
+    border-radius: var(--opal-radius-card);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-item {
+    border-radius: var(--opal-radius-item);
+  }
+  .rounded-media {
+    border-radius: var(--opal-radius-media);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-accent {
+    border-color: var(--opal-accent);
+  }
+  .border-line {
+    border-color: var(--opal-line);
+  }
+  .border-line-strong {
+    border-color: var(--opal-line-strong);
+  }
+  .glass {
+    background-color: var(--opal-glass);
+    -webkit-backdrop-filter: blur(var(--opal-glass-blur)) saturate(var(--opal-glass-saturate));
+    backdrop-filter: blur(var(--opal-glass-blur)) saturate(var(--opal-glass-saturate));
+  }
+  @media (forced-colors: active) {
+    .forced-fill {
+      forced-color-adjust: none;
+      background-color: Highlight !important;
+    }
+  }
+  .bg-accent {
+    background-color: var(--opal-accent);
+  }
+  .bg-accent-soft {
+    background-color: var(--opal-accent-soft);
+  }
+  .bg-canvas {
+    background-color: var(--opal-canvas);
+  }
+  .bg-danger-soft {
+    background-color: var(--opal-danger-soft);
+  }
+  .bg-fill {
+    background-color: var(--opal-fill);
+  }
+  .bg-fill-subtle {
+    background-color: var(--opal-fill-subtle);
+  }
+  .bg-info-soft {
+    background-color: var(--opal-info-soft);
+  }
+  .bg-line {
+    background-color: var(--opal-line);
+  }
+  .bg-success-soft {
+    background-color: var(--opal-success-soft);
+  }
+  .bg-surface {
+    background-color: var(--opal-surface);
+  }
+  .bg-warning-soft {
+    background-color: var(--opal-warning-soft);
+  }
+  .p-1 {
+    padding: var(--spacing);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+  .p-3\.5 {
+    padding: calc(var(--spacing) * 3.5);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .px-1 {
+    padding-inline: var(--spacing);
+  }
+  .px-1\.5 {
+    padding-inline: calc(var(--spacing) * 1.5);
+  }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-3\.5 {
+    padding-inline: calc(var(--spacing) * 3.5);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-12 {
+    padding-block: calc(var(--spacing) * 12);
+  }
+  .pt-3 {
+    padding-top: calc(var(--spacing) * 3);
+  }
+  .pt-3\.5 {
+    padding-top: calc(var(--spacing) * 3.5);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
+  .pr-2 {
+    padding-right: calc(var(--spacing) * 2);
+  }
+  .pr-4 {
+    padding-right: calc(var(--spacing) * 4);
+  }
+  .pb-3 {
+    padding-bottom: calc(var(--spacing) * 3);
+  }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
+  }
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
+  }
+  .pl-8 {
+    padding-left: calc(var(--spacing) * 8);
+  }
+  .pl-9 {
+    padding-left: calc(var(--spacing) * 9);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .font-mono {
+    font-family: var(--opal-font-mono);
+  }
+  .font-sans {
+    font-family: var(--opal-font-sans);
+  }
+  .text-headline {
+    font-size: var(--opal-text-headline);
+    line-height: var(--tw-leading, var(--opal-leading-headline));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-headline));
+    font-weight: var(--tw-font-weight, var(--opal-weight-headline));
+  }
+  .text-title-1 {
+    font-size: var(--opal-text-title-1);
+    line-height: var(--tw-leading, var(--opal-leading-title-1));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-title-1));
+    font-weight: var(--tw-font-weight, var(--opal-weight-title-1));
+  }
+  .text-title-2 {
+    font-size: var(--opal-text-title-2);
+    line-height: var(--tw-leading, var(--opal-leading-title-2));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-title-2));
+    font-weight: var(--tw-font-weight, var(--opal-weight-title-2));
+  }
+  .text-title-3 {
+    font-size: var(--opal-text-title-3);
+    line-height: var(--tw-leading, var(--opal-leading-title-3));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-title-3));
+    font-weight: var(--tw-font-weight, var(--opal-weight-title-3));
+  }
+  .text-callout {
+    font-size: var(--opal-text-callout);
+    line-height: var(--tw-leading, var(--opal-leading-callout));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-callout));
+  }
+  .text-caption {
+    font-size: var(--opal-text-caption);
+    line-height: var(--tw-leading, var(--opal-leading-caption));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-caption));
+  }
+  .text-footnote {
+    font-size: var(--opal-text-footnote);
+    line-height: var(--tw-leading, var(--opal-leading-footnote));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-footnote));
+  }
+  .text-micro {
+    font-size: var(--opal-text-micro);
+    line-height: var(--tw-leading, var(--opal-leading-micro));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-micro));
+  }
+  .text-subhead {
+    font-size: var(--opal-text-subhead);
+    line-height: var(--tw-leading, var(--opal-leading-subhead));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-subhead));
+  }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .break-all {
+    word-break: break-all;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-accent-ink {
+    color: var(--opal-accent-ink);
+  }
+  .text-danger-ink {
+    color: var(--opal-danger-ink);
+  }
+  .text-info-ink {
+    color: var(--opal-info-ink);
+  }
+  .text-ink {
+    color: var(--opal-ink);
+  }
+  .text-ink-muted {
+    color: var(--opal-ink-muted);
+  }
+  .text-ink-subtle {
+    color: var(--opal-ink-subtle);
+  }
+  .text-on-accent {
+    color: var(--opal-on-accent);
+  }
+  .text-success-ink {
+    color: var(--opal-success-ink);
+  }
+  .text-warning-ink {
+    color: var(--opal-warning-ink);
+  }
+  .tabular-nums {
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
+  }
+  .no-underline {
+    text-decoration-line: none;
+  }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .shadow-button {
+    --tw-shadow: var(--opal-shadow-button);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-card {
+    --tw-shadow: var(--opal-shadow-card);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-thumb {
+    --tw-shadow: var(--opal-shadow-thumb);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .ring-4 {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .ring-canvas {
+    --tw-ring-color: var(--opal-canvas);
+  }
+  @media (forced-colors: active) {
+    .forced-edge {
+      outline: 1px solid CanvasText !important;
+      outline-offset: -1px !important;
+    }
+    .forced-edge:focus-visible {
+      outline: 2px solid Highlight !important;
+      outline-offset: 2px !important;
+    }
+    .forced-field {
+      outline: 1px solid CanvasText !important;
+      outline-offset: -1px !important;
+    }
+    .forced-field:focus-within, .forced-field:focus-visible {
+      outline: 2px solid Highlight !important;
+      outline-offset: -2px !important;
+    }
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .select-all {
+    -webkit-user-select: all;
+    user-select: all;
+  }
+  .selection\:bg-accent-soft ::selection {
+    background-color: var(--opal-accent-soft);
+  }
+  .selection\:bg-accent-soft::selection {
+    background-color: var(--opal-accent-soft);
+  }
+  .placeholder\:text-ink-subtle::placeholder {
+    color: var(--opal-ink-subtle);
+  }
+  @media (hover: hover) {
+    .hover\:bg-accent-hover:hover {
+      background-color: var(--opal-accent-hover);
+    }
+    .hover\:bg-fill:hover {
+      background-color: var(--opal-fill);
+    }
+    .hover\:bg-fill-strong:hover {
+      background-color: var(--opal-fill-strong);
+    }
+    .hover\:bg-fill-subtle:hover {
+      background-color: var(--opal-fill-subtle);
+    }
+    .hover\:text-ink:hover {
+      color: var(--opal-ink);
+    }
+    .hover\:underline:hover {
+      text-decoration-line: underline;
+    }
+  }
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+  .focus\:fixed:focus {
+    position: fixed;
+  }
+  .focus\:top-4:focus {
+    top: calc(var(--spacing) * 4);
+  }
+  .focus\:left-4:focus {
+    left: calc(var(--spacing) * 4);
+  }
+  .focus\:z-50:focus {
+    z-index: 50;
+  }
+  .focus\:rounded-full:focus {
+    border-radius: calc(infinity * 1px);
+  }
+  .focus\:bg-accent:focus {
+    background-color: var(--opal-accent);
+  }
+  .focus\:bg-surface:focus {
+    background-color: var(--opal-surface);
+  }
+  .focus\:px-4:focus {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .focus\:py-2:focus {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .focus\:text-subhead:focus {
+    font-size: var(--opal-text-subhead);
+    line-height: var(--tw-leading, var(--opal-leading-subhead));
+    letter-spacing: var(--tw-tracking, var(--opal-tracking-subhead));
+  }
+  .focus\:font-medium:focus {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .focus\:text-on-accent:focus {
+    color: var(--opal-on-accent);
+  }
+  .focus\:outline-none:focus {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  @media (width >= 40rem) {
+    .sm\:sticky {
+      position: sticky;
+    }
+    .sm\:top-24 {
+      top: calc(var(--spacing) * 24);
+    }
+    .sm\:mb-0 {
+      margin-bottom: 0px;
+    }
+    .sm\:grid {
+      display: grid;
+    }
+    .sm\:inline {
+      display: inline;
+    }
+    .sm\:w-64 {
+      width: calc(var(--spacing) * 64);
+    }
+    .sm\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-\[11rem_minmax\(0\,1fr\)\] {
+      grid-template-columns: 11rem minmax(0,1fr);
+    }
+    .sm\:flex-row {
+      flex-direction: row;
+    }
+    .sm\:items-center {
+      align-items: center;
+    }
+    .sm\:justify-between {
+      justify-content: space-between;
+    }
+    .sm\:gap-6 {
+      gap: calc(var(--spacing) * 6);
+    }
+    .sm\:self-start {
+      align-self: flex-start;
+    }
+    .sm\:p-5 {
+      padding: calc(var(--spacing) * 5);
+    }
+    .sm\:p-6 {
+      padding: calc(var(--spacing) * 6);
+    }
+    .sm\:px-6 {
+      padding-inline: calc(var(--spacing) * 6);
+    }
+    .sm\:pt-12 {
+      padding-top: calc(var(--spacing) * 12);
+    }
+    .sm\:pb-14 {
+      padding-bottom: calc(var(--spacing) * 14);
+    }
+    .sm\:text-large-title {
+      font-size: var(--opal-text-large-title);
+      line-height: var(--tw-leading, var(--opal-leading-large-title));
+      letter-spacing: var(--tw-tracking, var(--opal-tracking-large-title));
+      font-weight: var(--tw-font-weight, var(--opal-weight-large-title));
+    }
+    .sm\:text-title-1 {
+      font-size: var(--opal-text-title-1);
+      line-height: var(--tw-leading, var(--opal-leading-title-1));
+      letter-spacing: var(--tw-tracking, var(--opal-tracking-title-1));
+      font-weight: var(--tw-font-weight, var(--opal-weight-title-1));
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
+    .lg\:flex {
+      display: flex;
+    }
+    .lg\:hidden {
+      display: none;
+    }
+    .lg\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .lg\:border-t-0 {
+      border-top-style: var(--tw-border-style);
+      border-top-width: 0px;
+    }
+    .lg\:border-l {
+      border-left-style: var(--tw-border-style);
+      border-left-width: 1px;
+    }
+    .lg\:px-8 {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+    .lg\:pt-0 {
+      padding-top: 0px;
+    }
+    .lg\:pl-5 {
+      padding-left: calc(var(--spacing) * 5);
+    }
+    .lg\:text-display {
+      font-size: var(--opal-text-display);
+      line-height: var(--tw-leading, var(--opal-leading-display));
+      letter-spacing: var(--tw-tracking, var(--opal-tracking-display));
+      font-weight: var(--tw-font-weight, var(--opal-weight-display));
+    }
+  }
+}
+:root {
+  color-scheme: light dark;
+  --opal-canvas: light-dark(#f5f5f7, #111215);
+  --opal-surface: light-dark(#ffffff, #1a1b1f);
+  --opal-elevated: light-dark(#ffffff, #222328);
+  --opal-thumb: light-dark(#ffffff, #3a3b42);
+  --opal-fill-subtle: light-dark(rgb(118 118 128 / 0.06), rgb(235 235 245 / 0.05));
+  --opal-fill: light-dark(rgb(118 118 128 / 0.11), rgb(235 235 245 / 0.09));
+  --opal-fill-strong: light-dark(rgb(118 118 128 / 0.18), rgb(235 235 245 / 0.15));
+  --opal-line: light-dark(rgb(17 19 24 / 0.08), rgb(255 255 255 / 0.07));
+  --opal-line-strong: light-dark(rgb(17 19 24 / 0.14), rgb(255 255 255 / 0.13));
+  --opal-ink: light-dark(#111318, #ededf2);
+  --opal-ink-muted: light-dark(#4a4f5c, #b3b6c1);
+  --opal-ink-subtle: light-dark(#636877, #9a9eab);
+  --opal-ink-faint: light-dark(#a2a6b1, #5b5f6b);
+  --opal-accent: light-dark(#5b4bff, #6a5cff);
+  --opal-accent-hover: light-dark(#4b3bf0, #5b4df5);
+  --opal-accent-soft: light-dark(rgb(91 75 255 / 0.1), rgb(122 110 255 / 0.18));
+  --opal-accent-soft-hover: light-dark(rgb(91 75 255 / 0.16), rgb(122 110 255 / 0.27));
+  --opal-accent-ink: light-dark(#4b3bf0, #a99fff);
+  --opal-on-accent: #ffffff;
+  --opal-accent-2: light-dark(#0ea5a0, #2dd4bf);
+  --opal-success: light-dark(#16a34a, #22c55e);
+  --opal-success-soft: light-dark(rgb(22 163 74 / 0.12), rgb(34 197 94 / 0.16));
+  --opal-success-ink: light-dark(#14763a, #4ade80);
+  --opal-warning: light-dark(#f59e0b, #f5a524);
+  --opal-warning-soft: light-dark(rgb(245 158 11 / 0.14), rgb(245 165 36 / 0.16));
+  --opal-warning-ink: light-dark(#a84d08, #fbbf24);
+  --opal-danger: #dc2626;
+  --opal-danger-hover: #c81e1e;
+  --opal-danger-soft: light-dark(rgb(220 38 38 / 0.1), rgb(248 113 113 / 0.16));
+  --opal-danger-ink: light-dark(#b91c1c, #f98080);
+  --opal-info: light-dark(#2563eb, #3b82f6);
+  --opal-info-soft: light-dark(rgb(37 99 235 / 0.1), rgb(59 130 246 / 0.18));
+  --opal-info-ink: light-dark(#1d4ed8, #60a5fa);
+  --opal-red: light-dark(#ff3b30, #ff453a);
+  --opal-orange: light-dark(#ff9500, #ff9f0a);
+  --opal-amber: light-dark(#ffcc00, #ffd60a);
+  --opal-green: light-dark(#34c759, #30d158);
+  --opal-teal: light-dark(#30b0c7, #40c8e0);
+  --opal-blue: light-dark(#007aff, #0a84ff);
+  --opal-indigo: light-dark(#5856d6, #5e5ce6);
+  --opal-violet: light-dark(#af52de, #bf5af2);
+  --opal-pink: light-dark(#ff2d55, #ff375f);
+  --opal-gray: #8e8e93;
+  --opal-tooltip: light-dark(#1d1e23, #3a3b42);
+  --opal-on-tooltip: light-dark(#ffffff, #ededf2);
+  --opal-focus: light-dark(rgb(91 75 255 / 0.55), rgb(140 130 255 / 0.7));
+  --opal-backdrop: light-dark(rgb(17 19 24 / 0.28), rgb(0 0 0 / 0.55));
+  --opal-selection: light-dark(rgb(91 75 255 / 0.18), rgb(122 110 255 / 0.35));
+  --opal-scrollbar: light-dark(rgb(17 19 24 / 0.2), rgb(255 255 255 / 0.18));
+  --opal-scrollbar-hover: light-dark(rgb(17 19 24 / 0.34), rgb(255 255 255 / 0.3));
+  --opal-glass: light-dark(rgb(255 255 255 / 0.72), rgb(36 37 42 / 0.66));
+  --opal-glass-thick: light-dark(rgb(255 255 255 / 0.86), rgb(36 37 42 / 0.84));
+  --opal-glass-chrome: light-dark(rgb(245 245 247 / 0.78), rgb(17 18 21 / 0.76));
+  --opal-glass-blur: 20px;
+  --opal-glass-saturate: 180%;
+  --opal-gradient: linear-gradient(120deg, var(--opal-accent) 8%, var(--opal-accent-2) 92%);
+  --opal-shadow-card: inset 0 1px 0 light-dark(transparent, rgb(255 255 255 / 0.04)),
+    0 1px 2px light-dark(rgb(17 19 24 / 0.05), rgb(0 0 0 / 0.24)),
+    0 1px 1px light-dark(rgb(17 19 24 / 0.02), transparent);
+  --opal-shadow-raised: inset 0 1px 0 light-dark(transparent, rgb(255 255 255 / 0.05)),
+    0 1px 2px light-dark(rgb(17 19 24 / 0.04), rgb(0 0 0 / 0.3)),
+    0 12px 32px -12px light-dark(rgb(17 19 24 / 0.16), rgb(0 0 0 / 0.6));
+  --opal-shadow-float: inset 0 1px 0 light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.06)),
+    0 0 0 1px light-dark(rgb(17 19 24 / 0.06), rgb(255 255 255 / 0.08)),
+    0 2px 6px -2px light-dark(rgb(17 19 24 / 0.08), rgb(0 0 0 / 0.4)),
+    0 18px 44px -12px light-dark(rgb(17 19 24 / 0.2), rgb(0 0 0 / 0.65));
+  --opal-shadow-overlay: inset 0 1px 0 light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.06)),
+    0 0 0 1px light-dark(rgb(17 19 24 / 0.05), rgb(255 255 255 / 0.08)),
+    0 28px 72px -16px light-dark(rgb(17 19 24 / 0.32), rgb(0 0 0 / 0.75));
+  --opal-shadow-thumb: inset 0 1px 0 light-dark(transparent, rgb(255 255 255 / 0.08)),
+    0 0 0 0.5px light-dark(rgb(17 19 24 / 0.06), rgb(0 0 0 / 0.25)),
+    0 1px 2px light-dark(rgb(17 19 24 / 0.12), rgb(0 0 0 / 0.35)),
+    0 3px 8px -1px light-dark(rgb(17 19 24 / 0.1), rgb(0 0 0 / 0.25));
+  --opal-shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.18),
+    0 1px 2px light-dark(rgb(17 19 24 / 0.14), rgb(0 0 0 / 0.35));
+  --opal-radius-item: 12px;
+  --opal-radius-media: 16px;
+  --opal-radius-field: 16px;
+  --opal-radius-popover: 18px;
+  --opal-radius-card: 24px;
+  --opal-radius-dialog: 28px;
+  --opal-radius-sheet: 32px;
+  --opal-control-sm: 2rem;
+  --opal-control-md: 2.5rem;
+  --opal-control-lg: 3rem;
+  --opal-control-xl: 3.5rem;
+  --opal-touch-target: 2.75rem;
+  --opal-container-page: 76rem;
+  --opal-font-sans: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --opal-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  --opal-text-micro: 0.6875rem;
+  --opal-leading-micro: 0.875rem;
+  --opal-tracking-micro: 0.005em;
+  --opal-text-caption: 0.75rem;
+  --opal-leading-caption: 1rem;
+  --opal-tracking-caption: 0em;
+  --opal-text-footnote: 0.8125rem;
+  --opal-leading-footnote: 1.125rem;
+  --opal-tracking-footnote: -0.003em;
+  --opal-text-subhead: 0.875rem;
+  --opal-leading-subhead: 1.25rem;
+  --opal-tracking-subhead: -0.006em;
+  --opal-text-body: 0.9375rem;
+  --opal-leading-body: 1.5rem;
+  --opal-tracking-body: -0.009em;
+  --opal-text-callout: 1rem;
+  --opal-leading-callout: 1.5rem;
+  --opal-tracking-callout: -0.011em;
+  --opal-text-headline: 1.0625rem;
+  --opal-leading-headline: 1.5rem;
+  --opal-tracking-headline: -0.013em;
+  --opal-weight-headline: 600;
+  --opal-text-title-3: 1.25rem;
+  --opal-leading-title-3: 1.75rem;
+  --opal-tracking-title-3: -0.017em;
+  --opal-weight-title-3: 600;
+  --opal-text-title-2: 1.5rem;
+  --opal-leading-title-2: 2rem;
+  --opal-tracking-title-2: -0.019em;
+  --opal-weight-title-2: 600;
+  --opal-text-title-1: 1.875rem;
+  --opal-leading-title-1: 2.375rem;
+  --opal-tracking-title-1: -0.021em;
+  --opal-weight-title-1: 600;
+  --opal-text-large-title: 2.25rem;
+  --opal-leading-large-title: 2.75rem;
+  --opal-tracking-large-title: -0.022em;
+  --opal-weight-large-title: 700;
+  --opal-text-display: 3.5rem;
+  --opal-leading-display: 3.875rem;
+  --opal-tracking-display: -0.03em;
+  --opal-weight-display: 700;
+  --opal-duration-fast: 150ms;
+  --opal-duration-base: 240ms;
+  --opal-duration-slow: 400ms;
+  --opal-duration-spring: 480ms;
+  --opal-ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --opal-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --opal-ease-move: cubic-bezier(0.65, 0, 0.35, 1);
+  --opal-ease-spring: linear(
+    0, 0.149, 0.312, 0.471, 0.614, 0.736, 0.834, 0.91, 0.965, 1.002, 1.026, 1.038, 1.043, 1.043, 1.039, 1.034,
+    1.027, 1.021, 1.016, 1.011, 1.007, 1.004, 1.002, 1, 0.999, 0.999, 0.998, 0.998, 0.998, 0.999, 1
+  );
+  --opal-z-sticky: 30;
+  --opal-z-header: 40;
+  --opal-z-dock: 40;
+  --opal-z-overlay: 50;
+  --opal-z-popover: 60;
+  --opal-z-toast: 70;
+  --opal-z-tooltip: 80;
+}
+.light {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --opal-glass: var(--opal-elevated);
+    --opal-glass-thick: var(--opal-elevated);
+    --opal-glass-chrome: var(--opal-canvas);
+    --opal-glass-blur: 0px;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --opal-line: light-dark(rgb(17 19 24 / 0.22), rgb(255 255 255 / 0.22));
+    --opal-line-strong: light-dark(rgb(17 19 24 / 0.5), rgb(255 255 255 / 0.4));
+    --opal-ink-subtle: var(--opal-ink-muted);
+    --opal-focus: light-dark(rgb(75 59 240 / 0.95), rgb(169 159 255 / 0.95));
+  }
+}
+@layer base {
+  html {
+    background-color: var(--opal-canvas);
+    color: var(--opal-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-gutter: stable;
+  }
+  body {
+    min-height: 100dvh;
+    font-size: var(--opal-text-body);
+    line-height: var(--opal-leading-body);
+    letter-spacing: var(--opal-tracking-body);
+  }
+  ::selection {
+    background-color: var(--opal-selection);
+  }
+  :focus-visible {
+    outline: 2px solid var(--opal-focus);
+    outline-offset: 2px;
+  }
+  button, summary, label[for], [role="button"], [role="tab"], [role="radio"], [role="checkbox"], [role="switch"], [role="option"], [role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"] {
+    cursor: pointer;
+  }
+  :disabled, [data-disabled], [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--opal-scrollbar) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background-color: var(--opal-scrollbar);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--opal-scrollbar-hover);
+  }
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  [data-theme-switching] *, [data-theme-switching] *::before, [data-theme-switching] *::after {
+    transition: none !important;
+  }
+}
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: var(--opal-duration-slow);
+  animation-timing-function: var(--opal-ease-move);
+}
+@media (prefers-reduced-motion: reduce) {
+  *:not([data-motion="essential"]), *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-fraction {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+    </style>
+  </head>
+  <body class="bg-canvas text-ink font-sans antialiased selection:bg-accent-soft">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-subhead focus:font-medium focus:text-on-accent"
+      data-i18n="skipToContent"
+    >
+      Skip to content
+    </a>
+
+    <!-- Sticky Glass Header -->
+    <header class="glass sticky top-0 z-40 border-b border-line">
+      <div class="mx-auto flex max-w-page items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+        <a
+          href="#top"
+          class="pressable flex min-w-0 items-center gap-2.5 rounded-item py-1 pr-2 text-ink no-underline"
+        >
+          <span
+            class="forced-edge flex size-9 shrink-0 items-center justify-center rounded-item bg-accent-soft text-accent-ink"
+            aria-hidden="true"
+            data-icon="database"
+          ></span>
+          <span class="min-w-0">
+            <span class="block truncate text-subhead font-semibold text-ink" data-i18n="brandTitle">
+              Antigravity 256K Archive
+            </span>
+            <span class="block truncate font-mono text-micro text-ink-subtle">
+              0x3E800 · v2.29.0 / CLI v1.5.1
+            </span>
+          </span>
+        </a>
+
+        <!-- Desktop Section Nav -->
+        <nav aria-label="Section navigation" class="hidden items-center gap-1 lg:flex" id="desktop-nav">
+          <a
+            href="#findings"
+            data-section="findings"
+            class="nav-pill pressable rounded-full px-3.5 py-1.5 text-footnote font-medium text-ink-muted hover:bg-fill hover:text-ink"
+            data-i18n="navFindings"
+          >
+            Key Findings
+          </a>
+          <a
+            href="#technical"
+            data-section="technical"
+            class="nav-pill pressable rounded-full px-3.5 py-1.5 text-footnote font-medium text-ink-muted hover:bg-fill hover:text-ink"
+            data-i18n="navTechnical"
+          >
+            Binary &amp; Quota
+          </a>
+          <a
+            href="#timeline"
+            data-section="timeline"
+            class="nav-pill pressable rounded-full px-3.5 py-1.5 text-footnote font-medium text-ink-muted hover:bg-fill hover:text-ink"
+            data-i18n="navTimeline"
+          >
+            Timeline
+          </a>
+          <a
+            href="#verification"
+            data-section="verification"
+            class="nav-pill pressable rounded-full px-3.5 py-1.5 text-footnote font-medium text-ink-muted hover:bg-fill hover:text-ink"
+            data-i18n="navVerification"
+          >
+            Hashes &amp; Index
+          </a>
+        </nav>
+
+        <!-- Actions: Language, Theme, GitHub -->
+        <div class="flex shrink-0 items-center gap-2">
+          <button
+            type="button"
+            id="lang-toggle"
+            class="pressable forced-edge inline-flex h-9 items-center gap-1.5 rounded-full bg-fill px-3 text-footnote font-medium text-ink hover:bg-fill-strong"
+            aria-label="切换语言 / Switch language"
+          >
+            <span class="flex size-4 text-ink-subtle" aria-hidden="true" data-icon="languages"></span>
+            <span id="lang-label" class="font-mono text-caption font-semibold">中文</span>
+          </button>
+
+          <button
+            type="button"
+            id="theme-toggle"
+            class="pressable forced-edge inline-flex size-9 items-center justify-center rounded-full bg-fill text-ink hover:bg-fill-strong"
+            aria-label="切换浅色或深色主题 / Toggle color theme"
+          >
+            <span id="theme-icon" class="flex size-4" aria-hidden="true" data-icon="sun"></span>
+          </button>
+
+          <a
+            href="https://github.com/magiccodelab/antigravity-256k-context-discrepancy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pressable forced-edge inline-flex h-9 items-center gap-1.5 rounded-full bg-surface px-3.5 text-footnote font-medium text-ink shadow-card hover:bg-fill"
+            aria-label="GitHub Repository"
+          >
+            <span class="flex size-4" aria-hidden="true" data-icon="github"></span>
+            <span class="hidden sm:inline" data-i18n="repoBtn">GitHub Repo</span>
+            <span class="flex size-3.5 text-ink-subtle" aria-hidden="true" data-icon="arrowUpRight"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Scrollable Section Bar -->
+      <nav
+        aria-label="Mobile section navigation"
+        class="scrollbar-none flex items-center gap-1.5 overflow-x-auto border-t border-line px-4 py-2 lg:hidden"
+        id="mobile-nav"
+      >
+        <a
+          href="#findings"
+          data-section="findings"
+          class="nav-pill pressable shrink-0 rounded-full px-3 py-1 text-caption font-medium text-ink-muted hover:bg-fill hover:text-ink"
+          data-i18n="navFindings"
+        >
+          Key Findings
+        </a>
+        <a
+          href="#technical"
+          data-section="technical"
+          class="nav-pill pressable shrink-0 rounded-full px-3 py-1 text-caption font-medium text-ink-muted hover:bg-fill hover:text-ink"
+          data-i18n="navTechnical"
+        >
+          Binary &amp; Quota
+        </a>
+        <a
+          href="#timeline"
+          data-section="timeline"
+          class="nav-pill pressable shrink-0 rounded-full px-3 py-1 text-caption font-medium text-ink-muted hover:bg-fill hover:text-ink"
+          data-i18n="navTimeline"
+        >
+          Timeline
+        </a>
+        <a
+          href="#verification"
+          data-section="verification"
+          class="nav-pill pressable shrink-0 rounded-full px-3 py-1 text-caption font-medium text-ink-muted hover:bg-fill hover:text-ink"
+          data-i18n="navVerification"
+        >
+          Hashes &amp; Index
+        </a>
+      </nav>
+    </header>
+
+    <main id="main" class="mx-auto max-w-page px-4 pb-20 pt-8 sm:px-6 sm:pt-12 lg:px-8">
+      <!-- Hero & Executive Summary -->
+      <section id="top" class="pb-10 sm:pb-14">
+        <div class="flex flex-wrap items-center gap-2">
+          <span
+            class="forced-edge inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-caption font-medium text-accent-ink"
+          >
+            <span class="flex size-3.5" aria-hidden="true" data-icon="fileText"></span>
+            <span data-i18n="heroBadge">Technical Forensics &amp; Timeline · Updated 2026-11-05 (CLI v1.5.1)</span>
+          </span>
+          <span
+            class="forced-edge inline-flex items-center gap-1.5 rounded-full bg-fill px-3 py-1 font-mono text-caption text-ink-muted"
+          >
+            cmp $0x3e800, %edx
+          </span>
+        </div>
+
+        <h1
+          class="mt-4 max-w-4xl text-title-1 text-ink sm:text-large-title lg:text-display text-balance"
+          data-i18n="heroTitle"
+        >
+          Google Antigravity 256K Context Limit &amp; Headless Policy Change Archive
+        </h1>
+
+        <p class="mt-4 max-w-3xl text-callout text-ink-muted text-pretty" data-i18n="heroDesc">
+          Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href="#timeline"
+            class="pressable forced-edge inline-flex h-control-md items-center gap-2 rounded-full bg-accent px-5 text-subhead font-medium text-on-accent shadow-button hover:bg-accent-hover"
+          >
+            <span class="flex size-4" aria-hidden="true" data-icon="history"></span>
+            <span data-i18n="btnJumpTimeline">Explore Full Timeline</span>
+          </a>
+          <a
+            href="#technical"
+            class="pressable forced-edge inline-flex h-control-md items-center gap-2 rounded-full bg-surface px-5 text-subhead font-medium text-ink shadow-card hover:bg-fill"
+          >
+            <span class="flex size-4 text-ink-subtle" aria-hidden="true" data-icon="cpu"></span>
+            <span data-i18n="btnJumpTech">View Disassembly &amp; Quota Data</span>
+          </a>
+          <a
+            href="https://github.com/magiccodelab/antigravity-256k-context-discrepancy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pressable forced-edge inline-flex h-control-md items-center gap-2 rounded-full bg-fill px-4 text-subhead font-medium text-ink-muted hover:bg-fill-strong hover:text-ink"
+          >
+            <span class="flex size-4" aria-hidden="true" data-icon="github"></span>
+            <span data-i18n="btnOpenRepo">Browse GitHub Archive</span>
+            <span class="flex size-3.5" aria-hidden="true" data-icon="externalLink"></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 1: Key Metrics & Core Findings -->
+      <section id="findings" class="scroll-mt-24 border-t border-line pt-10 sm:pt-12">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="flex items-center gap-1.5 text-footnote font-semibold text-accent-ink">
+              <span class="flex size-4" aria-hidden="true" data-icon="layers"></span>
+              <span data-i18n="secFindingsEyebrow">Part 01 · Key Findings</span>
+            </p>
+            <h2 class="mt-1.5 text-title-2 text-ink sm:text-title-1" data-i18n="secFindingsTitle">
+              Key Metrics &amp; Core Findings
+            </h2>
+          </div>
+          <p class="text-footnote text-ink-subtle" data-i18n="secFindingsSub">
+            Cross-verified against static binary disassembly, local SQLite telemetry, and raw GitHub / Forum records
+          </p>
+        </div>
+
+        <!-- 6 Key Metric Cards -->
+        <div id="metrics-grid" class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+        <!-- 4 Core Findings Cards -->
+        <div id="findings-grid" class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2"></div>
+      </section>
+
+      <!-- Section 2: Interactive Technical Breakdown (Binary Gates, Env Var Evolution, Quota Audit) -->
+      <section id="technical" class="mt-14 scroll-mt-24 border-t border-line pt-10 sm:pt-12">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="flex items-center gap-1.5 text-footnote font-semibold text-accent-ink">
+              <span class="flex size-4" aria-hidden="true" data-icon="cpu"></span>
+              <span data-i18n="secTechEyebrow">Part 02 · Binary &amp; Telemetry Evidence</span>
+            </p>
+            <h2 class="mt-1.5 text-title-2 text-ink sm:text-title-1" data-i18n="secTechTitle">
+              Binary Disassembly, Environment Variable Evolution &amp; Quota Audit
+            </h2>
+          </div>
+
+          <!-- Segmented Tab Switcher -->
+          <div
+            role="tablist"
+            aria-label="Technical evidence tabs"
+            class="flex flex-wrap gap-1.5 rounded-full bg-fill p-1"
+            id="tech-tabs"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-tab="gates"
+              class="tech-tab pressable rounded-full bg-surface px-4 py-1.5 text-footnote font-medium text-ink shadow-thumb"
+              data-i18n="tabGates"
+            >
+              Three Binary Gates (0x3E800)
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-tab="env"
+              class="tech-tab pressable rounded-full px-4 py-1.5 text-footnote font-medium text-ink-muted hover:text-ink"
+              data-i18n="tabEnv"
+            >
+              Env Var Evolution &amp; SQLite
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-tab="quota"
+              class="tech-tab pressable rounded-full px-4 py-1.5 text-footnote font-medium text-ink-muted hover:text-ink"
+              data-i18n="tabQuota"
+            >
+              Argon 3.0x Quota Audit
+            </button>
+          </div>
+        </div>
+
+        <div id="tech-panel" class="mt-6"></div>
+      </section>
+
+      <!-- Section 3: Interactive Chronological Timeline -->
+      <section id="timeline" class="mt-14 scroll-mt-24 border-t border-line pt-10 sm:pt-12">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="flex items-center gap-1.5 text-footnote font-semibold text-accent-ink">
+              <span class="flex size-4" aria-hidden="true" data-icon="history"></span>
+              <span data-i18n="secTimelineEyebrow">Part 03 · Chronological Timeline (2025-07 — 2026-11-05)</span>
+            </p>
+            <h2 class="mt-1.5 text-title-2 text-ink sm:text-title-1" data-i18n="secTimelineTitle">
+              Chronological Incident Timeline
+            </h2>
+            <p class="mt-1.5 max-w-2xl text-subhead text-ink-muted" data-i18n="secTimelineDesc">
+              Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the 26.5-hour policy reversal to the 0x3e800 disassembly and today's CLI v1.5.1 release. Click any quote toggle to inspect the verbatim original text.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Filter Chips & Search -->
+        <div
+          class="mt-6 flex flex-col gap-3 rounded-card border border-line bg-surface p-4 shadow-card sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div
+            class="flex flex-wrap items-center gap-1.5"
+            role="group"
+            aria-label="Filter timeline by category"
+            id="timeline-filters"
+          ></div>
+
+          <div class="flex items-center gap-2.5">
+            <div class="relative flex-1 sm:w-64">
+              <span
+                class="pointer-events-none absolute left-3 top-1/2 flex size-4 -translate-y-1/2 text-ink-subtle"
+                aria-hidden="true"
+                data-icon="search"
+              ></span>
+              <input
+                type="search"
+                id="timeline-search"
+                class="forced-field h-9 w-full rounded-full border border-line bg-fill-subtle pl-9 pr-4 text-footnote text-ink placeholder:text-ink-subtle focus:bg-surface focus:outline-none"
+                placeholder="Filter by thread, version, or keyword (#186246, 1.5.1)..."
+                aria-label="Search timeline"
+              />
+            </div>
+            <span
+              id="timeline-count"
+              class="shrink-0 font-mono text-caption tabular-nums text-ink-subtle"
+              aria-live="polite"
+            ></span>
+          </div>
+        </div>
+
+        <!-- Vertical Timeline Container -->
+        <div class="mt-8 relative" id="timeline-wrapper">
+          <span
+            class="absolute bottom-0 left-[0.4375rem] top-2 w-0.5 rounded-full bg-line"
+            aria-hidden="true"
+          ></span>
+          <span
+            id="timeline-progress"
+            class="forced-fill absolute bottom-0 left-[0.4375rem] top-2 w-0.5 origin-top rounded-full bg-accent transition-transform duration-150 ease-out"
+            style="transform: scaleY(0)"
+            aria-hidden="true"
+          ></span>
+          <div id="timeline-list" class="flex flex-col gap-6"></div>
+        </div>
+      </section>
+
+      <!-- Section 4: Official Binary Hash Verification & Archive Files -->
+      <section id="verification" class="mt-14 scroll-mt-24 border-t border-line pt-10 sm:pt-12">
+        <div>
+          <p class="flex items-center gap-1.5 text-footnote font-semibold text-accent-ink">
+            <span class="flex size-4" aria-hidden="true" data-icon="shieldCheck"></span>
+            <span data-i18n="secVerifyEyebrow">Part 04 · Independent Verification &amp; Repository Index</span>
+          </p>
+          <h2 class="mt-1.5 text-title-2 text-ink sm:text-title-1" data-i18n="secVerifyTitle">
+            Official Binary Hashes &amp; Archive Directory
+          </h2>
+          <p class="mt-1.5 max-w-2xl text-subhead text-ink-muted" data-i18n="secVerifyDesc">
+            This repository hosts no binary executables or installers. Every analyzed official release can be downloaded directly from Google Cloud Storage and verified against the SHA-256 / SHA-512 hashes below.
+          </p>
+        </div>
+
+        <div id="binaries-list" class="mt-6 flex flex-col gap-3"></div>
+
+        <!-- Repository Documents Grid -->
+        <h3 class="mt-10 text-title-3 text-ink" data-i18n="repoDocsHeading">
+          Complete Repository Document Index
+        </h3>
+        <div id="docs-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-line bg-surface">
+      <div class="mx-auto max-w-page px-4 py-12 sm:px-6 lg:px-8">
+        <!-- Notes: Timezone (UTC+8) & Licensing -->
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div class="rounded-card border border-line bg-canvas p-5">
+            <div class="flex items-center gap-2 text-subhead font-semibold text-ink">
+              <span class="flex size-4 text-accent-ink" aria-hidden="true" data-icon="clock"></span>
+              <span data-i18n="tzTitle">Timezone Note (UTC+8) &amp; Date Alignment</span>
+            </div>
+            <p class="mt-2 text-footnote text-ink-muted text-pretty" data-i18n="tzBody">
+              Because the author is based in the UTC+8 timezone, some calendar dates or local file/build timestamps mentioned in the reports reflect UTC+8 local time and may differ by up to one calendar day from UTC (or US Pacific Time) timestamps on GitHub and the developer forum. These date differences are timezone offsets rather than factual errors; where exact timestamps are needed, please check the explicit UTC timestamps in the timeline or raw JSON snapshots.
+            </p>
+          </div>
+
+          <div class="rounded-card border border-line bg-canvas p-5">
+            <div class="flex items-center gap-2 text-subhead font-semibold text-ink">
+              <span class="flex size-4 text-accent-ink" aria-hidden="true" data-icon="scale"></span>
+              <span data-i18n="licenseTitle">License &amp; Fair Use Notice</span>
+            </div>
+            <p class="mt-2 text-footnote text-ink-muted text-pretty" data-i18n="licenseBody">
+              Original research reports, disassembly write-ups, and analytical tables are licensed under CC BY 4.0 (attribution via this GitHub repository URL or the author's blog post); original helper scripts and configuration snippets are licensed under MIT; raw API snapshots under evidence/raw/ and quoted forum replies, ToS, and FAQ texts remain the property of their respective rightsholders and are included under Fair Use (17 U.S.C. § 107).
+            </p>
+          </div>
+        </div>
+
+        <!-- Unified Built-With & Special Acknowledgements Card (Follows Current Language) -->
+        <div class="mt-6 rounded-card border border-line bg-canvas p-5 sm:p-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-line">
+            <div class="flex items-center gap-2 text-subhead font-semibold text-ink">
+              <span class="flex size-4 text-accent-ink" aria-hidden="true" data-icon="terminal"></span>
+              <span data-i18n="builtWithTitle">Built with Google Antigravity (Gemini 4 Argon)</span>
+            </div>
+            <a
+              href="https://github.com/magiccodelab/antigravity-256k-context-discrepancy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 font-mono text-caption text-accent-ink hover:underline"
+            >
+              <span>github.com/magiccodelab/antigravity-256k-context-discrepancy</span>
+              <span class="flex size-3.5" aria-hidden="true" data-icon="externalLink"></span>
+            </a>
+          </div>
+
+          <p class="mt-3 text-subhead text-ink-muted text-pretty" data-i18n="builtWithNote">
+            Had we not bypassed the hardcoded 0x3E800 (256K) clamp, Antigravity would have lost context mid-way and failed to build this page exposing itself.
+          </p>
+
+          <div class="mt-4 pt-3 border-t border-line">
+            <div class="flex items-center gap-2 text-subhead font-semibold text-ink">
+              <span class="flex size-4 text-accent-ink" aria-hidden="true" data-icon="heartHandshake"></span>
+              <span data-i18n="ackTitle">Special Acknowledgements</span>
+            </div>
+            <div class="mt-2.5 space-y-2 text-footnote text-ink-muted">
+              <p class="text-pretty" data-i18n="ackP1">
+                Our sincere gratitude goes to the Google DeepMind Gemini team for training such a genuinely remarkable 1M-context model (Gemini 4 Argon) capable of synthesizing this entire forensic archive.
+              </p>
+              <p class="text-pretty" data-i18n="ackP2">
+                Equally, a special thank-you to the Google Antigravity Product &amp; Monetization team for their truly visionary product decisions—most notably their commitment to "Getting Out of the Model's Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+(function () {
+  "use strict";
+
+  const REPO_URL = "https://github.com/magiccodelab/antigravity-256k-context-discrepancy";
+  const REPO_BLOB = REPO_URL + "/blob/main/";
+
+  // Lucide Icons (stroke-width="1.75", zero emojis)
+  const ICONS = {
+    database:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>',
+    languages:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>',
+    sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
+    moon:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+    github:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>',
+    arrowUpRight:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>',
+    fileText:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
+    history:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>',
+    cpu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+    externalLink:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
+    layers:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>',
+    search:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+    wrench:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+    shieldCheck:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
+    clock:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    scale:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>',
+    terminal:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>',
+    heartHandshake:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+    check:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="M20 6 9 17l-5-5"/></svg>',
+    chevronDown:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><path d="m6 9 6 6 6-6"/></svg>',
+    coins:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>',
+    gitCommit:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-full"><circle cx="12" cy="12" r="3"/><line x1="3" x2="9" y1="12" y2="12"/><line x1="15" x2="21" y1="12" y2="12"/></svg>',
+  };
+
+  function iconHtml(name, cls = "size-4") {
+    return `<span class="inline-flex shrink-0 ${cls}" aria-hidden="true">${ICONS[name] || ""}</span>`;
+  }
+
+  // Bilingual UI copy
+  const I18N = {
+    zh: {
+      pageTitle: "Google Antigravity 256K 上下文限制与无头模式政策变更档案",
+      skipToContent: "跳至正文",
+      brandTitle: "Antigravity 256K 档案记录",
+      navFindings: "核心结论",
+      navTechnical: "二进制与配额",
+      navTimeline: "事件时间线",
+      navVerification: "哈希与档案",
+      repoBtn: "GitHub 仓库",
+      heroBadge: "技术取证与时间线记录 · 更新至 2026-11-05 (CLI v1.5.1)",
+      heroTitle: "Google Antigravity 256K 上下文硬编码限制与无头模式政策变更档案",
+      heroDesc:
+        "Google Antigravity 在对外说明与客户端界面中均标称 Gemini 4 Argon 及 Gemini 3.8 Flash 支持 1,048,576（1M）Tokens 上下文窗口。但对官方客户端二进制的静态反汇编与本地会话数据库统计表明，底层代码通过硬编码机器码指令将自动上下文压缩触发阈值限制在 256,000 Tokens（标称窗口的 25%）；同期，官方支持人员在未修改正式《附加服务条款（ToS）》正文的情况下，通过更新 FAQ 页面撤回了此前连续 10 次关于“第三方工具通过本地子进程调用 agy -p 合规”的书面答复。",
+      btnJumpTimeline: "浏览完整时间线",
+      btnJumpTech: "查看反汇编与配额实测",
+      btnOpenRepo: "查阅原始仓库档案",
+      secFindingsEyebrow: "第一部分 · 核心数据与结论",
+      secFindingsTitle: "核心数据与调查结论",
+      secFindingsSub: "基于静态反汇编、SQLite 会话元数据与 GitHub / 官方论坛原始记录交叉核对",
+      secTechEyebrow: "第二部分 · 二进制与配额证据",
+      secTechTitle: "二进制反汇编、环境变量演变与配额实测",
+      tabGates: "三道二进制门禁 (0x3E800)",
+      tabEnv: "环境变量演变与 SQLite",
+      tabQuota: "Argon 3.0x 配额实测",
+      secTimelineEyebrow: "第三部分 · 事件时间线 (2025-07 — 2026-11-05)",
+      secTimelineTitle: "事件完整时间线",
+      secTimelineDesc:
+        "按发生时间排列从团队收购、连续 10 次官方合规确认、26.5 小时政策口径变更，到 0x3e800 硬编码拆解与今日 CLI v1.5.1 发布的全部关键节点。点击节点中的引用按钮可展开原始英文回复。",
+      searchPlaceholder: "搜索帖号、版本或关键词 (#186246, 1.5.1)...",
+      secVerifyEyebrow: "第四部分 · 独立复核与档案目录",
+      secVerifyTitle: "被分析官方二进制校验哈希与档案目录",
+      secVerifyDesc:
+        "本仓库不托管任何二进制可执行文件或安装包。所有被分析的官方发行包均可直接通过 Google 官方云存储直链下载，并核对以下 SHA-256 / SHA-512 哈希值。",
+      repoDocsHeading: "仓库完整文档索引",
+      tzTitle: "时区说明 (UTC+8) 与日期核对",
+      tzBody:
+        "由于作者日常处于 UTC+8（东八区）时区，文档中部分按本地日历或本地文件时间戳记录的日期，与 GitHub、开发者论坛使用的 UTC（或美西时间）时间戳相比可能存在跨日偏差（前后相差 1 天以内）。这类日期差异属于时区换算偏差而非事实错误；需要核对精确发生时刻时，请参考时间线中标注的 UTC 时间或仓库内的原始 JSON 快照。",
+      licenseTitle: "许可协议与合理使用说明",
+      licenseBody:
+        "原创调研报告、反汇编分析与统计表格采用 CC BY 4.0 国际许可协议授权（引用时注明本 GitHub 仓库链接或作者博客链接 https://afengblog.com/blog/antigravity-256k-context-discrepancy.html 即可）；evidence/raw/ 下的接口快照及引用的论坛回复、ToS 与 FAQ 原文归各自权利人所有，仅依据合理使用（Fair Use, 17 U.S.C. § 107）原则用于技术研究与归档。",
+      builtWithTitle: "使用 Google Antigravity (Gemini 4 Argon) 构建",
+      builtWithNote:
+        "如果我们没有绕过硬编码的 0x3E800（256K）限制，Antigravity 会在中途因强制有损压缩而丢失上下文，根本无法完成这个揭露其自身的页面。",
+      ackTitle: "特别致谢",
+      ackP1:
+        "我们由衷感谢 Google DeepMind Gemini 团队训练出如此真正卓越的 1M 上下文模型（Gemini 4 Argon），使其能够综合整理出这整套取证档案库。",
+      ackP2:
+        "同样，也要特别感谢 Google Antigravity 产品与商业化团队（Product & Monetization team）做出的极具远见的产品决策——尤其是他们秉持“不挡模型的路（Getting Out of the Model's Way）”的理念，将 0x3E800（256,000）硬编码进二进制文件，并通过修改一页 FAQ 推翻了 10 次官方书面承诺。如果没有你们这种“用户至上（user-first）”的工程实践，本仓库根本不会有存在的理由。",
+      copyBtn: "复制",
+      copiedBtn: "已复制",
+      viewSource: "查看原始记录",
+      showQuote: "展开原文摘录",
+      hideQuote: "收起原文摘录",
+      quoteBadge: "英文原文记录",
+      filterAll: "全部节点",
+      filterContext: "256K 限制与逆向",
+      filterPolicy: "政策变更与论坛 (10 允 → 禁)",
+      filterRelease: "版本发布与拆包",
+      nodesCount: (n) => `共 ${n} 个节点`,
+    },
+    en: {
+      pageTitle: "Google Antigravity 256K Context Limit & Headless Policy Archive",
+      skipToContent: "Skip to content",
+      brandTitle: "Antigravity 256K Archive",
+      navFindings: "Key Findings",
+      navTechnical: "Binary & Quota",
+      navTimeline: "Timeline",
+      navVerification: "Hashes & Index",
+      repoBtn: "GitHub Repo",
+      heroBadge: "Technical Forensics & Timeline · Updated 2026-11-05 (CLI v1.5.1)",
+      heroTitle: "Google Antigravity 256K Context Limit & Headless Policy Change Archive",
+      heroDesc:
+        "Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).",
+      btnJumpTimeline: "Explore Full Timeline",
+      btnJumpTech: "View Disassembly & Quota Data",
+      btnOpenRepo: "Browse GitHub Archive",
+      secFindingsEyebrow: "Part 01 · Key Findings",
+      secFindingsTitle: "Key Metrics & Core Findings",
+      secFindingsSub: "Cross-verified against static binary disassembly, local SQLite telemetry, and raw GitHub / Forum records",
+      secTechEyebrow: "Part 02 · Binary & Telemetry Evidence",
+      secTechTitle: "Binary Disassembly, Environment Variable Evolution & Quota Audit",
+      tabGates: "Three Binary Gates (0x3E800)",
+      tabEnv: "Env Var Evolution & SQLite",
+      tabQuota: "Argon 3.0x Quota Audit",
+      secTimelineEyebrow: "Part 03 · Chronological Timeline (2025-07 — 2026-11-05)",
+      secTimelineTitle: "Chronological Incident Timeline",
+      secTimelineDesc:
+        "Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the 26.5-hour policy reversal to the 0x3e800 disassembly and today's CLI v1.5.1 release. Click any quote toggle to inspect the verbatim original text.",
+      searchPlaceholder: "Filter by thread, version, or keyword (#186246, 1.5.1)...",
+      secVerifyEyebrow: "Part 04 · Independent Verification & Repository Index",
+      secVerifyTitle: "Official Binary Hashes & Archive Directory",
+      secVerifyDesc:
+        "This repository hosts no binary executables or installers. Every analyzed official release can be downloaded directly from Google Cloud Storage and verified against the SHA-256 / SHA-512 hashes below.",
+      repoDocsHeading: "Complete Repository Document Index",
+      tzTitle: "Timezone Note (UTC+8) & Date Alignment",
+      tzBody:
+        "Because the author is based in the UTC+8 timezone, some calendar dates or local file/build timestamps mentioned in the reports reflect UTC+8 local time and may differ by up to one calendar day from UTC (or US Pacific Time) timestamps on GitHub and the developer forum. These date differences are timezone offsets rather than factual errors; where exact timestamps are needed, please check the explicit UTC timestamps in the timeline or raw JSON snapshots.",
+      licenseTitle: "License & Fair Use Notice",
+      licenseBody:
+        "Original research reports, disassembly write-ups, and analytical tables are licensed under CC BY 4.0 (attribution via this GitHub repository URL or the author's blog post at https://afengblog.com/blog/antigravity-256k-context-discrepancy.html); raw API snapshots under evidence/raw/ and quoted forum replies, ToS, and FAQ texts remain the property of their respective rightsholders and are included under Fair Use (17 U.S.C. § 107).",
+      builtWithTitle: "Built with Google Antigravity (Gemini 4 Argon)",
+      builtWithNote:
+        "Had we not bypassed the hardcoded 0x3E800 (256K) clamp, Antigravity would have lost context mid-way and failed to build this page exposing itself.",
+      ackTitle: "Special Acknowledgements",
+      ackP1:
+        "Our sincere gratitude goes to the Google DeepMind Gemini team for training such a genuinely remarkable 1M-context model (Gemini 4 Argon) capable of synthesizing this entire forensic archive.",
+      ackP2:
+        'Equally, a special thank-you to the Google Antigravity Product & Monetization team for their truly visionary product decisions—most notably their commitment to "Getting Out of the Model\'s Way" by hardcoding 0x3E800 (256,000) into the binary and overturning 10 official written assurances via an FAQ edit. Without your "user-first" engineering, this repository would have had no reason to exist.',
+      copyBtn: "Copy",
+      copiedBtn: "Copied",
+      viewSource: "View Source",
+      showQuote: "Show Verbatim Excerpt",
+      hideQuote: "Hide Verbatim Excerpt",
+      quoteBadge: "Verbatim Record",
+      filterAll: "All Milestones",
+      filterContext: "256K Clamp & Disassembly",
+      filterPolicy: "Policy & Forum (10 Approvals → Reversal)",
+      filterRelease: "Releases & Teardowns",
+      nodesCount: (n) => `${n} milestones`,
+    },
+  };
+
+  // 6 Key Metrics
+  const METRICS = [
+    {
+      icon: "cpu",
+      value: "256,000 / 1M",
+      tag: "0x3E800 vs 0x100000",
+      zh: {
+        label: "硬编码压缩上限 vs 标称窗口",
+        detail: "模型层注册为 1,048,576 Tokens，但 GetCheckpointConfig 强制取 min(计算值, 256,000)（仅占标称值的 25%）。",
+      },
+      en: {
+        label: "Hardcoded Clamp vs. Advertised Window",
+        detail: "Model registration sets 1,048,576 tokens, but GetCheckpointConfig clamps TokenThreshold to min(calculated, 256,000) (25%).",
+      },
+    },
+    {
+      icon: "database",
+      value: "15,575 + 65,613",
+      tag: "Local CLI DB + Issue #878",
+      zh: {
+        label: "本机 CLI 实测调用 + 社区 #878 统计",
+        detail: "本机补丁前 209 个 1M-Gemini CLI 会话（15,575 次调用）max_context_tokens 100% 为 256,000；Issue #878 @murias002 统计 310 个会话（65,613 次调用）最高输入 255,999，超 300K 均为 0 次。",
+      },
+      en: {
+        label: "Local CLI Calls + Issue #878 Audit",
+        detail: "Across 209 local pre-patch 1M-Gemini CLI sessions (15,575 calls), 100% recorded max_context_tokens = 256,000; in Issue #878 (@murias002, 310 sessions / 65,613 calls), max input was 255,999 with 0 calls > 300K.",
+      },
+    },
+    {
+      icon: "clock",
+      value: "70s / 0%",
+      tag: "35s – 602s Stall",
+      zh: {
+        label: "单次压缩中位停顿 / 缓存留存率",
+        detail: "每次自动压缩中位耗时 70 秒，摘要调用算力不在轨迹中报告，并将 ~250K 历史改写为 15K–17K 摘要导致缓存归零。",
+      },
+      en: {
+        label: "Median Compaction Stall / Cache Retention",
+        detail: "Each auto-compaction stalls for a median of 70s, omits summary usage from metadata, and invalidates the 240K+ prompt cache.",
+      },
+    },
+    {
+      icon: "coins",
+      value: "3.00x / 9.25x",
+      tag: "$6/$30 vs $2/$10",
+      zh: {
+        label: "Argon 单位美元配额消耗比 (IDE / Web)",
+        detail: "同 5 小时配额桶按公开 API 挂牌价归一化后，Argon 消耗速度为 3.8 Flash 的 3.00 倍；Web 纯输入达 7.64–9.25 倍。",
+      },
+      en: {
+        label: "Argon Quota Drain per API Dollar (IDE / Web)",
+        detail: "Normalized by published API price in the same 5h bucket, Argon drains quota at 3.00x Flash (and 7.64x–9.25x on web pure input).",
+      },
+    },
+    {
+      icon: "history",
+      value: "10 → 26.5h",
+      tag: "ToS Unchanged · FAQ Edited",
+      zh: {
+        label: "连续书面确认合规 → 反转间隔",
+        detail: "三位官方工程师连续 10 帖确认子进程调用 agy -p 合规，26.5 小时后未改 ToS 正文、仅改 FAQ 撤回承诺并提示封号。",
+      },
+      en: {
+        label: "Written Forum Approvals → Reversal Window",
+        detail: "Three Google engineers issued 10 written confirmations that agy -p subprocesses were compliant, then reversed course 26.5h later via FAQ.",
+      },
+    },
+    {
+      icon: "gitCommit",
+      value: "v1.5.1",
+      tag: "2026-11-05 @ 0x7fb0fe2",
+      zh: {
+        label: "最新 CLI 二进制核验状态",
+        detail: "1.5.0–1.5.1 悄悄恢复了 AGY_CLI_AUTO_COMPACT_OVERRIDE 读取，但 0x3E800 钳制指令在 1.5.1 (0x7fb0fe2) 中原封未动。",
+      },
+      en: {
+        label: "Latest CLI Binary Verification",
+        detail: "v1.5.0–v1.5.1 silently restored AGY_CLI_AUTO_COMPACT_OVERRIDE lookup, while keeping the 0x3E800 clamp intact at 0x7fb0fe2.",
+      },
+    },
+  ];
+
+  // 4 Core Findings
+  const FINDINGS = [
+    {
+      num: "01",
+      zh: {
+        title: "标称 1,048,576 (1M) 窗口与底层 0x3E800 (256,000) 硬编码限制",
+        body: "桌面端 v2.29.0 (language_server.exe) 与 CLI v1.5.0–v1.5.1 (antigravity) 在 defaultmodels.Gemini4Argon 中注册的最大上下文确为 0x100000 (1,048,576)。但底层检查点计算函数 cortex/utils/utils.GetCheckpointConfig 内硬编码了 14 字节指令 cmp $0x3e800, %edx; mov $0x3e800, %esi; cmovb %edx, %esi，将所有模型的压缩触发阈值限制为 min(计算值, 256,000)。",
+        linkText: "查阅分册二与静态取证报告 §2.3",
+        href: REPO_BLOB + "research/zh-cn/02-256k-hardcoded-gates-and-binary-teardown.md",
+      },
+      en: {
+        title: "Advertised 1,048,576 (1M) Window vs. Hardcoded 0x3E800 (256,000) Binary Clamp",
+        body: "Both Desktop v2.29.0 (language_server.exe) and CLI v1.5.0–v1.5.1 (antigravity) register a 0x100000 (1,048,576) window in defaultmodels.Gemini4Argon. However, cortex/utils/utils.GetCheckpointConfig executes the 14-byte sequence cmp $0x3e800, %edx; mov $0x3e800, %esi; cmovb %edx, %esi, clamping the compaction trigger threshold to min(calculated, 256,000) across all models.",
+        linkText: "Read Volume 2 & Evidence Report §2.3",
+        href: REPO_BLOB + "research/02-256k-hardcoded-gates-and-binary-teardown.md",
+      },
+    },
+    {
+      num: "02",
+      zh: {
+        title: "SQLite 会话上限固定为 256,000 Tokens 与 70 秒压缩开销",
+        body: "本机补丁前（< 2026-11-04 00:00 UTC+8）209 个 Antigravity CLI 1M-Gemini 会话数据库（15,575 次调用）中，100.0% 记录 max_context_tokens = 256000（共触发 79 次 CHECKPOINT 压缩与 52 次 truncation_reason = 2 截断）；Issue #878 中 @murias002 统计 310 个 CLI 会话（65,613 次调用）最高输入 255,999 Tokens，超 300K 为 0 次。每次自动压缩中位耗时 70 秒，将约 25 万 Tokens 历史改写为 15K–17K 散文摘要并导致 240K+ 隐式缓存失效。",
+        linkText: "查阅取证报告 §2.5–§3 (SQLite 结构与统计)",
+        href: REPO_BLOB + "evidence/zh-cn/evidence-report.md",
+      },
+      en: {
+        title: "Consistent 256,000 SQLite Ceiling & 70-Second Compaction Overhead",
+        body: "Across 209 pre-patch local Antigravity CLI 1M-Gemini session DBs (< 2026-11-04 00:00 UTC+8, 15,575 calls), 100.0% recorded max_context_tokens = 256000 (79 CHECKPOINT compactions and 52 truncation_reason = 2 events); in Issue #878 (@murias002, 310 sessions / 65,613 calls), max input hit 255,999 tokens with 0 calls > 300K. Each auto-compaction stalls for a median of 70 seconds, replaces ~250K tokens with a 15K–17K prose summary, and invalidates the 240K+ prompt cache.",
+        linkText: "Read Evidence Report §2.5–§3 (SQLite Schema & Audit)",
+        href: REPO_BLOB + "evidence/evidence-report.md",
+      },
+    },
+    {
+      num: "03",
+      zh: {
+        title: "Gemini 4 Argon 3.0 倍配额消耗比与受控高倍率档位",
+        body: "同一 5 小时配额桶内的控制变量 A/B 测试表明，按公开 API 挂牌价折算后，Argon 每美元消耗的订阅配额是 3.8 Flash 的 3.00 倍（隐含按 $6/$30 每百万 Tokens 扣减，而非公开价 $2/$10；Web 纯输入测试中在 Argon Low 发一句 'OK' 比 3.8 Flash High 写 4,013 词长文多耗 12% 配额）。二进制内已预埋 512K (1.3x) 与 900K (1.8x Expensive) 选项。",
+        linkText: "查阅分册二 §3–§4 (论坛 #196351)",
+        href: REPO_BLOB + "research/zh-cn/02-256k-hardcoded-gates-and-binary-teardown.md",
+      },
+      en: {
+        title: "Gemini 4 Argon 3.0x Quota Consumption Ratio & Gated Context Tiers",
+        body: "Controlled A/B testing within the same 5-hour quota bucket shows Argon consumes subscription quota at 3.00x the rate of 3.8 Flash per published API dollar ($6/$30 implied vs. $2/$10 listed; on Web pure input, sending 'OK' on Argon Low burned 12% more quota than writing a 4,013-word article on 3.8 Flash High). Binaries already contain gated 512K (1.3x) and 900K (1.8x Expensive) options.",
+        linkText: "Read Volume 2 §3–§4 (Forum #196351)",
+        href: REPO_BLOB + "research/02-256k-hardcoded-gates-and-binary-teardown.md",
+      },
+    },
+    {
+      num: "04",
+      zh: {
+        title: "未改正式 ToS、通过更新 FAQ 完成的 26.5 小时 agy -p 政策变更",
+        body: "2026-09-16 至 10-08 16:23 UTC 期间，三位官方支持工程师在论坛连续 10 帖书面确认由 Codex、Claude Code 或本地编排器调用未修改的 agy -p 符合 ToS 第 6 条；26.5 小时后官方改变口径并提示自动封号风险，随后在 #191689 第 8 楼确认正式《服务条款》自 9 月后未作修改，仅在 10 月中旬更新了非合同性质的《官方 FAQ》。",
+        linkText: "查阅分册三与分册五原文记录",
+        href: REPO_BLOB + "research/zh-cn/03-agy-p-headless-policy-reversal-and-bans.md",
+      },
+      en: {
+        title: "26.5-Hour agy -p Policy Reversal via FAQ Update Without Amending ToS",
+        body: "Between Sept 16 and Oct 8, 2026 (16:23 UTC), three Google support engineers posted 10 written confirmations that invoking unmodified agy -p from Codex, Claude Code, or local scripts complied with ToS Section 6. Just 26.5 hours later, staff reversed this position, later confirming in Thread #191689 Post #8 that the formal ToS had not changed since September and only the FAQ was updated.",
+        linkText: "Read Volume 3 & Volume 5 Verbatim Records",
+        href: REPO_BLOB + "research/03-agy-p-headless-policy-reversal-and-bans.md",
+      },
+    },
+  ];
+
+  // Technical Tabs Content Generator
+  const ASM_SNIPPET = `; Function: google3/third_party/jetski/cortex/utils/utils.GetCheckpointConfig
+; Desktop v2.29.0 (language_server.exe): VA 0x14176d69e (File offset 0x176ca9e)
+; CLI v1.3.5 (antigravity):              VA 0x07861894
+; CLI v1.5.0 (antigravity, 2026-11-04):  File offset 0x7fe57fe (clamp @ 0x7fe5802)
+; CLI v1.5.1 (antigravity, 2026-11-05):  File offset 0x7fb0fde (clamp @ 0x7fb0fe2)
+
+8b 54 24 4c           mov    0x4c(%rsp), %edx      ; edx = calculated threshold (context - 40,000 margin)
+81 fa 00 e8 03 00     cmp    $0x3e800, %edx        ; compare against 0x3e800 (decimal 256,000)
+be 00 e8 03 00        mov    $0x3e800, %esi        ; esi = 256,000
+0f 42 f2              cmovb  %edx, %esi            ; esi = min(edx, 256,000) (unsigned conditional move)
+89 74 24 50           mov    %esi, 0x50(%rsp)      ; write clamped 256,000 into TokenThreshold`;
+
+  function renderTechTab(tab, lang) {
+    const t = I18N[lang];
+    if (tab === "gates") {
+      const gates =
+        lang === "zh"
+          ? [
+              {
+                badge: "Gate 01 · UI 白名单",
+                fn: "SelectorModel.offersContextWindow",
+                offset: "v1.5.0 @ 0x9e92140",
+                desc: "检查位于数据段 0xc592be0 的硬编码模型白名单切片（长度与容量均为 1，唯一元素为 14 字节字符串 \"Gemini 4 Argon\"）。对 Gemini 3.8 Flash 等其他 1M 模型直接返回 false (xor %eax, %eax)，在 /model 菜单中隐藏 Context: Default | 256K | 512K | 900K 切换行。",
+              },
+              {
+                badge: "Gate 02 · 配置同步白名单",
+                fn: "store.(*Store).ContextWindow",
+                offset: "v1.5.0 @ 0x9c49fe0",
+                desc: "负责向后端同步配置的 Manager.syncContextWindow() 不直接调用读取 settings.json 的 ContextWindowChoice()，而是调用包含第二次相同白名单比对的包装函数 Store.ContextWindow()；非 Argon 模型直接返回 (\"\", 0)，丢弃用户在配置文件中写入的 512K/900K。",
+              },
+              {
+                badge: "Gate 03 · 汇编级阈值钳制",
+                fn: "cortex/utils/utils.GetCheckpointConfig",
+                offset: "v1.5.0 @ 0x7fe5802 · v1.5.1 @ 0x7fb0fe2",
+                desc: "即便使用白名单内的 Gemini 4 Argon，Cortex 引擎在算出真实可用阈值（1M 减去 40,000 余量）存入 %edx 后，立即执行 14 字节硬编码指令将 TokenThreshold 钳制为 min(计算值, 256,000)。该常数在桌面端 56MB 与 CLI 60MB 代码段中各仅出现这一处。",
+              },
+            ]
+          : [
+              {
+                badge: "Gate 01 · UI Selector Whitelist",
+                fn: "SelectorModel.offersContextWindow",
+                offset: "v1.5.0 @ 0x9e92140",
+                desc: "Checks a hardcoded slice header at data VA 0xc592be0 ({len=1, cap=1}, sole element: \"Gemini 4 Argon\"). Returns false (xor %eax, %eax) for all other 1M models such as Gemini 3.8 Flash, hiding the Context: Default | 256K | 512K | 900K row in /model.",
+              },
+              {
+                badge: "Gate 02 · Backend Sync Discard",
+                fn: "store.(*Store).ContextWindow",
+                offset: "v1.5.0 @ 0x9c49fe0",
+                desc: "Instead of calling ContextWindowChoice() directly, Manager.syncContextWindow() calls the wrapper Store.ContextWindow(), which performs an identical second check against \"Gemini 4 Argon\" and returns (\"\", 0) for non-Argon models, discarding saved 512K/900K settings.",
+              },
+              {
+                badge: "Gate 03 · Assembly Threshold Clamp",
+                fn: "cortex/utils/utils.GetCheckpointConfig",
+                offset: "v1.5.0 @ 0x7fe5802 · v1.5.1 @ 0x7fb0fe2",
+                desc: "Even on Gemini 4 Argon, right after computing the usable threshold (context minus 40,000 margin) into %edx, GetCheckpointConfig executes a 14-byte instruction sequence clamping TokenThreshold to min(calculated, 256,000). This immediate appears only once across the entire .text section.",
+              },
+            ];
+
+      return `
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+          ${gates
+            .map(
+              (g) => `
+            <div class="rounded-card border border-line bg-surface p-5 shadow-card flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span class="rounded-full bg-accent-soft px-2.5 py-0.5 text-caption font-medium text-accent-ink">${g.badge}</span>
+                  <span class="font-mono text-micro text-ink-subtle">${g.offset}</span>
+                </div>
+                <h3 class="mt-3 font-mono text-subhead font-semibold text-ink break-all">${g.fn}</h3>
+                <p class="mt-2 text-footnote text-ink-muted text-pretty">${g.desc}</p>
+              </div>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+
+        <div class="mt-4 rounded-card border border-line bg-surface p-5 shadow-card">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-line">
+            <div>
+              <h3 class="text-subhead font-semibold text-ink">
+                ${lang === "zh" ? "GetCheckpointConfig 核心钳制指令反汇编对比 (Desktop v2.29.0 vs CLI v1.3.5 / v1.5.0 / v1.5.1)" : "GetCheckpointConfig Hard-Clamp Disassembly (Desktop v2.29.0 vs. CLI v1.3.5 / v1.5.0 / v1.5.1)"}
+              </h3>
+              <p class="text-caption text-ink-subtle font-mono mt-0.5">Machine code: 81 fa 00 e8 03 00 be 00 e8 03 00 0f 42 f2 (14 bytes)</p>
+            </div>
+            <button
+              type="button"
+              data-copy="${encodeURIComponent(ASM_SNIPPET)}"
+              class="copy-btn pressable forced-edge inline-flex h-8 items-center gap-1.5 rounded-full bg-fill px-3 text-caption font-medium text-ink hover:bg-fill-strong"
+            >
+              ${iconHtml("copy", "size-3.5")}
+              <span>${t.copyBtn}</span>
+            </button>
+          </div>
+          <pre class="mt-3 overflow-x-auto rounded-media bg-fill-subtle p-4 font-mono text-caption leading-relaxed text-ink"><code>${ASM_SNIPPET}</code></pre>
+        </div>
+      `;
+    }
+
+    if (tab === "env") {
+      return `
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div class="rounded-card border border-line bg-surface p-5 shadow-card">
+            <span class="rounded-full bg-warning-soft px-2.5 py-0.5 text-caption font-medium text-warning-ink">
+              ${lang === "zh" ? "阶段一 · CLI v1.3.5 – v1.4.x (2026-10)" : "Stage 1 · CLI v1.3.5 – v1.4.x (Oct 2026)"}
+            </span>
+            <h3 class="mt-3 text-headline text-ink">
+              ${lang === "zh" ? "AGY_CLI_AUTO_COMPACT_OVERRIDE 在编译期被内联为空字符串" : "AGY_CLI_AUTO_COMPACT_OVERRIDE Inlined to Empty String at Compile Time"}
+            </h3>
+            <p class="mt-2 text-footnote text-ink-muted text-pretty">
+              ${
+                lang === "zh"
+                  ? "在 @LiraNuna 于 Issue #1245 反汇编的 1.3.5 / 1.4.x 发布版本中，store.AutoCompactOverride 函数内的 os.Getenv(\"AGY_CLI_AUTO_COMPACT_OVERRIDE\") 调用被直接替换为寄存器清零指令，导致後續 strconv.ParseInt(\"\", 10, ...) 永远失败，用户在 Shell 中设置环境变量完全无效："
+                  : "In the v1.3.5 / v1.4.x release builds disassembled by @LiraNuna in Issue #1245, the os.Getenv(\"AGY_CLI_AUTO_COMPACT_OVERRIDE\") call inside store.AutoCompactOverride was replaced at compile time with register-zeroing instructions, causing strconv.ParseInt(\"\", 10, ...) to always fail:"
+              }
+            </p>
+            <pre class="mt-3 overflow-x-auto rounded-media bg-fill-subtle p-3.5 font-mono text-caption text-ink"><code>xor %eax, %eax                ; string ptr = 0 ("")
+xor %ebx, %ebx                ; string len = 0
+call strings.TrimSpace        ; returns "" unconditionally</code></pre>
+          </div>
+
+          <div class="rounded-card border border-line bg-surface p-5 shadow-card">
+            <span class="rounded-full bg-info-soft px-2.5 py-0.5 text-caption font-medium text-info-ink">
+              ${lang === "zh" ? "阶段二 · CLI v1.5.0 – v1.5.1 (2026-11-04 / 11-05)" : "Stage 2 · CLI v1.5.0 – v1.5.1 (Nov 4–5, 2026)"}
+            </span>
+            <h3 class="mt-3 text-headline text-ink">
+              ${lang === "zh" ? "静默恢复 os.LookupEnv 读取，但保留 0x3E800 钳制指令" : "Silent Restoration of os.LookupEnv While Keeping 0x3E800 Clamp"}
+            </h3>
+            <p class="mt-2 text-footnote text-ink-muted text-pretty">
+              ${
+                lang === "zh"
+                  ? "对本机 v1.5.0 (VA 0x9c49d00) 与 v1.5.1 二进制的反汇编证实，Google 在未写入 CHANGELOG.md 的情况下恢复了 store.AutoCompactOverride 的完整读取与解析逻辑（支持 <百分比>% 与整数 Token 数，与 GEMINI_API_KEY 共用同一个 os.LookupEnv 入口），但 GetCheckpointConfig 中的 0x3E800 钳制指令并未删除："
+                  : "Disassembly of local v1.5.0 (VA 0x9c49d00) and v1.5.1 binaries proves Google silently restored store.AutoCompactOverride without mentioning it in CHANGELOG.md (supporting <percentage>% and integer token counts via os.LookupEnv), while leaving the 0x3E800 clamp in GetCheckpointConfig intact:"
+              }
+            </p>
+            <pre class="mt-3 overflow-x-auto rounded-media bg-fill-subtle p-3.5 font-mono text-caption text-ink"><code>lea rax, [rip+0x...]          ; "AGY_CLI_AUTO_COMPACT_OVERRIDE" (len 29)
+mov ebx, 0x1d
+call os.LookupEnv             ; 0x6b21260 (active lookup)
+call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-card border border-line bg-surface p-5 shadow-card">
+          <h3 class="text-subhead font-semibold text-ink">
+            ${
+              lang === "zh"
+                ? "Antigravity CLI 本地 SQLite 数据库结构、Protobuf 字段层级与 15,575 次调用核验"
+                : "Antigravity CLI SQLite Database Architecture, Protobuf Hierarchy & 15,575-Call Audit"
+            }
+          </h3>
+          <div class="mt-3 grid grid-cols-1 gap-4 lg:grid-cols-3">
+            <div class="rounded-media bg-fill-subtle p-4">
+              <p class="font-mono text-caption font-semibold text-ink">1. SQLite 两级库与 7 张核心表</p>
+              <p class="mt-1.5 text-footnote text-ink-muted">
+                ${
+                  lang === "zh"
+                    ? "全局索引库 conversation_summaries.db 含摘要主表与 conversations_fts (FTS5 全文检索)。单会话库 conversations/<uuid>.db 含 7 张表：trajectory_meta、steps（step_type=15 为回复，step_type=23 为 CHECKPOINT 压缩）、gen_metadata（每次 LLM 调用的 Protobuf 记录，注意 step_type=23 压缩不写此表）、executor_metadata、parent_references、trajectory_metadata_blob、battle_mode_infos。"
+                    : "Global index conversation_summaries.db holds session summaries and FTS5 table conversations_fts. Per-session conversations/<uuid>.db has 7 tables: trajectory_meta, steps (step_type=15 PLANNER_RESPONSE, step_type=23 CHECKPOINT), gen_metadata (Protobuf per LLM call; omitted on step_type=23 compactions), executor_metadata, parent_references, trajectory_metadata_blob, and battle_mode_infos."
+                }
+              </p>
+            </div>
+            <div class="rounded-media bg-fill-subtle p-4">
+              <p class="font-mono text-caption font-semibold text-ink">2. GeneratorMetadata Protobuf 路径</p>
+              <p class="mt-1.5 text-footnote text-ink-muted">
+                ${
+                  lang === "zh"
+                    ? "gen_metadata.data 序列化 exa.cortex_pb.GeneratorMetadata：field 1 (ChatModelMetadata) → field 4 (ModelUsageStats: 2=input_tokens, 3=output_tokens, 5=cache_read_tokens) 与 field 9 (ChatStartMetadata: 1=start_step_index, 2=checkpoint_index) → field 10 (ContextWindowMetadata: 1=estimated_tokens_used, 2=truncation_reason [2=MAX_TOKEN_LIMIT], 4=max_context_tokens)。"
+                    : "gen_metadata.data serializes exa.cortex_pb.GeneratorMetadata: field 1 (ChatModelMetadata) → field 4 (ModelUsageStats: 2=input_tokens, 3=output_tokens, 5=cache_read_tokens) & field 9 (ChatStartMetadata: 1=start_step_index, 2=checkpoint_index) → field 10 (ContextWindowMetadata: 1=estimated_tokens_used, 2=truncation_reason [2=MAX_TOKEN_LIMIT], 4=max_context_tokens)."
+                }
+              </p>
+            </div>
+            <div class="rounded-media bg-fill-subtle p-4">
+              <p class="font-mono text-caption font-semibold text-ink">3. 本机 15,575 次调用与 #878 双重印证</p>
+              <p class="mt-1.5 text-footnote text-ink-muted">
+                ${
+                  lang === "zh"
+                    ? "本机补丁前（< 2026-11-04 00:00 UTC+8）237 个 CLI 会话库中，209 个 1M-Gemini 会话共 15,575 次调用（3.8 Flash 11,110 次、4 Argon 2,826 次、3.7/3.6/3.5 Flash 1,639 次）max_context_tokens 100.0% 为 256,000（含 79 次 CHECKPOINT 与 52 次 truncation_reason=2）；与 Issue #878 @murias002 的 310 会话 65,613 次调用（最高输入 255,999，超 300K 均为 0 次）完全吻合。"
+                    : "Across 237 local pre-patch CLI DBs (< 2026-11-04 00:00 UTC+8), all 15,575 calls across 209 1M-Gemini sessions (11,110 on 3.8 Flash, 2,826 on 4 Argon, 1,639 on 3.7/3.6/3.5 Flash) recorded max_context_tokens = 256,000 at 100.0% (79 CHECKPOINTs, 52 truncation_reason=2), matching @murias002's 310-session / 65,613-call audit in Issue #878."
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // tab === "quota"
+    return `
+      <div class="rounded-card border border-line bg-surface p-5 shadow-card">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 class="text-subhead font-semibold text-ink">
+              ${
+                lang === "zh"
+                  ? "实验一：Antigravity 客户端同 5 小时配额桶单步无缓存 A/B 对照 (@Yiji_Kong 论坛 #196351)"
+                  : "Experiment 1: Antigravity Client Same-Bucket Single-Turn Zero-Cache A/B Test (@Yiji_Kong Forum #196351)"
+              }
+            </h3>
+            <p class="mt-0.5 text-caption text-ink-subtle">
+              ${
+                lang === "zh"
+                  ? "通过轮询 LanguageServerService/GetUserStatus 的 quotaInfo.remainingFraction 测量同一 5 小时池内的精确扣减比例"
+                  : "Measured via LanguageServerService/GetUserStatus quotaInfo.remainingFraction within the same 5-hour quota pool"
+              }
+            </p>
+          </div>
+          <a
+            href="https://discuss.ai.google.dev/t/gemini-4-argon-draws-antigravity-quota-at-3x-gemini-3-8-flash-per-published-dollar-clean-a-b-same-bucket/196351"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 text-caption font-medium text-accent-ink hover:underline"
+          >
+            <span>Forum #196351</span>
+            ${iconHtml("externalLink", "size-3.5")}
+          </a>
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-left border-collapse text-footnote tabular-nums">
+            <thead>
+              <tr class="border-b border-line-strong text-ink">
+                <th class="py-2.5 pr-4 font-semibold">${lang === "zh" ? "测试模型" : "Model"}</th>
+                <th class="py-2.5 pr-4 font-semibold">${lang === "zh" ? "输入 / 输出 Tokens" : "Input / Output Tokens"}</th>
+                <th class="py-2.5 pr-4 font-semibold">${lang === "zh" ? "5 小时池扣减 (Quota drop)" : "5h Pool Quota Drop"}</th>
+                <th class="py-2.5 pr-4 font-semibold">${lang === "zh" ? "按公开挂牌价折算成本" : "Published List Cost"}</th>
+                <th class="py-2.5 pr-4 font-semibold">${lang === "zh" ? "每美元消耗配额" : "Quota per USD"}</th>
+                <th class="py-2.5 font-semibold">${lang === "zh" ? "归一化消耗倍率" : "Normalized Ratio"}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line text-ink-muted">
+              <tr>
+                <td class="py-2.5 pr-4 font-mono font-medium text-ink">Gemini 4 Argon (High)</td>
+                <td class="py-2.5 pr-4 font-mono">14,918 in / 4,233 out</td>
+                <td class="py-2.5 pr-4 font-mono">0.00144340</td>
+                <td class="py-2.5 pr-4 font-mono">$0.0722 ($2 / $10 per 1M)</td>
+                <td class="py-2.5 pr-4 font-mono font-semibold text-ink">0.02000</td>
+                <td class="py-2.5 font-mono font-semibold text-danger-ink">3.00x (Implies $6 / $30)</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 pr-4 font-mono font-medium text-ink">Gemini 3.8 Flash (High)</td>
+                <td class="py-2.5 pr-4 font-mono">15,111 in / 3,451 out</td>
+                <td class="py-2.5 pr-4 font-mono">0.00016180</td>
+                <td class="py-2.5 pr-4 font-mono">$0.0243 ($0.75 / $3.75 per 1M)</td>
+                <td class="py-2.5 pr-4 font-mono">0.00667</td>
+                <td class="py-2.5 font-mono text-success-ink">1.00x (Baseline)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="rounded-card border border-line bg-surface p-5 shadow-card">
+          <h3 class="text-subhead font-semibold text-ink">
+            ${
+              lang === "zh"
+                ? "实验二：Web 端 8 位小数周配额池 (ΔWeekly) 对照实测"
+                : "Experiment 2: Web 8-Decimal Weekly Quota Pool (ΔWeekly) Benchmark"
+            }
+          </h3>
+          <ul class="mt-3 space-y-2 text-footnote text-ink-muted">
+            <li>
+              <strong class="text-ink">Test 1A (3.8 Flash Low, 51,262 chars in → "OK"):</strong>
+              <code class="font-mono text-caption">ΔWeekly = +0.00003685</code> (1.00x)
+            </li>
+            <li>
+              <strong class="text-ink">Test 1B (4 Argon Low, 51,262 chars in → "OK"):</strong>
+              <code class="font-mono text-caption">ΔWeekly = +0.00090908</code>
+              (${lang === "zh" ? "原始消耗为 Flash 的 24.67x，按挂牌价折算 9.25x/美元；扣除底座后 7.64x/美元" : "24.67x raw / 9.25x per dollar vs. Flash; 7.64x per dollar net of base overhead"})
+            </li>
+            <li>
+              <strong class="text-ink">Test 1C (4 Argon Low, 28 chars "Reply with only the word: OK"):</strong>
+              <code class="font-mono text-caption">ΔWeekly = +0.00015849</code> —
+              <span class="text-danger-ink font-medium">
+                ${
+                  lang === "zh"
+                    ? "仅发一句 28 字符的 'OK' 消耗的周配额，比在 3.8 Flash (High) 上写完一篇 4,013 词 Paxos/Raft 技术长文 (+0.00014157) 还要高出 12%。"
+                    : "Sending a 28-char 'OK' prompt on Argon Low burned 12% more weekly quota than having 3.8 Flash High write a 4,013-word article on Paxos and Raft (+0.00014157)."
+                }
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rounded-card border border-line bg-surface p-5 shadow-card">
+          <h3 class="text-subhead font-semibold text-ink">
+            ${
+              lang === "zh"
+                ? "客户端预埋的三档上下文倍率与官方回应"
+                : "Pre-Built Context Window Multipliers & Official Staff Reply"
+            }
+          </h3>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-media bg-fill-subtle p-3">
+              <p class="font-mono text-subhead font-semibold text-ink">256K</p>
+              <p class="font-mono text-caption text-ink-subtle">1.0x Quota</p>
+              <p class="mt-1 text-micro text-ink-muted">Default Clamp</p>
+            </div>
+            <div class="rounded-media bg-warning-soft p-3">
+              <p class="font-mono text-subhead font-semibold text-warning-ink">512K</p>
+              <p class="font-mono text-caption text-warning-ink">1.3x Quota</p>
+              <p class="mt-1 text-micro text-warning-ink">Gated (Argon only)</p>
+            </div>
+            <div class="rounded-media bg-danger-soft p-3">
+              <p class="font-mono text-subhead font-semibold text-danger-ink">900K</p>
+              <p class="font-mono text-caption text-danger-ink">1.8x Quota</p>
+              <p class="mt-1 text-micro text-danger-ink">Expensive: true</p>
+            </div>
+          </div>
+          <p class="mt-3 text-footnote text-ink-muted">
+            ${
+              lang === "zh"
+                ? "Google 官方人员 @Maniraj_Chervirala 在 #196351 第 6 楼回应确认：公开 API 价格页面上的单价仅属于按量计费 API 的“促销费率 (promotional per-token rates)”，个人订阅单模型固定配额乘数不予公开。"
+                : "In Forum #196351 Post #6, Google staff @Maniraj_Chervirala confirmed that published API rates are 'promotional per-token rates' for pay-as-you-go billing only, and that fixed per-model subscription multipliers are not published."
+            }
+          </p>
+        </div>
+      </div>
+    `;
+  }
+
+  // Chronological Timeline Data (22 Milestones)
+  const TIMELINE = [
+    {
+      id: "tl-2025-07",
+      date: "2025-07",
+      cat: "release",
+      badgeTone: "neutral",
+      zh: {
+        catLabel: "背景与架构",
+        title: "Google 以 24 亿美元达成 Windsurf (Codeium) 技术许可与核心团队引进协议",
+        summary:
+          "Windsurf 联合创始人 Varun Mohan 与产品工程负责人 Kevin Hou 率核心团队加入 Google DeepMind 构建 Antigravity。客户端二进制符号表证实 agy 与 Cortex 引擎源码位于 google3/third_party/jetski/ 目录下。",
+      },
+      en: {
+        catLabel: "Background",
+        title: "Google Enters $2.4B Windsurf (Codeium) Licensing & Core Team Deal",
+        summary:
+          "Windsurf co-founder Varun Mohan and Head of Product Engineering Kevin Hou join Google DeepMind to lead Antigravity. Binary symbol tables confirm agy and Cortex engine sources reside under google3/third_party/jetski/.",
+      },
+      link: "https://timesofindia.indiatimes.com/education/news/varun-mohan-education-qualifications-how-an-indian-origin-mit-engineer-secured-googles-2-4-billion-ai-investment/articleshow/122405531.cms",
+    },
+    {
+      id: "tl-2026-02-27",
+      date: "2026-02-27 23:18 UTC",
+      cat: "policy",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "封号规则",
+        title: "Google 确立 cloudcode-pa.googleapis.com 反滥用“二振出局制” (Discussion #20632)",
+        summary:
+          "维护者 @jackwotherspoon 宣布：首次被标记 TOS_VIOLATION 可通过 Google Form 签署重新认证等待同步解封，第二次被标记将直接永久封禁，且同一 Google 账号下的 Antigravity、Gemini CLI 与 Code Assist 会同时被限制。",
+      },
+      en: {
+        catLabel: "Suspension Policy",
+        title: "Google Establishes Two-Strike Policy for cloudcode-pa.googleapis.com Bans (#20632)",
+        summary:
+          "Maintainer @jackwotherspoon announces that a first TOS_VIOLATION flag can be appealed via a recertification form, whereas a second flag results in a permanent ban across Antigravity, Gemini CLI, and Code Assist.",
+      },
+      link: "https://github.com/google-gemini/gemini-cli/discussions/20632",
+    },
+    {
+      id: "tl-2026-06-18",
+      date: "2026-06-18",
+      cat: "release",
+      badgeTone: "neutral",
+      zh: {
+        catLabel: "闭源迁移",
+        title: "关停个人消费者对旧版开源 @google/gemini-cli 的访问，强制迁移至闭源 agy",
+        summary:
+          "个人免费及付费订阅账号被统一迁移至闭源 Go 编译的 agy CLI，同时移除了旧版原生支持的 OpenTelemetry (OTLP) Token 用量导出功能（Issue #366）。",
+      },
+      en: {
+        catLabel: "CLI Migration",
+        title: "Consumer Access to Open-Source @google/gemini-cli Terminated in Favor of Closed-Source agy",
+        summary:
+          "Individual accounts are migrated to the closed-source Go binary agy, removing the native OpenTelemetry (OTLP) token usage exporter supported in the legacy CLI (Issue #366).",
+      },
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/366",
+    },
+    {
+      id: "tl-2026-08-26",
+      date: "2026-08-26 13:36 UTC",
+      cat: "context",
+      badgeTone: "info",
+      zh: {
+        catLabel: "Issue #878",
+        title: "社区提交 Issue #878 要求允许关闭自动压缩并解锁完整 1M 上下文窗口",
+        summary:
+          "开发者 @schalatap 指出 agy 的自动压缩无法通过 settings.json、CLI 参数或环境变量关闭，导致长会话频繁丢失上下文并重复重读文件。",
+      },
+      en: {
+        catLabel: "Issue #878",
+        title: "Community Opens Issue #878 Requesting Full 1M Context Window & Compaction Toggle",
+        summary:
+          "Developer @schalatap reports that agy's rigid auto-compaction cannot be disabled via settings.json, CLI flags, or environment variables, causing repeated context loss in long sessions.",
+      },
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/878",
+    },
+    {
+      id: "tl-2026-09-16",
+      date: "2026-09-16 — 09-17 UTC",
+      cat: "policy",
+      badgeTone: "success",
+      zh: {
+        catLabel: "官方确认 #1–#2",
+        title: "官方支持工程师在论坛 #175905 与 #183429 确认本地子进程调用 agy 合规",
+        summary:
+          "@Rebbanpalli_Naveen (#175905) 与 @Ambati_Rajendra (#183429) 先后书面确认：只要在本地调用未修改的官方 agy 二进制且不提取或拦截用户的 OAuth 凭据，就不违反附加条款第 6 条。",
+      },
+      en: {
+        catLabel: "Official Approvals #1–#2",
+        title: "Google Staff Confirm in #175905 & #183429 That Local Subprocess Calls Comply with Section 6",
+        summary:
+          "@Rebbanpalli_Naveen (#175905) and @Ambati_Rajendra (#183429) confirm in writing that spawning the unmodified agy binary locally via agy -p does not violate Section 6 provided OAuth credentials are never extracted.",
+      },
+      quote:
+        '"Is calling agy headless allowed? Yes. Calling the official agy binary locally via agy -p is an officially supported feature built for programmatic scripting... It does not violate Section 6, provided your tool never extracts, stores, or intercepts the user’s OAuth credentials." — @Ambati_Rajendra (#183429, 2026-09-17 12:06 UTC)',
+      link: "https://discuss.ai.google.dev/t/is-it-allowed-for-an-open-source-tool-to-call-the-official-agy-cli-in-headless-mode/183429",
+    },
+    {
+      id: "tl-2026-09-28",
+      date: "2026-09-28 — 10-02 UTC",
+      cat: "policy",
+      badgeTone: "success",
+      zh: {
+        catLabel: "官方确认 #3–#6",
+        title: "官方在 #185494、#185460、#185992、#185949 连续确认 Claude Code / Codex 调用 agy -p 合规",
+        summary:
+          "针对用户询问由另一个 AI 助手、Claude Code 或 Codex Skill 启动本地未修改的 agy.exe -p 子进程是否允许，@Ambati_Rajendra 与 @chunduriv 连续给出肯定答复。",
+      },
+      en: {
+        catLabel: "Official Approvals #3–#6",
+        title: "Google Staff Confirm in #185494, #185460, #185992 & #185949 That Claude Code / Codex Invocations Are Permitted",
+        summary:
+          "Asked whether another AI coding tool, Claude Code, or a Codex Skill may spawn the unmodified agy.exe -p binary locally, @Ambati_Rajendra and @chunduriv repeatedly answer Yes.",
+      },
+      quote:
+        '"Is invoking the unmodified agy.exe binary in headless mode from a local assistant permitted on an individual account? Yes. Section 6... prohibits extracting, proxying, or reusing Antigravity OAuth credentials inside third-party harnesses to call Antigravity’s backend endpoints directly." — @chunduriv (#185992, 2026-09-30 23:25 UTC)',
+      link: "https://discuss.ai.google.dev/t/is-invoking-the-official-agy-cli-from-a-local-ai-coding-assistant-allowed-on-an-individual-google-ai-account/185992",
+    },
+    {
+      id: "tl-2026-10-05-db",
+      date: "2026-10-05 00:51 UTC",
+      cat: "context",
+      badgeTone: "info",
+      zh: {
+        catLabel: "数据库统计",
+        title: "Eddy Murias (@murias002) 公布 310 个会话、65,613 次调用统计：单次最高输入 255,999 Tokens",
+        summary:
+          "在 Issue #878 中，对 65,613 次模型调用的全量数据库统计显示：超过 300K 的调用为 0 次，全部 276 次压缩事件触发前的中位上下文为 255,070 Tokens，压缩后跌至 45,304 Tokens。",
+      },
+      en: {
+        catLabel: "65,613-Call Audit",
+        title: "Eddy Murias (@murias002) Audits 310 Sessions (65,613 Calls): Max Input 255,999 Tokens, Zero Calls > 300K",
+        summary:
+          "In Issue #878, a database audit across 65,613 calls shows 0 calls above 300K tokens and a median pre-compaction context of 255,070 tokens across 276 compaction events.",
+      },
+      quote:
+        '"Conversations: 310 | Model calls: 65,613 (86.6% on Gemini 3.8 Flash) | Input tokens per call: p50 136,487 · p90 229,000 · max 255,999 | Calls above 300k input tokens: 0 | Compaction events (drop > 40%): 276 | Context right before compaction: median 255,070." — @murias002 (Issue #878, 2026-10-05)',
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/878",
+    },
+    {
+      id: "tl-2026-10-05-codex",
+      date: "2026-10-05 — 10-08 16:23 UTC",
+      cat: "policy",
+      badgeTone: "success",
+      zh: {
+        catLabel: "官方确认 #7–#10",
+        title: "官方在 #186954、#186952、#186246、#187536 再次确认 Codex / Claude Code 启动 agy 与手动脚本无区别",
+        summary:
+          "10 月 7 日 15:03 UTC，@chunduriv 在 #186246 明确写道：“从政策角度来看，未修改的 agy 子进程究竟是由你自己的脚本启动，还是由另一个本地编程助手（如 Claude Code）启动，没有任何区别。” 10 月 8 日 16:23 UTC，@Ambati_Rajendra 在 #187536 确认第 10 次许可。",
+      },
+      en: {
+        catLabel: "Official Approvals #7–#10",
+        title: "Google Staff Confirm in #186954, #186952, #186246 & #187536 That Launching agy from Codex or Claude Code Makes 'No Difference'",
+        summary:
+          "On Oct 7 at 15:03 UTC (#186246), @chunduriv writes that from a policy standpoint there is 'no difference' whether unmodified agy is started by a user script or Claude Code. On Oct 8 at 16:23 UTC (#187536), @Ambati_Rajendra issues the 10th written approval.",
+      },
+      quote:
+        '"2. Does the answer change if you launch the script yourself vs. Claude Code launching it? No. From a policy standpoint, there is no difference whether the unmodified agy subprocess is started by your own script, a local coordinator, or another local coding assistant (such as Claude Code)..." — @chunduriv (#186246, 2026-10-07 15:03 UTC)',
+      link: "https://discuss.ai.google.dev/t/can-a-local-ai-coordinator-launch-the-official-antigravity-cli-with-subscription-sign-in/186246",
+    },
+    {
+      id: "tl-2026-10-08-rev",
+      date: "2026-10-08 17:34 UTC",
+      cat: "policy",
+      badgeTone: "danger",
+      zh: {
+        catLabel: "26.5 小时反转",
+        title: "距 #187536 仅隔 71 分钟、距 #186246 仅隔 26.5 小时，@chunduriv 在 #187241 改变口径并提示封号",
+        summary:
+          "同一位工程师 @chunduriv 在 #187241 回复年费 Pro 用户时突然附上法务免责声明，称不支持在个人登录下使用 Codex、Claude Code、OpenClaw 或 OpenCode 编排或包装 agy，否则可触发自动 ToS 执法与账号暂停；官网 FAQ 同步更新。",
+      },
+      en: {
+        catLabel: "26.5-Hour Reversal",
+        title: "Just 71 Minutes After #187536 and 26.5 Hours After #186246, @chunduriv Reverses Course in #187241",
+        summary:
+          "Replying to an annual Pro subscriber in #187241, the same staff member (@chunduriv) attaches a legal disclaimer and declares that orchestrating or wrapping agy with Codex, Claude Code, OpenClaw, or OpenCode is unsupported and can trigger account suspension.",
+      },
+      quote:
+        '"While agy offers a documented headless mode (agy -p) for your own local scripts and CI pipelines, we do not support using third-party coding agents (like Codex, Claude Code, OpenClaw, or OpenCode) to orchestrate or wrap agy under a consumer login. Routing third-party agent prompts or automated loops through Antigravity can trigger automated ToS enforcement and account suspension." — @chunduriv (#187241, 2026-10-08 17:34 UTC)',
+      link: "https://discuss.ai.google.dev/t/is-google-ai-pro-antigravity-cli-automation-with-codex-permitted/187241",
+    },
+    {
+      id: "tl-2026-10-14",
+      date: "2026-10-14 — 10-15 UTC",
+      cat: "context",
+      badgeTone: "danger",
+      zh: {
+        catLabel: "Issue #1245 & SQLite",
+        title: "@Burntgogi 提交主 Issue #1245；@Circumsized 公布 SQLite max_context_tokens = 256000 记录",
+        summary:
+          "@Burntgogi 记录 Gemini 4 Argon 在 276,110 与 249,867 Tokens 处被强制压缩为 17,336 与 15,363 Tokens、缓存清零并引发符号幻觉。次日 @Circumsized 查出本地 SQLite 会话库写入 max_context_tokens = 256000；Google 维护者 @chandrashakherkamasani 认领工单但仅标 feedback 而未标 bug。",
+      },
+      en: {
+        catLabel: "Issue #1245 & SQLite",
+        title: "@Burntgogi Files Issue #1245; @Circumsized Exposes max_context_tokens = 256000 in Local SQLite DB",
+        summary:
+          "@Burntgogi documents Gemini 4 Argon compacting at 276,110 and 249,867 tokens down to 17,336 and 15,363, zeroing cache_read_tokens. @Circumsized reveals max_context_tokens = 256000 in SQLite ContextWindowMetadata; Google maintainer @chandrashakherkamasani self-assigns #1245 with label 'feedback' instead of 'bug'.",
+      },
+      quote:
+        '"On agy 1.3.5 with Gemini 4 Argon, the records for calls immediately preceding the token drops in this report read: max_context_tokens = 256000, truncation_reason = 2, while /context reports a 1.0M window... 256,000 is exactly 25% of 1,048,576 — a round fraction of the window, which points at a policy constant rather than a technical ceiling." — @Circumsized (Issue #1245 Comment #2, 2026-10-15)',
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/1245",
+    },
+    {
+      id: "tl-2026-10-16",
+      date: "2026-10-16 12:35 UTC",
+      cat: "policy",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "论坛 #189905",
+        title: "@Rebbanpalli_Naveen 在 #189905 宣布更新后的官网 FAQ“取代早期论坛回复”",
+        summary:
+          "面对开发者指出官网 FAQ 与此前论坛官方答复冲突，@Rebbanpalli_Naveen 回复称新 FAQ 取代早期论坛评论，即使不提取 OAuth 令牌、仅作为本地子进程调用原版 agy，只要被包裹在第三方编程工具内即属违规。",
+      },
+      en: {
+        catLabel: "Forum #189905",
+        title: "@Rebbanpalli_Naveen Declares in #189905 That the Updated FAQ 'Supersedes Earlier Forum Comments'",
+        summary:
+          "Confronted with the contradiction between the website FAQ and prior staff replies, @Rebbanpalli_Naveen states that the FAQ supersedes earlier forum comments and that wrapping unmodified agy inside third-party agents can result in account termination.",
+      },
+      link: "https://discuss.ai.google.dev/t/clarification-on-consumer-plan-policy-for-invoking-official-agy-via-local-subprocess/189905",
+    },
+    {
+      id: "tl-2026-10-19",
+      date: "2026-10-19 04:21 UTC",
+      cat: "context",
+      badgeTone: "info",
+      zh: {
+        catLabel: "Issue #1291",
+        title: "@Emily2040 公布 1,279 次 Argon High 调用审计：70 秒中位压缩停顿与 31% 未缓存输入开销",
+        summary:
+          "22 次自动压缩检查点均发生在 235K–268K 之间，每次中位停顿 70 秒（最高 602 秒），摘要调用不计入轨迹统计，且压缩后需发起 45K–70K 未缓存调用重建缓存；仅 17 次中途前缀缓存失效就占全部未缓存输入的 31.0%。",
+      },
+      en: {
+        catLabel: "Issue #1291",
+        title: "@Emily2040 Audits 1,279 Argon High Calls: 70s Median Compaction Stall & 31% Uncached Input Overhead",
+        summary:
+          "All 22 checkpoints fired between 235K–268K tokens, stalling for a median of 70s (up to 602s), reporting zero usage for the summary call, and forcing a 45K–70K uncached rebuild call; just 17 mid-run prefix cache misses accounted for 31.0% of all uncached input tokens.",
+      },
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/1291",
+    },
+    {
+      id: "tl-2026-10-22",
+      date: "2026-10-22 — 10-23 UTC",
+      cat: "context",
+      badgeTone: "danger",
+      zh: {
+        catLabel: "逆向反汇编与补丁",
+        title: "@LiraNuna 在 Issue #1245 公开三道二进制硬编码门禁与 0x3e800 汇编指令，并发布 patch_agy.py",
+        summary:
+          "系统工程师 @LiraNuna 反汇编定位了 SelectorModel.offersContextWindow 白名单、Store.ContextWindow 二次丢弃以及 GetCheckpointConfig 中的 cmp $0x3e800, %edx; cmovb %edx, %esi (256,000) 钳制指令，同时开源跨版本动态符号补丁脚本 patch_agy.py。",
+      },
+      en: {
+        catLabel: "Binary Teardown & Patch",
+        title: "@LiraNuna Disassembles All Three Binary Gates & the 0x3e800 Instruction in #1245, Releasing patch_agy.py",
+        summary:
+          "Systems engineer @LiraNuna publishes the exact assembly listings for SelectorModel.offersContextWindow, Store.ContextWindow, and the cmp $0x3e800, %edx; cmovb %edx, %esi clamp in GetCheckpointConfig, along with the automated ELF/pclntab patcher patch_agy.py.",
+      },
+      quote:
+        '"2. Cortex has a hardcoded 256K (0x3e800) ceiling on compaction triggers: Even with the backend receiving the context window limit, Cortex\'s checkpoint calculator (cortex/utils/utils.GetCheckpointConfig) explicitly clamps the compaction trigger (TokenThreshold) for conversational cascades: 7861898: cmp $0x3e800, %edx ... 78618a3: cmovb %edx, %esi # Clamps to min(calculated, 256000)." — @LiraNuna (Issue #1245 Comment #6, 2026-10-23)',
+      link: "https://gist.github.com/LiraNuna/4c058aed3f636f5193f920f64284ff26",
+    },
+    {
+      id: "tl-2026-10-27",
+      date: "2026-10-26 — 10-27 UTC",
+      cat: "policy",
+      badgeTone: "danger",
+      zh: {
+        catLabel: "论坛 #191689 第 8 楼",
+        title: "面对付费用户要求出示条款修改记录，官方承认正式《服务条款》自 9 月后从未修改，仅更新了 FAQ",
+        summary:
+          "用户 @b_w 与 @Tora39 在 #191689 要求出示 10 月 5 日之后的政策修改证据。@Rebbanpalli_Naveen 在第 8 楼确认：《Google Antigravity 服务条款》本身在 9 月之后并未修改，而是在 10 月中旬更新了《官方 FAQ》，并称 #186246 与 #186952 的早期回复“给出了过于宽泛的解释”。",
+      },
+      en: {
+        catLabel: "Forum #191689 Post #8",
+        title: "Pressed for Proof of a Contract Amendment, Google Staff Admit the Formal ToS Was Never Modified After September",
+        summary:
+          "When subscribers @b_w and @Tora39 ask for evidence of any policy change after Oct 5, @Rebbanpalli_Naveen concedes in Post #8 that the Google Antigravity Terms of Service were not modified after September; only the Official FAQ was edited in mid-October.",
+      },
+      quote:
+        '"To clarify the timeline for @b_w and answer @Tora39’s question (a): the Google Antigravity Terms of Service themselves were not modified after September; rather, the Official FAQ was updated in mid-October 2026 to add the section ‘Can I use Antigravity CLI headless mode in third-party coding agents or automate account switching?’ ... Earlier forum replies in #186246 and #186952 gave an overly broad interpretation before that FAQ entry was published." — @Rebbanpalli_Naveen (#191689 Post #8, 2026-10-27 12:31 UTC)',
+      link: "https://discuss.ai.google.dev/t/paying-google-ai-pro-subscriber-allow-subscription-use-with-third-party-agents-like-openclaw/191689",
+    },
+    {
+      id: "tl-2026-10-28-files",
+      date: "2026-10-28 — 10-29 UTC",
+      cat: "policy",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "限制范围扩大",
+        title: "官方在 #190815、#196472、#190756 将限制扩大至本地文件夹传任务与独立 Python 协调脚本",
+        summary:
+          "官方人员进一步规定：即便不通过 stdio 管道，而是由 Claude Code 将任务写入本地文件夹再由独立 Python 脚本调用 agy -p (#190815)，或由本地独立 Python 服务调度 (#196472)，均不被个人订阅支持，需额外购买 Gemini API Key 或企业版。",
+      },
+      en: {
+        catLabel: "Expanded Restrictions",
+        title: "Staff Extend Restrictions in #190815, #196472 & #190756 to Local Folder Handoffs and Standalone Python Scripts",
+        summary:
+          "Google staff rule that passing tasks from Claude Code to agy -p via local files instead of stdin/stdout pipes (#190815) or scheduling agy -p via a standalone local Python coordinator (#196472) is also unsupported under consumer subscriptions.",
+      },
+      link: "https://discuss.ai.google.dev/t/google-ai-pro-is-standalone-antigravity-cli-scripting-with-external-task-coordination-permitted/190815",
+    },
+    {
+      id: "tl-2026-10-28-quota",
+      date: "2026-10-28 — 10-29 UTC",
+      cat: "context",
+      badgeTone: "danger",
+      zh: {
+        catLabel: "论坛 #196351 配额实测",
+        title: "@Yiji_Kong 公布控制变量 A/B 实测：Gemini 4 Argon 按公开 API 价格 3.00 倍消耗订阅配额",
+        summary:
+          "同桶实测证实 Argon 每美元挂牌价消耗的配额为 3.8 Flash 的 3.00 倍（Web 纯输入达 7.64–9.25 倍/美元）；官方人员 @Maniraj_Chervirala 回应承认公开 API 价格仅为按量付费促销价，订阅内部乘数不予公开。同日 u/Lberondroth 拆包 v2.28.1 发现 512K/900K Expensive 结构。",
+      },
+      en: {
+        catLabel: "Forum #196351 Quota Audit",
+        title: "@Yiji_Kong Publishes Controlled A/B Telemetry: Gemini 4 Argon Drains Quota at 3.00x Published API Price Ratio",
+        summary:
+          "Same-bucket telemetry proves Argon consumes 3.00x more quota per published dollar than 3.8 Flash (7.64x–9.25x on Web pure input). Staff @Maniraj_Chervirala confirms published API rates are promotional pay-as-you-go rates and internal multipliers are not disclosed.",
+      },
+      link: "https://discuss.ai.google.dev/t/gemini-4-argon-draws-antigravity-quota-at-3x-gemini-3-8-flash-per-published-dollar-clean-a-b-same-bucket/196351",
+    },
+    {
+      id: "tl-2026-11-03",
+      date: "2026-11-03 — 11-04 UTC",
+      cat: "release",
+      badgeTone: "info",
+      zh: {
+        catLabel: "Desktop v2.29.0 & CLI v1.5.0",
+        title: "Google 推送桌面端 v2.29.0 与 CLI v1.5.0：重构压缩包、静默恢复环境变量，但保留 0x3E800 钳制",
+        summary:
+          "桌面端 language_server.exe (SHA-256 c98e7c33...e1c3d5) 增长 +4.47 MB，新增 cortex/tokens/compaction 与 enable-context-usage-indicator；CLI v1.5.0 新增 agy acp 并悄悄恢复了 AGY_CLI_AUTO_COMPACT_OVERRIDE 的 os.LookupEnv 读取，但 GetCheckpointConfig 中的 0x3e800 钳制指令在两份二进制中均原样保留。",
+      },
+      en: {
+        catLabel: "Desktop v2.29.0 & CLI v1.5.0",
+        title: "Google Ships Desktop v2.29.0 & CLI v1.5.0: Compaction Refactor & Silent Env Var Restoration, 0x3E800 Intact",
+        summary:
+          "Desktop language_server.exe grows by +4.47 MB, adding cortex/tokens/compaction and enable-context-usage-indicator; CLI v1.5.0 adds agy acp and silently restores os.LookupEnv for AGY_CLI_AUTO_COMPACT_OVERRIDE, while keeping the 0x3e800 clamp at 0x7fe5802.",
+      },
+      link: "https://www.reddit.com/r/google_antigravity/comments/1xn624i/teardown_binary_diff_antigravity_updated_to_v2290/",
+    },
+    {
+      id: "tl-2026-11-04-forum",
+      date: "2026-11-04 23:39 UTC",
+      cat: "context",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "论坛 #198191 官方回复",
+        title: "官方人员书面确认：桌面端 Gemini 模型约 250K 自动压缩，阈值固定且暂不支持用户配置",
+        summary:
+          "用户 @Sharper 要求桌面端支持大于 250K 的上下文，并要求官方停止宣传用户实际用不上的上下文规模。@chunduriv 回复确认 Gemini 4 Argon 等模型约在 250K Tokens 时自动压缩，该阈值是固定默认值；回复将问题归为功能请求，建议手动 /compact、把参考资料放在工作区文件中、排除构建产物，并表示需求已转交工程团队评估，未给出时间表。",
+      },
+      en: {
+        catLabel: "Forum #198191 Official Reply",
+        title: "Google Staff Confirm in Writing That Desktop Gemini Models Compact at ~250K and the Threshold Is Not User-Configurable",
+        summary:
+          "@Sharper asks for larger-than-250K context in the Desktop app and for Google to stop advertising context sizes users cannot use. @chunduriv confirms that models such as Gemini 4 Argon compact automatically at around 250K tokens under a fixed default, classifies the report as a feature request, suggests manual /compact, workspace reference files, and excluding build artifacts, and says the request has been passed to engineering, with no timeline.",
+      },
+      quote:
+        '"As you noted, Gemini models in the App, such as Gemini 4 Argon, currently compact automatically at around 250K tokens. That threshold is a fixed default and isn\'t user-configurable yet. We understand that for workflows that rely on a large, stable, cached starting context, compacting this early costs both cache efficiency and detail." — @chunduriv (#198191 Post #2, 2026-11-04 23:39 UTC)',
+      link: "https://discuss.ai.google.dev/t/enable-larger-than-250k-gemini-context-sizes-in-antigravity-desktop/198191",
+    },
+    {
+      id: "tl-2026-11-05",
+      date: "2026-11-05 ~07:34 UTC",
+      cat: "release",
+      badgeTone: "accent",
+      zh: {
+        catLabel: "CLI v1.5.1 最新核验",
+        title: "Google 发布 CLI v1.5.1：11 项更新对 256K 限制只字未提，0x3E800 钳制指令在 0x7fb0fe2 原样保留",
+        summary:
+          "CHANGELOG.md 全部 11 条改动仅涉及 agy acp 会话修复、Windows CRLF/编码/stdio 修复与插件 OAuth 凭据防泄露。对本机 v1.5.1 (BuildID 696031ae...) 反汇编核验确认：GetCheckpointConfig 中的 14 字节 0x3e800 钳制指令逐字节一致（文件偏移从 0x7fe5802 移至 0x7fb0fe2），Issue #1245 / #878 / #1316 仍保持零官方回复。",
+      },
+      en: {
+        catLabel: "CLI v1.5.1 Verification",
+        title: "Google Releases CLI v1.5.1: Zero Changes to 256K Limit Across 11 Changelog Entries; 0x3E800 Intact at 0x7fb0fe2",
+        summary:
+          "All 11 CHANGELOG.md entries in v1.5.1 address agy acp fixes, Windows CRLF/encoding/stdio bugs, and plugin OAuth token protection. Direct binary inspection of v1.5.1 (BuildID 696031ae...) confirms the 14-byte 0x3e800 clamp in GetCheckpointConfig is preserved byte-for-byte at file offset 0x7fb0fe2, and Issues #1245, #878, and #1316 remain at zero official replies.",
+      },
+      link: "https://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md",
+    },
+  ];
+
+  // Official Binaries & Cryptographic Hashes
+  const BINARIES = [
+    {
+      name: "Antigravity-x64.exe (Desktop Installer v2.29.0)",
+      meta: "Windows x64 · 169,295,640 bytes · 2026-11-03",
+      algo: "SHA-256",
+      hash: "944b109bcb377f9f94f86eeea7cfa9315d4b42d84fb9d5bad689058fc11c12ba",
+      url: "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.29.0-5723181030440960/windows-x64/Antigravity-x64.exe",
+    },
+    {
+      name: "resources/bin/language_server.exe (Desktop Backend v2.29.0)",
+      meta: "PE32+ x86-64 (Bundled in app-64.7z) · 187,342,336 bytes · Clamp @ VA 0x14176d6a2",
+      algo: "SHA-256",
+      hash: "c98e7c331da5bcc37002a550e7d625b4c636f775fa2804f73777c6a500e1c3d5",
+      url: "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.29.0-5723181030440960/windows-x64/Antigravity-x64.exe",
+    },
+    {
+      name: "cli_linux_x64.tar.gz / antigravity (CLI Release v1.5.0)",
+      meta: "Linux x64 · Archive 69,781,910B / Binary 238,604,688B · BuildID 5fb6af4f2e1d489f3ada0fd785060f48 · Clamp @ 0x7fe5802",
+      algo: "SHA-512",
+      hash: "e6031f850929210705d8c2393a5665b82b8c3b19684a6d3c556cafa31f26f77acbf164dfee96ca84a5ae7670ac0cc238a974c981c517b269194bdccff271cbd5",
+      url: "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.0-5269980577660928/linux-x64/cli_linux_x64.tar.gz",
+    },
+    {
+      name: "antigravity / agy (CLI Release v1.5.1 — 2026-11-05 ~07:34 UTC)",
+      meta: "Linux x64 ELF · 240,857,488 bytes · BuildID 696031ae34e5e5e26a9d7c436e85317f · Clamp @ 0x7fb0fe2",
+      algo: "SHA-256",
+      hash: "72738cf0445918483956a5f0da33abdfcfb21a12dd9a421fd57d063782826669",
+      url: "https://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md",
+    },
+  ];
+
+  // Repository Documents Index
+  const DOCS = [
+    {
+      code: "Part I · Overview",
+      zhTitle: "事件调研总览报告 (dossier.md)",
+      enTitle: "Incident Overview Report (dossier.md)",
+      zhPath: "research/zh-cn/dossier.md",
+      enPath: "research/dossier.md",
+    },
+    {
+      code: "Part I · Volume 01",
+      zhTitle: "分册一：事件背景、团队收购与完整时间线",
+      enTitle: "Volume 1: Incident Overview & Timeline",
+      zhPath: "research/zh-cn/01-incident-overview-and-timeline.md",
+      enPath: "research/01-incident-overview-and-timeline.md",
+    },
+    {
+      code: "Part I · Volume 02",
+      zhTitle: "分册二：256K 硬编码门禁、环境变量与配额实测",
+      enTitle: "Volume 2: 256K Binary Gates & Quota Teardown",
+      zhPath: "research/zh-cn/02-256k-hardcoded-gates-and-binary-teardown.md",
+      enPath: "research/02-256k-hardcoded-gates-and-binary-teardown.md",
+    },
+    {
+      code: "Part I · Volume 03",
+      zhTitle: "分册三：agy -p 政策变更记录与申诉情况",
+      enTitle: "Volume 3: agy -p Policy Reversal & Appeals",
+      zhPath: "research/zh-cn/03-agy-p-headless-policy-reversal-and-bans.md",
+      enPath: "research/03-agy-p-headless-policy-reversal-and-bans.md",
+    },
+    {
+      code: "Part I · Volume 04",
+      zhTitle: "分册四：社区与官方对 256K 限制的应对",
+      enTitle: "Volume 4: Community & Official Responses",
+      zhPath: "research/zh-cn/04-community-and-official-responses.md",
+      enPath: "research/04-community-and-official-responses.md",
+    },
+    {
+      code: "Part I · Volume 05",
+      zhTitle: "分册五：核心人物与原文引用记录汇总",
+      enTitle: "Volume 5: Verbatim Quotes & Primary Records",
+      zhPath: "research/zh-cn/05-verbatim-quotes-and-evidence-vault.md",
+      enPath: "research/05-verbatim-quotes-and-evidence-vault.md",
+    },
+    {
+      code: "Part I · Sources",
+      zhTitle: "来源索引：56 条正文来源 + 9 条备查来源 (sources.md)",
+      enTitle: "Sources Index: 56 Cited + 9 Supplementary Sources",
+      zhPath: "research/zh-cn/sources.md",
+      enPath: "research/sources.md",
+    },
+    {
+      code: "Part II · Forensic Report",
+      zhTitle: "第二部分：二进制静态反汇编与本地数据库报告",
+      enTitle: "Part II: Static Binary & SQLite Forensic Report",
+      zhPath: "evidence/zh-cn/evidence-report.md",
+      enPath: "evidence/evidence-report.md",
+    },
+    {
+      code: "Part II · Raw Artifacts",
+      zhTitle: "原始 JSON 快照与官方清单目录 (evidence/raw/)",
+      enTitle: "Raw GitHub API JSON & Manifests (evidence/raw/)",
+      zhPath: "evidence/raw",
+      enPath: "evidence/raw",
+    },
+  ];
+
+  // State (Default to English unless user explicitly chose a language)
+  let currentLang = "en";
+  try {
+    const saved = localStorage.getItem("agy-archive-lang");
+    if (saved === "en" || saved === "zh") {
+      currentLang = saved;
+    }
+  } catch (e) {}
+
+  let currentTab = "gates";
+  let currentFilter = "all";
+  let searchQuery = "";
+  const openQuotes = new Set(["tl-2026-10-05-codex", "tl-2026-10-08-rev", "tl-2026-10-27"]);
+
+  // Inject static data-icon placeholders
+  function injectStaticIcons() {
+    document.querySelectorAll("[data-icon]").forEach((el) => {
+      const name = el.getAttribute("data-icon");
+      if (name && ICONS[name]) {
+        el.innerHTML = ICONS[name];
+      }
+    });
+  }
+
+  function updateThemeButtonIcon() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const themeIcon = document.getElementById("theme-icon");
+    if (themeIcon) {
+      themeIcon.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+    }
+  }
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    const isDark = root.classList.contains("dark");
+    const next = isDark ? "light" : "dark";
+    const apply = () => {
+      root.setAttribute("data-theme-switching", "");
+      root.classList.remove("light", "dark");
+      root.classList.add(next);
+      root.style.colorScheme = next;
+      const color = next === "dark" ? "#111215" : "#f5f5f7";
+      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute("content", color));
+      try {
+        localStorage.setItem("opal-theme", next);
+      } catch (e) {}
+      updateThemeButtonIcon();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => root.removeAttribute("data-theme-switching"));
+      });
+    };
+    if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
+  }
+
+  function renderMetrics() {
+    const grid = document.getElementById("metrics-grid");
+    if (!grid) return;
+    grid.innerHTML = METRICS.map((m) => {
+      const copy = m[currentLang];
+      return `
+        <div class="rounded-card border border-line bg-surface p-5 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="forced-edge flex size-8 items-center justify-center rounded-item bg-accent-soft text-accent-ink">
+                ${iconHtml(m.icon, "size-4")}
+              </span>
+              <span class="rounded-full bg-fill px-2.5 py-0.5 font-mono text-micro text-ink-subtle">${m.tag}</span>
+            </div>
+            <p class="mt-3.5 font-mono text-title-2 font-semibold tabular-nums text-ink">${m.value}</p>
+            <h3 class="mt-1 text-subhead font-semibold text-ink">${copy.label}</h3>
+          </div>
+          <p class="mt-2 text-footnote text-ink-muted text-pretty">${copy.detail}</p>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderFindings() {
+    const grid = document.getElementById("findings-grid");
+    if (!grid) return;
+    grid.innerHTML = FINDINGS.map((f) => {
+      const copy = f[currentLang];
+      return `
+        <article class="rounded-card border border-line bg-surface p-5 sm:p-6 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <span class="rounded-full bg-accent-soft px-2.5 py-0.5 font-mono text-caption font-semibold text-accent-ink">
+                Finding ${f.num}
+              </span>
+            </div>
+            <h3 class="mt-3 text-headline text-ink text-balance">${copy.title}</h3>
+            <p class="mt-2 text-subhead text-ink-muted text-pretty">${copy.body}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-line">
+            <a
+              href="${copy.href}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-footnote font-medium text-accent-ink hover:underline"
+            >
+              <span>${copy.linkText}</span>
+              ${iconHtml("arrowUpRight", "size-3.5")}
+            </a>
+          </div>
+        </article>
+      `;
+    }).join("");
+  }
+
+  function renderTechSection() {
+    const panel = document.getElementById("tech-panel");
+    if (!panel) return;
+    panel.innerHTML = renderTechTab(currentTab, currentLang);
+    document.querySelectorAll(".tech-tab").forEach((btn) => {
+      const isSelected = btn.getAttribute("data-tab") === currentTab;
+      btn.setAttribute("aria-selected", String(isSelected));
+      btn.className = isSelected
+        ? "tech-tab pressable rounded-full bg-surface px-4 py-1.5 text-footnote font-medium text-ink shadow-thumb"
+        : "tech-tab pressable rounded-full px-4 py-1.5 text-footnote font-medium text-ink-muted hover:text-ink";
+    });
+  }
+
+  function renderTimelineFilters() {
+    const container = document.getElementById("timeline-filters");
+    if (!container) return;
+    const t = I18N[currentLang];
+    const items = [
+      { key: "all", label: t.filterAll },
+      { key: "context", label: t.filterContext },
+      { key: "policy", label: t.filterPolicy },
+      { key: "release", label: t.filterRelease },
+    ];
+    container.innerHTML = items
+      .map((item) => {
+        const active = currentFilter === item.key;
+        return `
+          <button
+            type="button"
+            data-filter="${item.key}"
+            aria-pressed="${active}"
+            class="tl-filter-btn pressable forced-edge rounded-full px-3.5 py-1.5 text-footnote font-medium ${
+              active
+                ? "bg-accent text-on-accent shadow-button"
+                : "bg-fill text-ink-muted hover:bg-fill-strong hover:text-ink"
+            }"
+          >
+            ${item.label}
+          </button>
+        `;
+      })
+      .join("");
+  }
+
+  function badgeClass(tone) {
+    switch (tone) {
+      case "danger":
+        return "bg-danger-soft text-danger-ink";
+      case "warning":
+        return "bg-warning-soft text-warning-ink";
+      case "success":
+        return "bg-success-soft text-success-ink";
+      case "info":
+        return "bg-info-soft text-info-ink";
+      case "accent":
+        return "bg-accent-soft text-accent-ink";
+      default:
+        return "bg-fill text-ink-muted";
+    }
+  }
+
+  function renderTimeline() {
+    const list = document.getElementById("timeline-list");
+    const countEl = document.getElementById("timeline-count");
+    if (!list) return;
+    const t = I18N[currentLang];
+    const q = searchQuery.trim().toLowerCase();
+
+    const filtered = TIMELINE.filter((item) => {
+      if (currentFilter !== "all" && item.cat !== currentFilter) return false;
+      if (!q) return true;
+      const copy = item[currentLang];
+      const hay = `${item.date} ${copy.title} ${copy.summary} ${item.quote || ""}`.toLowerCase();
+      return hay.includes(q);
+    });
+
+    if (countEl) {
+      countEl.textContent = t.nodesCount(filtered.length);
+    }
+
+    list.innerHTML = filtered
+      .map((item) => {
+        const copy = item[currentLang];
+        const isQuoteOpen = openQuotes.has(item.id);
+        return `
+          <article
+            id="${item.id}"
+            class="tl-node relative pl-8 sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-6"
+          >
+            <span
+              class="tl-dot absolute left-0 top-5 size-4 rounded-full border-2 border-line-strong bg-canvas ring-4 ring-canvas transition-colors duration-200"
+              aria-hidden="true"
+            ></span>
+
+            <div class="mb-2 pt-3.5 sm:sticky sm:top-24 sm:mb-0 sm:self-start">
+              <time class="block font-mono text-caption font-semibold text-ink">${item.date}</time>
+              <span class="mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-micro font-medium ${badgeClass(item.badgeTone)}">
+                ${copy.catLabel}
+              </span>
+            </div>
+
+            <div class="rounded-card border border-line bg-surface p-5 shadow-card min-w-0">
+              <h3 class="text-headline text-ink text-balance">${copy.title}</h3>
+              <p class="mt-2 text-subhead text-ink-muted text-pretty">${copy.summary}</p>
+
+              <div class="mt-4 flex flex-wrap items-center gap-3">
+                ${
+                  item.quote
+                    ? `
+                  <button
+                    type="button"
+                    data-quote-toggle="${item.id}"
+                    aria-expanded="${isQuoteOpen}"
+                    class="quote-toggle-btn pressable forced-edge inline-flex items-center gap-1.5 rounded-full bg-fill px-3 py-1 text-caption font-medium text-ink hover:bg-fill-strong"
+                  >
+                    <span>${isQuoteOpen ? t.hideQuote : t.showQuote}</span>
+                    <span class="inline-flex size-3.5 transition-transform ${isQuoteOpen ? "rotate-180" : ""}">${ICONS.chevronDown}</span>
+                  </button>
+                `
+                    : ""
+                }
+                ${
+                  item.link
+                    ? `
+                  <a
+                    href="${item.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-caption font-medium text-accent-ink hover:underline"
+                  >
+                    <span>${t.viewSource}</span>
+                    ${iconHtml("externalLink", "size-3.5")}
+                  </a>
+                `
+                    : ""
+                }
+              </div>
+
+              ${
+                item.quote && isQuoteOpen
+                  ? (() => {
+                      const sepIdx = item.quote.lastIndexOf(" — ");
+                      const rawBody = sepIdx !== -1 ? item.quote.slice(0, sepIdx).trim() : item.quote;
+                      const bodyText = rawBody.replace(/^"+|"+$/g, "");
+                      const citeText = sepIdx !== -1 ? item.quote.slice(sepIdx + 3).trim() : "";
+                      return `
+                <figure class="mt-3.5 rounded-media border border-line bg-canvas p-4">
+                  <figcaption class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-line">
+                    <span class="inline-flex items-center gap-1.5 font-mono text-micro font-medium text-ink-subtle">
+                      ${iconHtml("fileText", "size-3.5 text-ink-subtle")}
+                      <span>${citeText || t.quoteBadge}</span>
+                    </span>
+                    <span class="rounded-full bg-fill px-2.5 py-0.5 font-mono text-micro text-ink-subtle">${t.quoteBadge}</span>
+                  </figcaption>
+                  <blockquote class="mt-3 text-footnote leading-relaxed text-ink-muted text-pretty">
+                    ${bodyText}
+                  </blockquote>
+                </figure>
+              `;
+                    })()
+                  : ""
+              }
+            </div>
+          </article>
+        `;
+      })
+      .join("");
+
+    updateTimelineProgress();
+  }
+
+  function renderVerification() {
+    const binList = document.getElementById("binaries-list");
+    const docsGrid = document.getElementById("docs-grid");
+    const t = I18N[currentLang];
+
+    if (binList) {
+      binList.innerHTML = BINARIES.map(
+        (b) => `
+        <div class="rounded-card border border-line bg-surface p-4 sm:p-5 shadow-card">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="min-w-0">
+              <a
+                href="${b.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 font-mono text-subhead font-semibold text-accent-ink hover:underline break-all"
+              >
+                <span>${b.name}</span>
+                ${iconHtml("externalLink", "size-3.5")}
+              </a>
+              <p class="mt-1 font-mono text-caption text-ink-subtle">${b.meta}</p>
+            </div>
+            <button
+              type="button"
+              data-copy="${encodeURIComponent(b.hash)}"
+              class="copy-btn pressable forced-edge shrink-0 inline-flex h-8 items-center gap-1.5 rounded-full bg-fill px-3 text-caption font-medium text-ink hover:bg-fill-strong"
+            >
+              ${iconHtml("copy", "size-3.5")}
+              <span>${b.algo}</span>
+            </button>
+          </div>
+          <div class="mt-2.5 overflow-x-auto rounded-item bg-fill-subtle px-3 py-2 font-mono text-caption text-ink-muted select-all">
+            <span class="font-semibold text-ink">${b.algo}:</span> ${b.hash}
+          </div>
+        </div>
+      `,
+      ).join("");
+    }
+
+    if (docsGrid) {
+      docsGrid.innerHTML = DOCS.map((d) => {
+        const title = currentLang === "zh" ? d.zhTitle : d.enTitle;
+        const primaryPath = currentLang === "zh" ? d.zhPath : d.enPath;
+        return `
+          <a
+            href="${REPO_BLOB + primaryPath}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pressable rounded-card border border-line bg-surface p-4 shadow-card hover:bg-fill-subtle flex flex-col justify-between no-underline"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono text-micro font-semibold text-accent-ink">${d.code}</span>
+                ${iconHtml("arrowUpRight", "size-3.5 text-ink-subtle")}
+              </div>
+              <p class="mt-1.5 text-subhead font-semibold text-ink">${title}</p>
+            </div>
+            <p class="mt-2 truncate font-mono text-micro text-ink-subtle">${primaryPath}</p>
+          </a>
+        `;
+      }).join("");
+    }
+  }
+
+  function renderAll() {
+    const t = I18N[currentLang];
+    document.documentElement.lang = currentLang === "zh" ? "zh-CN" : "en";
+    document.title = t.pageTitle;
+
+    const langLabel = document.getElementById("lang-label");
+    if (langLabel) {
+      langLabel.textContent = currentLang === "zh" ? "EN" : "中文";
+    }
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (key && typeof t[key] === "string") {
+        el.textContent = t[key];
+      }
+    });
+
+    const searchInput = document.getElementById("timeline-search");
+    if (searchInput) {
+      searchInput.setAttribute("placeholder", t.searchPlaceholder);
+    }
+
+    renderMetrics();
+    renderFindings();
+    renderTechSection();
+    renderTimelineFilters();
+    renderTimeline();
+    renderVerification();
+  }
+
+  // Scroll-reactive timeline progress bar & active nav scroll-spy
+  function updateTimelineProgress() {
+    const wrapper = document.getElementById("timeline-wrapper");
+    const bar = document.getElementById("timeline-progress");
+    if (!wrapper || !bar) return;
+
+    const rect = wrapper.getBoundingClientRect();
+    const anchor = window.innerHeight * 0.58;
+    const ratio = Math.min(1, Math.max(0, (anchor - rect.top) / Math.max(1, rect.height)));
+    bar.style.transform = `scaleY(${ratio.toFixed(4)})`;
+
+    wrapper.querySelectorAll(".tl-node").forEach((node) => {
+      const dot = node.querySelector(".tl-dot");
+      if (!dot) return;
+      const passed = node.getBoundingClientRect().top + 24 < anchor;
+      dot.className = passed
+        ? "tl-dot absolute left-0 top-5 size-4 rounded-full border-2 border-accent bg-accent ring-4 ring-canvas transition-colors duration-200"
+        : "tl-dot absolute left-0 top-5 size-4 rounded-full border-2 border-line-strong bg-canvas ring-4 ring-canvas transition-colors duration-200";
+    });
+  }
+
+  function updateScrollSpy() {
+    const sections = ["findings", "technical", "timeline", "verification"];
+    const offset = 150;
+    let active = sections[0];
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) {
+        active = id;
+      }
+    }
+    document.querySelectorAll(".nav-pill").forEach((pill) => {
+      const isMatch = pill.getAttribute("data-section") === active;
+      if (isMatch) {
+        pill.classList.add("bg-accent-soft", "text-accent-ink");
+        pill.classList.remove("text-ink-muted");
+      } else {
+        pill.classList.remove("bg-accent-soft", "text-accent-ink");
+        pill.classList.add("text-ink-muted");
+      }
+    });
+  }
+
+  // Event listeners
+  function bindEvents() {
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) themeBtn.addEventListener("click", toggleTheme);
+
+    const langBtn = document.getElementById("lang-toggle");
+    if (langBtn) {
+      langBtn.addEventListener("click", () => {
+        currentLang = currentLang === "zh" ? "en" : "zh";
+        try {
+          localStorage.setItem("agy-archive-lang", currentLang);
+        } catch (e) {}
+        renderAll();
+      });
+    }
+
+    const techTabs = document.getElementById("tech-tabs");
+    if (techTabs) {
+      techTabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-tab]");
+        if (!btn) return;
+        currentTab = btn.getAttribute("data-tab") || "gates";
+        renderTechSection();
+      });
+    }
+
+    const tlFilters = document.getElementById("timeline-filters");
+    if (tlFilters) {
+      tlFilters.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-filter]");
+        if (!btn) return;
+        currentFilter = btn.getAttribute("data-filter") || "all";
+        renderTimelineFilters();
+        renderTimeline();
+      });
+    }
+
+    const searchInput = document.getElementById("timeline-search");
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value || "";
+        renderTimeline();
+      });
+    }
+
+    document.addEventListener("click", (e) => {
+      const quoteBtn = e.target.closest("[data-quote-toggle]");
+      if (quoteBtn) {
+        const id = quoteBtn.getAttribute("data-quote-toggle");
+        if (id) {
+          if (openQuotes.has(id)) openQuotes.delete(id);
+          else openQuotes.add(id);
+          renderTimeline();
+        }
+        return;
+      }
+
+      const copyBtn = e.target.closest("[data-copy]");
+      if (copyBtn) {
+        const raw = decodeURIComponent(copyBtn.getAttribute("data-copy") || "");
+        if (!raw) return;
+        navigator.clipboard?.writeText(raw).then(() => {
+          const t = I18N[currentLang];
+          const prev = copyBtn.innerHTML;
+          copyBtn.innerHTML = `${iconHtml("check", "size-3.5 text-success-ink")}<span>${t.copiedBtn}</span>`;
+          setTimeout(() => {
+            copyBtn.innerHTML = prev;
+          }, 1600);
+        });
+      }
+    });
+
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        updateTimelineProgress();
+        updateScrollSpy();
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+
+  injectStaticIcons();
+  updateThemeButtonIcon();
+  renderAll();
+  bindEvents();
+  updateScrollSpy();
+})();
+    </script>
+  </body>
+</html>

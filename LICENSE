@@ -1,0 +1,45 @@
+# License & Citation / 许可证与引用要求
+
+This repository applies different terms to original material and to quoted third-party material, as defined below (see below for the Chinese declaration / 中文版声明见下半部分):
+
+---
+
+## English License & Attribution Terms
+
+### 1. Original Research Dossiers, Forensic Reports & Analytical Tables (`research/*.md`, `research/zh-cn/*.md`, `evidence/evidence-report.md`, `evidence/zh-cn/evidence-report.md`, `antigravity-256k-report.md`, `index.html`)
+
+All original investigative prose, static disassembly write-ups, local SQLite database statistical aggregations, and comparison tables authored in this repository are licensed under **[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)**.
+
+You are free to share (copy, redistribute) and adapt (translate, quote, remix) this original material for any purpose (including journalism, academic research, and technical analysis), **provided that you give appropriate credit by linking to EITHER**:
+
+- **Option A (Repository Citation)**: Clearly attribute the source and provide the full link to this GitHub repository (`https://github.com/magiccodelab/antigravity-256k-context-discrepancy`), OR
+- **Option B (Blog Citation)**: Clearly attribute the source and provide the link to the author's original blog post (`https://afengblog.com/blog/antigravity-256k-context-discrepancy.html`).
+
+### 2. Third-Party Raw Snapshots (`evidence/raw/`) & Verbatim Quotes — Fair Use Disclaimer
+
+- **No Binary Redistribution**: This repository is a text and JSON archive. It **does not host or redistribute** any proprietary Google binary executables or installers (`language_server.exe`, `Antigravity-x64.exe`, `cli_linux_x64.tar.gz`). All official binary artifacts analyzed in the reports are referenced strictly via their official Google Cloud Storage (`storage.googleapis.com/antigravity-public`) download URLs and SHA-256 / SHA-512 cryptographic hashes in Sections 1 and 9 of the forensic report for independent verification.
+- **Fair Use & Rights Reservation**: The release manifest (`manifest_linux_amd64.json`), the 21 GitHub API JSON snapshots and the forum thread snapshot in `evidence/raw/`, and all verbatim quotes from community threads, the *Additional Terms of Service (ToS)*, and the *Official FAQ* remain the property of their respective copyright holders (including Google LLC and respective GitHub / forum community contributors). They are archived and reproduced here strictly for technical interoperability analysis, security forensics, and public-interest documentation under **Fair Use (17 U.S.C. § 107)**, and are **excluded** from the CC BY 4.0 license above.
+- **Third-Party Scripts Not Redistributed**: The official install script (`https://antigravity.google/cli/install.sh`) is referenced by URL and SHA-256 (`62966c07365423bd4dc209355060744058fb30d60f5323e2d360e39de64e5042`) only. The community patch script `patch_agy.py` is not reproduced either; `evidence/raw/gist.json` records only its metadata and SHA-256, and the script remains under the copyright of its author [`@LiraNuna`](https://gist.github.com/LiraNuna/4c058aed3f636f5193f920f64284ff26).
+- **Rights Holder Requests**: If you hold rights in any material reproduced here and believe its use goes beyond fair use, please open an issue in this repository identifying the file and passage; it will be reviewed and, where appropriate, removed or reduced to a citation.
+
+---
+
+## 中文版许可与引用声明
+
+本仓库对原创材料与引用的第三方材料分别适用不同条款，具体如下（与上方英文条款逐项对应）：
+
+### 1. 原创调研档案、工程取证报告与统计分析表（`research/*.md`、`research/zh-cn/*.md`、`evidence/evidence-report.md`、`evidence/zh-cn/evidence-report.md`、`antigravity-256k-report.md`、`index.html`）
+
+本仓库作者原创撰写的深度调研档案、二进制静态逆向分析文字、本地 SQLite 会话数据库统计汇总与对比表格，采用 **[CC BY 4.0（知识共享 署名 4.0 国际）](https://creativecommons.org/licenses/by/4.0/deed.zh-hans)** 协议授权。
+
+您可以出于任何目的（包括新闻报道、学术研究与技术分析）自由地共享（复制、发行）或演绎（翻译、引用、混编）本仓库中的原创调查报告与数据表格，但**必须通过以下任一方式履行署名义务（二选一即可）**：
+
+- **方式 A（引用仓库）**：明确标注来源并提供本 GitHub 仓库的完整链接（`https://github.com/magiccodelab/antigravity-256k-context-discrepancy`）；或
+- **方式 B（引用博客）**：明确标注来源并提供作者原始博客文章链接（`https://afengblog.com/blog/antigravity-256k-context-discrepancy.html`）。
+
+### 2. 第三方原始快照（`evidence/raw/`）与原文引用 —— 合理使用声明
+
+- **不存储第三方二进制样本**：本仓库为文本与 JSON 档案库，**不托管、不分发**任何 Google 官方专有二进制可执行文件或安装包（如 `language_server.exe`、`Antigravity-x64.exe`、`cli_linux_x64.tar.gz`）。报告中分析的所有官方二进制样本均在取证报告第 1 章与第 9 章提供 Google 官方云存储（`storage.googleapis.com/antigravity-public`）公开下载直链与 SHA-256 / SHA-512 加密校验哈希，供独立下载核验。
+- **合理使用（Fair Use）与权利保留**：`evidence/raw/` 目录下的版本清单（`manifest_linux_amd64.json`）、21 份 GitHub API JSON 响应快照与论坛主题快照，以及报告中引用的第三方社区言论、《附加服务条款（ToS）》与《官方 FAQ》原文，其原始著作权均归各自权利人（包括 Google LLC 及相关 GitHub / 论坛社区贡献者）所有。这些材料仅依据版权法中的**“合理使用（Fair Use，17 U.S.C. § 107）”**原则，用于技术互通性研究、安全取证及公共利益档案留存目的而归档引述，**不适用**上述 CC BY 4.0 许可。
+- **不转载第三方脚本**：官方安装脚本（`https://antigravity.google/cli/install.sh`）仅以 URL 与 SHA-256（`62966c07365423bd4dc209355060744058fb30d60f5323e2d360e39de64e5042`）引用。社区补丁脚本 `patch_agy.py` 同样不转载，`evidence/raw/gist.json` 仅记录其元数据与 SHA-256，脚本著作权归作者 [`@LiraNuna`](https://gist.github.com/LiraNuna/4c058aed3f636f5193f920f64284ff26) 所有。
+- **权利人请求**：如果您是本仓库所引材料的权利人，并认为相关使用超出合理使用范围，请在本仓库提交 Issue 并注明文件与段落，我们会核查，并视情况删除或改为仅保留引用出处。

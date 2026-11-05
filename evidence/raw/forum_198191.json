@@ -1,0 +1,52 @@
+{
+  "id": 198191,
+  "title": "Enable larger than 250K Gemini context sizes in Antigravity Desktop!",
+  "slug": "enable-larger-than-250k-gemini-context-sizes-in-antigravity-desktop",
+  "category_id": 64,
+  "created_at": "2026-11-04T16:01:05.414Z",
+  "last_posted_at": "2026-11-04T23:39:13.315Z",
+  "posts_count": 2,
+  "views": 34,
+  "tags": [
+    {
+      "id": 44,
+      "name": "gemini",
+      "slug": "gemini"
+    }
+  ],
+  "url": "https://discuss.ai.google.dev/t/enable-larger-than-250k-gemini-context-sizes-in-antigravity-desktop/198191",
+  "post_stream": {
+    "posts": [
+      {
+        "id": 356307,
+        "post_number": 1,
+        "username": "Sharper",
+        "name": "Sharper",
+        "user_title": null,
+        "staff": false,
+        "moderator": false,
+        "admin": false,
+        "created_at": "2026-11-04T16:01:05.534Z",
+        "updated_at": "2026-11-04T16:01:05.534Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "<p>In theory, Gemini models like Argos support 1M of context. In practice, the desktop app forces cache-losing and information-lossy compaction at 250K of used context.</p>\n<p>Understanding that in some cases it may be less expensive and more effective to compact early, in other workflows and workloads a few hundred K of context is required to begin the job, and can be arranged to ensure that initial set is always cached.</p>\n<p>Choosing the context compaction size must be at least an option for users. Until then, please stop advertising that your products work with context sizes you then don’t allow the user to actually use.</p>"
+      },
+      {
+        "id": 356418,
+        "post_number": 2,
+        "username": "chunduriv",
+        "name": "Veeranjaneyulu Ch",
+        "user_title": "Regular",
+        "staff": true,
+        "moderator": true,
+        "admin": false,
+        "created_at": "2026-11-04T23:39:13.315Z",
+        "updated_at": "2026-11-04T23:39:13.315Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "<p>Hi <a class=\"mention\" href=\"/u/sharper\">@Sharper</a>,</p>\n<p>Welcome to the Forrum,</p>\n<p>Thank you for reporting this and detailing your workflow. This is a feature request for configurable context compaction in the Antigravity App.</p>\n<p>As you noted, Gemini models in the App, such as Gemini 4 Argon, currently compact automatically at around 250K tokens. That threshold is a fixed default and isn’t user-configurable yet. We understand that for workflows that rely on a large, stable, cached starting context, compacting this early costs both cache efficiency and detail.</p>\n<p>Until a setting is available, these steps can help reduce the impact:</p>\n<ul>\n<li><strong>Control when compaction happens:</strong> Type <code>/compact</code> at a natural break point, for example right after loading your initial context or finishing exploration. That way the summary is taken where you choose and not mid-task.</li>\n<li><strong>Keep the stable “starting set” in workspace files:</strong> Put reference material in files the agent can re-read on demand. After compaction, it can reload the exact content instead of relying on the generated summary.</li>\n<li><strong>Keep noise out of the context:</strong> Exclude build artifacts, dependencies and generated files so more of the ~250K budget goes to the material you actually need.</li>\n</ul>\n<p>We’ve passed your request for a user-selectable compaction size to the engineering team for review.</p>"
+      }
+    ]
+  }
+}
