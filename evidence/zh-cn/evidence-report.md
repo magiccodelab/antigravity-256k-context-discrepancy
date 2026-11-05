@@ -250,7 +250,7 @@ PE section 摘要（`.text` VA 0x140001000，RawPtr 0x600，VSize 0x3570556；`.
 - `CLAUDECODE`：0 次。
 - `context-window-options` 实验键：存在（1 次）。
 - LiraNuna gist 补丁脚本 `patch_agy.py` 的 ELF 解析入口检查 `\x7fELF`，不适用于 PE 格式的桌面端二进制（机制性事实，非行为验证）。
-- **CLI `1.5.1` 追补核验（`2026-11-05 ~07:34 UTC`，`240,857,488` 字节，BuildID `696031ae34e5e5e26a9d7c436e85317f`，SHA-256 `72738cf0...26669`）**：`CHANGELOG.md` 的全部 11 条更新均为常规维护修复（`agy acp` 会话修复、Windows CRLF/编码/stdio 修复、插件 OAuth 凭据防泄露与 UI 状态显示调整），未涉及任何 256K 上下文限制；`GetCheckpointConfig` 中的 14 字节 `0x3E800`（`256,000`）钳制指令在文件偏移 `0x7fb0fe2` 处逐字节原样保留（`1.5.0` 为 `0x7fe5802`），白名单函数（`offersContextWindow`、`store.ContextWindow`）与已恢复的 `AGY_CLI_AUTO_COMPACT_OVERRIDE` 读取指令亦无任何变化。
+- **CLI `1.5.1` 追补核验（`2026-11-05 ~07:34 UTC`，`240,857,488` 字节，BuildID `696031ae34e5e5e26a9d7c436e85317f`，SHA-256 `72738cf0...26669`；2026-11-05 按官方清单重新下载 `cli_linux_x64.tar.gz`，SHA-512 `f7040665…bca4f5` 与清单一致，解压后二进制逐字节相同）**：`CHANGELOG.md` 的全部 11 条更新均为常规维护修复（`agy acp` 会话修复、Windows CRLF/编码/stdio 修复、插件 OAuth 凭据防泄露与 UI 状态显示调整），未涉及任何 256K 上下文限制；`GetCheckpointConfig` 中的 14 字节 `0x3E800`（`256,000`）钳制指令在文件偏移 `0x7fb0fe2` 处逐字节原样保留（`1.5.0` 为 `0x7fe5802`），白名单函数（`offersContextWindow`、`store.ContextWindow`）与已恢复的 `AGY_CLI_AUTO_COMPACT_OVERRIDE` 读取指令亦无任何变化。
 
 ---
 

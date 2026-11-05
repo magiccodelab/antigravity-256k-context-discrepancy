@@ -1,6 +1,6 @@
 # **Google Antigravity: 256K Context Window Limit & Headless Policy Changes**
 
-**Technical Report & Primary Evidence Archive  •**  Updated: November 5, 2026 (Desktop v2.29.0 / CLI v1.5.1)  •  **GitHub Archive:** [magiccodelab/antigravity-256k-context-discrepancy](https://github.com/magiccodelab/antigravity-256k-context-discrepancy)
+**Technical Report & Primary Evidence Archive  •**  Updated: November 5, 2026 (Desktop v2.29.0 / CLI v1.5.1)  •  **GitHub Archive:** [magiccodelab/antigravity-256k-context-discrepancy](https://github.com/magiccodelab/antigravity-256k-context-discrepancy)  •  **Web Archive:** [https://antigravity-256k-context-discrepancy.pages.dev/](https://antigravity-256k-context-discrepancy.pages.dev/)
 
 # **Executive Summary**
 
@@ -501,7 +501,7 @@ No binary executables are hosted in the archive repository. All original binarie
 | Desktop Installer | v2.29.0 (Windows x64) | https\://storage.googleapis.com/antigravity-public/antigravity-hub/2.29.0-5723181030440960/windows-x64/Antigravity-x64.exe | 169,295,640 bytes \| SHA-256: 944b109bcb377f9f94f86eeea7cfa9315d4b42d84fb9d5bad689058fc11c12ba |
 | Desktop Language Server | v2.29.0 (resources/bin/language\_server.exe) | Bundled inside app-64.7z within Antigravity-x64.exe above (PE32+ x86-64, 214,663 pclntab symbols) | 187,342,336 bytes \| SHA-256: c98e7c331da5bcc37002a550e7d625b4c636f775fa2804f73777c6a500e1c3d5 |
 | CLI Release Archive (v1.5.0) | v1.5.0 (Linux x64, 2026-11-04) | https\://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.0-5269980577660928/linux-x64/cli\_linux\_x64.tar.gz | Archive: 69,781,910 bytes (antigravity binary: 238,604,688 bytes, BuildID 5fb6af4f2e1d489f3ada0fd785060f48) \| SHA-512: e6031f850929210705d8c2393a5665b82b8c3b19684a6d3c556cafa31f26f77acbf164dfee96ca84a5ae7670ac0cc238a974c981c517b269194bdccff271cbd5 |
-| CLI Binary (v1.5.1) | v1.5.1 (Linux x64, 2026-11-05) | Official auto-updater release (https\://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md) | 240,857,488 bytes (BuildID 696031ae34e5e5e26a9d7c436e85317f) \| SHA-256: 72738cf0445918483956a5f0da33abdfcfb21a12dd9a421fd57d063782826669 |
+| CLI Binary (v1.5.1) | v1.5.1 (Linux x64, 2026-11-05) | https\://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.1-4523430503120896/linux-x64/cli_linux_x64.tar.gz (listed in the official linux\_amd64.json manifest) | Archive 72,209,583 bytes, SHA-512: f70406654ebd966f211424338259e2d38d099c48734e901dc06975063e5a0137d55b6eb9366b75983c6908bbc20ae92a2617656bb191d8ed6fe429d654bca4f5 \| Extracted binary 240,857,488 bytes (BuildID 696031ae34e5e5e26a9d7c436e85317f), SHA-256: 72738cf0445918483956a5f0da33abdfcfb21a12dd9a421fd57d063782826669 |
 | CLI Install Script & Manifest | Cross-platform / Linux amd64 | https\://antigravity.google/cli/install.sh \| https\://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux\_amd64.json | install.sh: 7,643 bytes, SHA-256 62966c07365423bd4dc209355060744058fb30d60f5323e2d360e39de64e5042 (referenced, not redistributed); manifest archived in evidence/raw/manifest\_linux\_amd64.json |
 
 ## **6.2 Public GitHub Issue Records (google-antigravity/antigravity-cli)**

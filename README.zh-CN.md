@@ -2,6 +2,8 @@
 
 **语言 / Language**：[English](./README.md) | **简体中文**
 
+**网页档案**：[https://antigravity-256k-context-discrepancy.pages.dev/](https://antigravity-256k-context-discrepancy.pages.dev/)
+
 Google Antigravity（包括 Antigravity 2.0 桌面端应用、Antigravity IDE 与 `agy` 命令行工具）在对外说明与客户端界面中均标称 `Gemini 4 Argon` 及 `Gemini 3.8 Flash` 支持 `1,048,576`（1M）Tokens 上下文窗口。但对官方客户端二进制文件的静态反汇编与本地会话数据库统计表明，底层代码通过硬编码机器码指令将自动上下文压缩触发阈值限制在 `256,000` Tokens（标称窗口的 25%）。同一时期，Google 官方支持人员在未修改正式《附加服务条款（ToS）》正文的情况下，通过更新非合同性质的 FAQ 页面，撤回了此前在开发者论坛连续给出的 10 次关于“第三方编程工具通过本地子进程调用 `agy -p` 合规”的书面答复。
 
 本仓库将相关的技术分析、反汇编记录与公开论坛/Issue 讨论整理为两部分纯文本材料：**第一部分 —— 事件调研与分析**（`research/`）与**第二部分 —— 二进制静态反汇编与本地数据库报告**（`evidence/`）。各目录顶层默认为英文版，`zh-cn/` 子目录为对应的简体中文版。本仓库不存放任何第三方二进制可执行文件或安装包；所有被分析的官方二进制文件均提供 Google 官方云存储（`storage.googleapis.com`）下载直链与 SHA-256 / SHA-512 校验哈希，以便独立核对。
@@ -53,7 +55,7 @@ Google Antigravity（包括 Antigravity 2.0 桌面端应用、Antigravity IDE �
 | **桌面端官方安装包** | `v2.29.0` (Windows x64) | [`Antigravity-x64.exe`](https://storage.googleapis.com/antigravity-public/antigravity-hub/2.29.0-5723181030440960/windows-x64/Antigravity-x64.exe) | `169,295,640` 字节<br>SHA-256: `944b109bcb377f9f94f86eeea7cfa9315d4b42d84fb9d5bad689058fc11c12ba` |
 | **桌面端语言服务程序** | `v2.29.0` (`resources/bin/language_server.exe`) | 随上述 `Antigravity-x64.exe` 安装包内嵌 `app-64.7z` 本地打包下发 | `187,342,336` 字节<br>SHA-256: `c98e7c331da5bcc37002a550e7d625b4c636f775fa2804f73777c6a500e1c3d5` |
 | **CLI 官方发布包 (`v1.5.0`)** | `v1.5.0` (Linux x64, 2026-11-04) | [`cli_linux_x64.tar.gz`](https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.0-5269980577660928/linux-x64/cli_linux_x64.tar.gz)（清单：[`linux_amd64.json`](https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_amd64.json)） | 压缩包 `69,781,910` 字节（解压后 `antigravity` 为 `238,604,688` 字节，BuildID `5fb6af4f2e1d489f3ada0fd785060f48`）<br>SHA-512: `e6031f850929210705d8c2393a5665b82b8c3b19684a6d3c556cafa31f26f77acbf164dfee96ca84a5ae7670ac0cc238a974c981c517b269194bdccff271cbd5` |
-| **CLI 二进制文件 (`v1.5.1`)** | `v1.5.1` (Linux x64, 2026-11-05) | 官方自动更新推送（更新日志：[`CHANGELOG.md`](https://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md)） | `240,857,488` 字节（BuildID `696031ae34e5e5e26a9d7c436e85317f`）<br>SHA-256: `72738cf0445918483956a5f0da33abdfcfb21a12dd9a421fd57d063782826669` |
+| **CLI 二进制文件 (`v1.5.1`)** | `v1.5.1` (Linux x64, 2026-11-05) | [`cli_linux_x64.tar.gz`](https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.1-4523430503120896/linux-x64/cli_linux_x64.tar.gz)（清单：[`linux_amd64.json`](https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_amd64.json)；更新日志：[`CHANGELOG.md`](https://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md)） | 压缩包 `72,209,583` 字节，SHA-512: `f70406654ebd966f211424338259e2d38d099c48734e901dc06975063e5a0137d55b6eb9366b75983c6908bbc20ae92a2617656bb191d8ed6fe429d654bca4f5`<br>解压后 `antigravity`：`240,857,488` 字节（BuildID `696031ae34e5e5e26a9d7c436e85317f`），SHA-256: `72738cf0445918483956a5f0da33abdfcfb21a12dd9a421fd57d063782826669` |
 | **CLI 官方安装脚本** | 全平台入口 | [`https://antigravity.google/cli/install.sh`](https://antigravity.google/cli/install.sh) | `7,643` 字节<br>SHA-256: `62966c07365423bd4dc209355060744058fb30d60f5323e2d360e39de64e5042`<br>（本仓库不转载原文；2026-11-04 获取，2026-11-05 复核未变） |
 
 ---
@@ -90,7 +92,7 @@ antigravity-256k-context-discrepancy/
 │       ├── manifest_linux_amd64.json          # 官方 CLI 版本下载清单（v1.5.0 SHA-512 来源）
 │       ├── forum_198191.json                  # 论坛 #198191 帖快照（官方确认约 250K 阈值固定）
 │       └── *.json                             # 21 份 GitHub API 原始 JSON 响应
-└── index.html                                 # 独立单文件静态归档网页（Cloudflare Pages 部署文件）
+└── index.html                                 # 独立单文件静态归档网页（https://antigravity-256k-context-discrepancy.pages.dev/）
 ```
 
 ---
