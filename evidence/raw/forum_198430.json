@@ -1,0 +1,94 @@
+{
+  "id": 198430,
+  "title": "1M advertised context vs. a 256K compaction clamp in the shipped binaries, plus quota and `agy -p` policy questions (Desktop 2.29.0 / CLI 1.5.1)",
+  "slug": "1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1",
+  "category_id": 64,
+  "created_at": "2026-11-05T16:21:42.630Z",
+  "last_posted_at": "2026-11-06T11:50:05.380Z",
+  "posts_count": 2,
+  "views": 32,
+  "tags": [
+    {
+      "id": 7,
+      "name": "bug",
+      "slug": "bug"
+    },
+    {
+      "id": 406,
+      "name": "billing",
+      "slug": "billing"
+    },
+    {
+      "id": 448,
+      "name": "terms-of-service",
+      "slug": "tos"
+    }
+  ],
+  "url": "https://discuss.ai.google.dev/t/1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1/198430",
+  "post_stream": {
+    "posts": [
+      {
+        "id": 356889,
+        "post_number": 1,
+        "username": "A_Feng",
+        "name": "A Feng",
+        "user_title": null,
+        "staff": false,
+        "moderator": false,
+        "admin": false,
+        "created_at": "2026-11-05T16:21:42.871Z",
+        "updated_at": "2026-11-06T04:33:53.919Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "<p>We have filed a bug report on the official repository and published an archive that documents where Google Antigravity’s published specifications and terms differ from the shipped client (Desktop v2.29.0, CLI v1.5.1, as of Nov 5, 2026).</p>\n<ul>\n<li>GitHub issue: <a href=\"https://github.com/google-antigravity/antigravity-cli/issues/1432\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">[Bug]: Auto-compaction is clamped to 256,000 tokens (0x3E800) on models advertised and displayed with a 1,048,576-token window (v1.5.1) · Issue #1432 · google-antigravity/antigravity-cli · GitHub</a></li>\n<li>Evidence archive: <a href=\"https://github.com/magiccodelab/antigravity-256k-context-discrepancy\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - magiccodelab/antigravity-256k-context-discrepancy: Evidence archive: Google Antigravity advertises a 1M-token context window but hardcodes auto-compaction at 256K (0x3E800), plus the agy -p headless policy reversal. · GitHub</a></li>\n</ul>\n<p>Additional copies (copy-paste; new accounts are limited to 2 links per post):</p>\n<pre><code class=\"lang-auto\">https://github.com/magiccodelab/antigravity-256k-context-discrepancy/blob/main/antigravity-256k-report.md\n\n\n</code></pre>\n<h2><a name=\"p-356889-h-1-1048576-tokens-advertised-256000-enforced-1\" class=\"anchor\" href=\"#p-356889-h-1-1048576-tokens-advertised-256000-enforced-1\" aria-label=\"Heading link\"></a>1. 1,048,576 tokens advertised, 256,000 enforced</h2>\n<p>Gemini 4 Argon is registered in the client with a <code>0x100000</code> (1,048,576) token window, and the documentation and the <code>/context</code> view present it as a ~1M window. In the official binaries, <code>cortex/utils/utils.GetCheckpointConfig</code> contains:</p>\n<p><code>cmp $0x3e800,%edx; mov $0x3e800,%esi; cmovb %edx,%esi</code></p>\n<p>This caps the auto-compaction threshold at <code>min(calculated, 256,000)</code> tokens, about 25% of the advertised window, for every model. The sequence occurs once in <code>.text</code> at file offset <code>0x7fb0fe2</code> in CLI 1.5.1, <code>0x7fe5802</code> in CLI 1.5.0, and <code>0x176cca2</code> in Desktop 2.29.0 <code>language_server.exe</code>. All binaries were downloaded from <code>storage.googleapis.com</code>, and their hashes are listed in the issue.</p>\n<h2><a name=\"p-356889-h-2-session-data-matches-the-binary-2\" class=\"anchor\" href=\"#p-356889-h-2-session-data-matches-the-binary-2\" aria-label=\"Heading link\"></a>2. Session data matches the binary</h2>\n<ul>\n<li>15,575 model calls recorded across 209 local CLI 1M-Gemini sessions all carry <code>max_context_tokens = 256000</code>, and no single-attempt call exceeded 300K tokens.</li>\n<li>An independent audit in <span class=\"hashtag-raw\">#878</span> (310 sessions, 65,613 calls) measured a maximum single-call input of 255,999 tokens and no calls above 300K.</li>\n<li>Each compaction stalls the session for a median of 70 seconds, does not record the summary call’s token usage in <code>gen_metadata</code>, and discards the 240K+ implicit prompt cache.</li>\n</ul>\n<h2><a name=\"p-356889-h-3-current-official-position-3\" class=\"anchor\" href=\"#p-356889-h-3-current-official-position-3\" aria-label=\"Heading link\"></a>3. Current official position</h2>\n<p>In <span class=\"hashtag-raw\">#198191</span> (Nov 4), Google staff stated that the ~250K threshold “is a fixed default and isn’t user-configurable yet” and handled the report as a feature request. We consider this a specification issue. The product advertises and displays 1,048,576 tokens, while the binary enforces 256,000 without disclosure.</p>\n<p>The binary also contains 512K (about 1.3x quota per turn) and 900K (1.8x, <code>Expensive: true</code>) context options. They are gated behind a whitelist with a single entry, “Gemini 4 Argon”.</p>\n<h2><a name=\"p-356889-h-4-quota-4\" class=\"anchor\" href=\"#p-356889-h-4-quota-4\" aria-label=\"Heading link\"></a>4. Quota</h2>\n<p>A community A/B test in <span class=\"hashtag-raw\">#196351</span>, run within the same quota bucket, measured Gemini 4 Argon drawing subscription quota at about 3x the rate of Gemini 3.8 Flash per dollar of published API price. Gemini web pure-input tests measured 7.64x–9.25x. In that thread, Google staff replied that published API prices are promotional pay-as-you-go rates and that internal subscription quota multipliers are not published.</p>\n<h2><a name=\"p-356889-h-5-agy-p-policy-5\" class=\"anchor\" href=\"#p-356889-h-5-agy-p-policy-5\" aria-label=\"Heading link\"></a>5. <code>agy -p</code> policy</h2>\n<ul>\n<li>Between Sep 16 and Oct 8, the forum received 10 written confirmations that running the unmodified <code>agy -p</code> binary as a local subprocess from tools such as Codex or Claude Code complied with Section 6 of the Additional Terms: <span class=\"hashtag-raw\">#175905</span>, <span class=\"hashtag-raw\">#183429</span>, <span class=\"hashtag-raw\">#185494</span>, <span class=\"hashtag-raw\">#185460</span>, <span class=\"hashtag-raw\">#185992</span>, <span class=\"hashtag-raw\">#185949</span>, <span class=\"hashtag-raw\">#186954</span>, <span class=\"hashtag-raw\">#186952</span>, <span class=\"hashtag-raw\">#186246</span>, <span class=\"hashtag-raw\">#187536</span>.</li>\n<li>On Oct 8, 71 minutes after the last of these, a reply in <span class=\"hashtag-raw\">#187241</span> reversed that position and warned of automated account suspension.</li>\n<li>In <span class=\"hashtag-raw\">#191689</span> (post <span class=\"hashtag-raw\">#8</span>), Google staff confirmed that the Terms of Service had not been modified after September, and that only the FAQ had been updated in mid-October.</li>\n</ul>\n<p>The support engineers who answered those threads applied Section 6 as written and as the <code>--output-format json</code> / <code>stream-json</code> interface suggests. We do not hold them responsible for the later change. The questions below are for the teams that own product limits, quota, and policy.</p>\n<h2><a name=\"p-356889-what-we-are-asking-for-6\" class=\"anchor\" href=\"#p-356889-what-we-are-asking-for-6\" aria-label=\"Heading link\"></a>What we are asking for</h2>\n<ol>\n<li>Remove the 256,000 clamp so that 1M models compact near their computed threshold. If 256K is an intended product limit, state it in the documentation and model listings, and show the real threshold in <code>/context</code>.</li>\n<li>Publish the per-model subscription quota multipliers.</li>\n<li>State whether the Additional Terms or the FAQ governs <code>agy -p</code> subprocess use. If the policy has changed, amend the Terms and notify subscribers.</li>\n</ol>\n<p>All download URLs, SHA-256/SHA-512 hashes, disassembly listings, and forum snapshots are in the archive for independent verification.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://d3qe71uytubmmx.cloudfront.net/original/3X/1/1/11514c8f5e730ff26e727f4374379545a24cd2a0.png\" data-download-href=\"/uploads/short-url/2tciz1Z7qSs8NeSRVxnfQvqZ6da.png?dl=1\" title=\"20261105232552_1735_275\" rel=\"noopener nofollow ugc\"><img src=\"https://d3qe71uytubmmx.cloudfront.net/optimized/3X/1/1/11514c8f5e730ff26e727f4374379545a24cd2a0_2_690x135.png\" alt=\"20261105232552_1735_275\" data-base62-sha1=\"2tciz1Z7qSs8NeSRVxnfQvqZ6da\" width=\"690\" height=\"135\" srcset=\"https://d3qe71uytubmmx.cloudfront.net/optimized/3X/1/1/11514c8f5e730ff26e727f4374379545a24cd2a0_2_690x135.png, https://d3qe71uytubmmx.cloudfront.net/optimized/3X/1/1/11514c8f5e730ff26e727f4374379545a24cd2a0_2_1035x202.png 1.5x, https://d3qe71uytubmmx.cloudfront.net/optimized/3X/1/1/11514c8f5e730ff26e727f4374379545a24cd2a0_2_1380x270.png 2x\" data-dominant-color=\"171919\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">20261105232552_1735_275</span><span class=\"informations\">2114×414 48.9 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>"
+      },
+      {
+        "id": 356890,
+        "post_number": 2,
+        "username": "discourse_ai_spam",
+        "name": "Discourse AI Spam Scanner",
+        "user_title": null,
+        "staff": true,
+        "moderator": false,
+        "admin": true,
+        "created_at": "2026-11-05T16:21:50.451Z",
+        "updated_at": "2026-11-05T16:21:50.451Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "",
+        "action_code": "visible.disabled"
+      },
+      {
+        "id": 367193,
+        "post_number": 3,
+        "username": "system",
+        "name": "system",
+        "user_title": null,
+        "staff": true,
+        "moderator": true,
+        "admin": true,
+        "created_at": "2026-11-06T04:09:24.390Z",
+        "updated_at": "2026-11-06T04:09:24.390Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "",
+        "action_code": "visible.enabled"
+      },
+      {
+        "id": 367521,
+        "post_number": 4,
+        "username": "Rebbanpalli_Naveen",
+        "name": "Rebbanpalli Naveen",
+        "user_title": "Regular",
+        "staff": false,
+        "moderator": false,
+        "admin": false,
+        "created_at": "2026-11-06T11:50:05.380Z",
+        "updated_at": "2026-11-06T11:50:05.380Z",
+        "version": 1,
+        "reply_to_post_number": null,
+        "cooked": "<p>HI <a class=\"mention\" href=\"/u/a_feng\">@A_Feng</a>,</p>\n<p>Welcome to the Forum.</p>\n<p>Thank you for the detailed feedback across all three topics. Here is how each item currently works:</p>\n<ol>\n<li><strong>~256K Auto-Compaction Threshold:</strong> In <strong>Antigravity App (2.29.0)</strong> and <strong>Antigravity CLI (1.5.1)</strong>, automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable. We have shared your feedback requesting a configurable compaction threshold and clearer trigger indicators in <code>/context</code> with our engineering team.</li>\n<li><strong>Subscription Quota Multipliers:</strong> As noted in the <a href=\"https://antigravity.google/docs/plans#baseline-quota\">Plans documentation</a>, subscription quota consumption correlates with the complexity and volume of agent work and adjusts dynamically based on system capacity, so fixed per-model multipliers are not published.</li>\n<li><strong>Using <code>agy -p</code> in Third-Party Agents:</strong> The <a href=\"https://antigravity.google/terms\">Google Antigravity Terms of Service</a> (Section 6) and <a href=\"https://antigravity.google/docs/faq#can-i-use-antigravity-cli-headless-mode-in-third-party-coding-agents-or-automate-account-switching\">Official FAQ</a> apply together: <a href=\"https://antigravity.google/docs/cli/headless\">Headless mode (<code>agy -p</code>)</a> is supported for your own direct scripting and CI/CD pipelines, whereas wrapping <code>agy</code> inside third-party coding agents is not permitted under consumer plans (use a pay-as-you-go <a href=\"https://antigravity.google/docs/install#using-a-gemini-api-key\">Gemini API key</a> or Gemini Enterprise instead).</li>\n</ol>"
+      }
+    ]
+  }
+}

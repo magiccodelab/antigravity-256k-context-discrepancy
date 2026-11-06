@@ -28,7 +28,10 @@
 ## 1. 一句话概览
 
 > [!IMPORTANT]
-> **官方最新进展（2026-11-05 19:56–20:00 UTC —— [GitHub Issue #1432](https://github.com/google-antigravity/antigravity-cli/issues/1432)）**：在本档案库的反汇编证据作为 `[Bug]` 提交至官方仓库 [`google-antigravity/antigravity-cli#1432`](https://github.com/google-antigravity/antigravity-cli/issues/1432) 约 5 小时后（接口快照见 [`../../evidence/raw/issue_1432.json`](../../evidence/raw/issue_1432.json) 与 [`../../evidence/raw/issue_1432_comments.json`](../../evidence/raw/issue_1432_comments.json)），官方仓库协作者 `@chandrashakherkamasani` 认领了该工单，将其打上 `duplicate`、`feature request` 与 `feedback` 三个标签（未加 `bug`，但保持 `OPEN` 开启状态），并首次在 GitHub 上书面确认：
+> **官方最新进展（2026-11-06 11:50 UTC —— [论坛帖 #198430](https://discuss.ai.google.dev/t/1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1/198430)）**：本档案结论发布到开发者论坛后（接口快照见 [`../../evidence/raw/forum_198430.json`](../../evidence/raw/forum_198430.json)；发帖 8 秒后被 `discourse_ai_spam` 隐藏，约 11 小时 47 分钟后恢复公开），论坛支持工程师 `@Rebbanpalli_Naveen` 回复：桌面端 2.29.0 与 CLI 1.5.1 默认在约 250K–256K Tokens 处自动压缩，“以维持延迟、可靠性和 Token 效率（to maintain latency, reliability, and token efficiency）”，目前不支持用户配置；已把“可配置压缩阈值”和“在 `/context` 中更清楚地显示触发点”的反馈转交工程团队；不公布分模型配额倍率；`agy -p` 适用《服务条款》第 6 条与 FAQ“共同适用”。这次给出的理由不再包含前一天 `#1432` 中提到的“每轮配额消耗”，回复也没有回应在文档和模型列表中写明 256K 限制、`base = 0` 解析缺陷以及受白名单控制的 512K/900K 档位。
+
+> [!NOTE]
+> **官方进展（2026-11-05 19:56–20:00 UTC —— [GitHub Issue #1432](https://github.com/google-antigravity/antigravity-cli/issues/1432)）**：在本档案库的反汇编证据作为 `[Bug]` 提交至官方仓库 [`google-antigravity/antigravity-cli#1432`](https://github.com/google-antigravity/antigravity-cli/issues/1432) 约 5 小时后（接口快照见 [`../../evidence/raw/issue_1432.json`](../../evidence/raw/issue_1432.json) 与 [`../../evidence/raw/issue_1432_comments.json`](../../evidence/raw/issue_1432_comments.json)），官方仓库协作者 `@chandrashakherkamasani` 认领了该工单，将其打上 `duplicate`、`feature request` 与 `feedback` 三个标签（未加 `bug`，但保持 `OPEN` 开启状态），并首次在 GitHub 上书面确认：
 > 1. Antigravity CLI 在 1M（`1,048,576`）上下文模型上**有意（intentionally）**将默认自动压缩阈值设为 `256,000` Tokens，理由是智能体每一步都会重发当前活跃上下文，256K 用于平衡多步推理质量、单轮延迟与**每轮配额消耗**；256K 以上的用户可选档位暂未开放。
 > 2. 承认 `/context` 目前显示的是所选模型的底层总容量（`1,048,576`）而非实际生效的 `256,000` 自动压缩阈值，同意这种展示方式会让用户误以为遇到了意外上限。
 

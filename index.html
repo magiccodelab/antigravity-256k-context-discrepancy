@@ -1723,7 +1723,7 @@
             class="forced-edge inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-caption font-medium text-accent-ink"
           >
             <span class="flex size-3.5" aria-hidden="true" data-icon="fileText"></span>
-            <span data-i18n="heroBadge">Technical Forensics &amp; Timeline · Updated 2026-11-05 (CLI v1.5.1)</span>
+            <span data-i18n="heroBadge">Technical Forensics &amp; Timeline · Updated 2026-11-06 (Forum #198430 Official Reply)</span>
           </span>
           <span
             class="forced-edge inline-flex items-center gap-1.5 rounded-full bg-fill px-3 py-1 font-mono text-caption text-ink-muted"
@@ -1746,23 +1746,23 @@
         <div class="mt-6 rounded-card border border-line bg-surface p-5 shadow-card">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-warning-soft px-2.5 py-0.5 font-mono text-micro font-semibold text-warning-ink" data-i18n="latestUpdateBadge">
-              Latest Official Response · 2026-11-05 19:56 UTC · Issue #1432
+              Latest Official Response · 2026-11-06 11:50 UTC · Forum #198430
             </span>
             <a
-              href="https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6667844362"
+              href="https://discuss.ai.google.dev/t/1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1/198430"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1 font-mono text-caption font-medium text-accent-ink hover:underline"
             >
-              <span data-i18n="latestUpdateLink">google-antigravity/antigravity-cli#1432</span>
+              <span data-i18n="latestUpdateLink">discuss.ai.google.dev · #198430</span>
               <span class="flex size-3.5" aria-hidden="true" data-icon="externalLink"></span>
             </a>
           </div>
           <h2 class="mt-2.5 text-headline text-ink text-balance" data-i18n="latestUpdateTitle">
-            Official Collaborator @chandrashakherkamasani Confirms the 256,000 Clamp Is Intentional for Per-Turn Quota Control and Reclassifies the Defect as a Feature Request
+            Forum Support Confirms ~250K–256K Compaction in Both App 2.29.0 and CLI 1.5.1, Now Citing Latency, Reliability, and Token Efficiency Instead of Quota
           </h2>
           <p class="mt-2 text-subhead text-ink-muted text-pretty" data-i18n="latestUpdateBody">
-            Five hours after this archive's disassembly report was filed as a [Bug] in #1432, @chandrashakherkamasani self-assigned the issue, labeled it duplicate, feature request, and feedback (omitting bug while keeping state OPEN), and confirmed on the record: (1) Antigravity CLI "intentionally sets the default automatic compaction threshold to 256,000 tokens" on 1M-context models to balance reasoning quality, turn latency, and "per-turn quota consumption," with tiers above 256K "not available yet"; (2) "/context currently reports the selected model's total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap." The reply did not address why AGY_CLI_AUTO_COMPACT_OVERRIDE in v1.5.1 passes base = 0 (xor %eax,%eax) to its percentage parser.
+            After this archive's findings were posted to the developer forum (unlisted by discourse_ai_spam eight seconds after posting and relisted about 11 hours 47 minutes later), @Rebbanpalli_Naveen replied: "In Antigravity App (2.29.0) and Antigravity CLI (1.5.1), automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable." The reply says a request for "a configurable compaction threshold and clearer trigger indicators in /context" was shared with engineering. One day earlier in #1432, @chandrashakherkamasani had cited "per-turn quota consumption"; that reason is no longer given. The reply did not address stating the 256K limit in documentation and model listings, the base = 0 parser defect in AGY_CLI_AUTO_COMPACT_OVERRIDE, or the whitelisted 512K/900K options, and a follow-up posted in #1432 at 10:24 UTC on 2026-11-06 has no reply.
           </p>
         </div>
 
@@ -1913,13 +1913,13 @@
           <div>
             <p class="flex items-center gap-1.5 text-footnote font-semibold text-accent-ink">
               <span class="flex size-4" aria-hidden="true" data-icon="history"></span>
-              <span data-i18n="secTimelineEyebrow">Part 03 · Chronological Timeline (2025-07 — 2026-11-05)</span>
+              <span data-i18n="secTimelineEyebrow">Part 03 · Chronological Timeline (2025-07 — 2026-11-06)</span>
             </p>
             <h2 class="mt-1.5 text-title-2 text-ink sm:text-title-1" data-i18n="secTimelineTitle">
               Chronological Incident Timeline
             </h2>
             <p class="mt-1.5 max-w-2xl text-subhead text-ink-muted" data-i18n="secTimelineDesc">
-              Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the policy reversal 71 minutes after the last of them to the 0x3e800 disassembly and today's CLI v1.5.1 release. Click any quote toggle to inspect the verbatim original text.
+              Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the policy reversal 71 minutes after the last of them to the 0x3e800 disassembly, the CLI v1.5.1 release, and the official written replies of November 5–6. Click any quote toggle to inspect the verbatim original text.
             </p>
           </div>
         </div>
@@ -2134,16 +2134,16 @@
       navTimeline: "事件时间线",
       navVerification: "哈希与档案",
       repoBtn: "GitHub 仓库",
-      heroBadge: "技术取证与时间线记录 · 更新至 2026-11-06 (Issue #1432 官方回应)",
+      heroBadge: "技术取证与时间线记录 · 更新至 2026-11-06 (论坛 #198430 官方回复)",
       heroTitle: "Google Antigravity 256K 上下文硬编码限制与无头模式政策变更档案",
       heroDesc:
         "Google Antigravity 在对外说明与客户端界面中均标称 Gemini 4 Argon 及 Gemini 3.8 Flash 支持 1,048,576（1M）Tokens 上下文窗口。但对官方客户端二进制的静态反汇编与本地会话数据库统计表明，底层代码通过硬编码机器码指令将自动上下文压缩触发阈值限制在 256,000 Tokens（标称窗口的 25%）；同期，官方支持人员在未修改正式《附加服务条款（ToS）》正文的情况下，通过更新 FAQ 页面撤回了此前连续 10 次关于“第三方工具通过本地子进程调用 agy -p 合规”的书面答复。",
-      latestUpdateBadge: "官方最新书面回应 · 2026-11-05 19:56 UTC · Issue #1432",
-      latestUpdateLink: "google-antigravity/antigravity-cli#1432",
+      latestUpdateBadge: "官方最新书面回应 · 2026-11-06 11:50 UTC · 论坛 #198430",
+      latestUpdateLink: "discuss.ai.google.dev · #198430",
       latestUpdateTitle:
-        "官方协作者 @chandrashakherkamasani 书面承认 256,000 压缩限制是为控制每轮配额消耗而有意设定，并将缺陷报告改标为功能请求",
+        "论坛支持人员同时确认桌面端 2.29.0 与 CLI 1.5.1 约 250K–256K 自动压缩，理由从“每轮配额消耗”改为“延迟、可靠性和 Token 效率”",
       latestUpdateBody:
-        "在本档案库的反汇编证据作为 [Bug] 提交至 #1432 约 5 小时后，@chandrashakherkamasani 认领该单，打上 duplicate、feature request 与 feedback 标签（未加 bug，但保持 OPEN 开启状态），并首次在 GitHub 公开确认：(1) 即便在 1M (1,048,576) 上下文模型上，CLI 也是“有意（intentionally）将默认自动压缩阈值设为 256,000 Tokens”，理由是智能体每一步都会重发活跃上下文，256K 用于平衡推理质量、单轮延迟与“每轮配额消耗”，256K 以上档位暂未开放；(2) 承认“/context 显示的是底层总容量 1,048,576 而非实际生效的 256,000 自动压缩阈值，同意只显示 1.0M 会让它看起来像一个意外上限”。但回复回避了 v1.5.1 中 AGY_CLI_AUTO_COMPACT_OVERRIDE 百分比解析传入 base = 0 (xor %eax,%eax) 的代码级缺陷。",
+        "本档案结论发布到开发者论坛后，发帖 8 秒即被 discourse_ai_spam 自动隐藏，约 11 小时 47 分钟后才恢复公开。@Rebbanpalli_Naveen 随后回复：“In Antigravity App (2.29.0) and Antigravity CLI (1.5.1), automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable.”，并称已把“可配置压缩阈值”和“在 /context 中更清楚地显示触发点”的反馈转交工程团队。前一天 @chandrashakherkamasani 在 #1432 中给出的理由是“每轮配额消耗”，这次不再提及。回复没有回应在文档和模型列表中写明 256K 限制、AGY_CLI_AUTO_COMPACT_OVERRIDE 传入 base = 0 的解析缺陷，以及受白名单控制的 512K/900K 档位；2026-11-06 10:24 UTC 在 #1432 发出的追加评论也仍无回复。",
       demoAdvertised: "标称窗口",
       demoUsable: "实际可用",
       demoStamp: "已压缩 · −70s",
@@ -2162,10 +2162,10 @@
       tabGates: "三道二进制门禁 (0x3E800)",
       tabEnv: "环境变量演变与 SQLite",
       tabQuota: "Argon 3.0x 配额实测",
-      secTimelineEyebrow: "第三部分 · 事件时间线 (2025-07 — 2026-11-05)",
+      secTimelineEyebrow: "第三部分 · 事件时间线 (2025-07 — 2026-11-06)",
       secTimelineTitle: "事件完整时间线",
       secTimelineDesc:
-        "按发生时间排列从团队收购、连续 10 次官方合规确认、最后一次确认 71 分钟后的政策口径变更，到 0x3e800 硬编码拆解与今日 CLI v1.5.1 发布的全部关键节点。点击节点中的引用按钮可展开原始英文回复。",
+        "按发生时间排列从团队收购、连续 10 次官方合规确认、最后一次确认 71 分钟后的政策口径变更，到 0x3e800 硬编码拆解、CLI v1.5.1 发布以及 11 月 5–6 日官方书面回复的全部关键节点。点击节点中的引用按钮可展开原始英文回复。",
       searchPlaceholder: "搜索帖号、版本或关键词 (#186246, 1.5.1)...",
       secVerifyEyebrow: "第四部分 · 独立复核与档案目录",
       secVerifyTitle: "被分析官方二进制校验哈希与档案目录",
@@ -2207,16 +2207,16 @@
       navTimeline: "Timeline",
       navVerification: "Hashes & Index",
       repoBtn: "GitHub Repo",
-      heroBadge: "Technical Forensics & Timeline · Updated 2026-11-06 (Issue #1432 Official Reply)",
+      heroBadge: "Technical Forensics & Timeline · Updated 2026-11-06 (Forum #198430 Official Reply)",
       heroTitle: "Google Antigravity 256K Context Limit & Headless Policy Change Archive",
       heroDesc:
         "Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).",
-      latestUpdateBadge: "Latest Official Response · 2026-11-05 19:56 UTC · Issue #1432",
-      latestUpdateLink: "google-antigravity/antigravity-cli#1432",
+      latestUpdateBadge: "Latest Official Response · 2026-11-06 11:50 UTC · Forum #198430",
+      latestUpdateLink: "discuss.ai.google.dev · #198430",
       latestUpdateTitle:
-        "Official Collaborator @chandrashakherkamasani Confirms the 256,000 Clamp Is Intentional for Per-Turn Quota Control and Reclassifies the Defect as a Feature Request",
+        "Forum Support Confirms ~250K–256K Compaction in Both App 2.29.0 and CLI 1.5.1, Now Citing Latency, Reliability, and Token Efficiency Instead of Quota",
       latestUpdateBody:
-        'Five hours after this archive\'s disassembly report was filed as a [Bug] in #1432, @chandrashakherkamasani self-assigned the issue, labeled it duplicate, feature request, and feedback (omitting bug while keeping state OPEN), and confirmed on the record: (1) Antigravity CLI "intentionally sets the default automatic compaction threshold to 256,000 tokens" on 1M-context models to balance reasoning quality, turn latency, and "per-turn quota consumption," with tiers above 256K "not available yet"; (2) "/context currently reports the selected model\'s total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap." The reply did not address why AGY_CLI_AUTO_COMPACT_OVERRIDE in v1.5.1 passes base = 0 (xor %eax,%eax) to its percentage parser.',
+        'After this archive\'s findings were posted to the developer forum (unlisted by discourse_ai_spam eight seconds after posting and relisted about 11 hours 47 minutes later), @Rebbanpalli_Naveen replied: "In Antigravity App (2.29.0) and Antigravity CLI (1.5.1), automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable." The reply says a request for "a configurable compaction threshold and clearer trigger indicators in /context" was shared with engineering. One day earlier in #1432, @chandrashakherkamasani had cited "per-turn quota consumption"; that reason is no longer given. The reply did not address stating the 256K limit in documentation and model listings, the base = 0 parser defect in AGY_CLI_AUTO_COMPACT_OVERRIDE, or the whitelisted 512K/900K options, and a follow-up posted in #1432 at 10:24 UTC on 2026-11-06 has no reply.',
       demoAdvertised: "Advertised window",
       demoUsable: "Usable",
       demoStamp: "COMPACTED · −70s",
@@ -2235,10 +2235,10 @@
       tabGates: "Three Binary Gates (0x3E800)",
       tabEnv: "Env Var Evolution & SQLite",
       tabQuota: "Argon 3.0x Quota Audit",
-      secTimelineEyebrow: "Part 03 · Chronological Timeline (2025-07 — 2026-11-05)",
+      secTimelineEyebrow: "Part 03 · Chronological Timeline (2025-07 — 2026-11-06)",
       secTimelineTitle: "Chronological Incident Timeline",
       secTimelineDesc:
-        "Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the policy reversal 71 minutes after the last of them to the 0x3e800 disassembly and today's CLI v1.5.1 release. Click any quote toggle to inspect the verbatim original text.",
+        "Chronological record from the Windsurf team acquisition, 10 consecutive official compliance confirmations, and the policy reversal 71 minutes after the last of them to the 0x3e800 disassembly, the CLI v1.5.1 release, and the official written replies of November 5–6. Click any quote toggle to inspect the verbatim original text.",
       searchPlaceholder: "Filter by thread, version, or keyword (#186246, 1.5.1)...",
       secVerifyEyebrow: "Part 04 · Independent Verification & Repository Index",
       secVerifyTitle: "Official Binary Hashes & Archive Directory",
@@ -3144,6 +3144,27 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
         '"1. Why auto-compaction triggers around ~256K tokens by default: Even on models with a 1M-token (1,048,576) context window, Antigravity CLI intentionally sets the default automatic compaction threshold to 256,000 tokens. Because agentic turns re-send the active conversation context on every step, compacting at ~256K balances multi-step reasoning quality, turn latency, and per-turn quota consumption (larger active windows consume significantly more quota on every subsequent turn). As noted in the forum thread you linked, user-selectable context window tiers above 256K are not available yet. 2. Why /context displays 1.0M: /context currently reports the selected model\'s total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap rather than a compaction threshold." — @chandrashakherkamasani (GitHub Issue #1432, 2026-11-05 19:56 UTC)',
       link: "https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6667844362",
     },
+    {
+      id: "tl-2026-11-06-forum",
+      date: "2026-11-06 11:50 UTC",
+      cat: "context",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "论坛 #198430 官方回复",
+        title: "论坛支持人员确认桌面端 2.29.0 与 CLI 1.5.1 均约 250K–256K 自动压缩，理由改为“延迟、可靠性和 Token 效率”",
+        summary:
+          "@A_Feng 于 11 月 5 日 16:21 UTC 在开发者论坛发布本档案结论（#198430，标签 bug、billing、terms-of-service），8 秒后被 discourse_ai_spam 自动隐藏，11 月 6 日 04:09 UTC 恢复公开。同日 10:24 UTC，@magiccodelab 在 #1432 追加评论，指出 base = 0 解析缺陷、/context 显示 1.0M 以及 #743 / #878 近三个月无工程回复均属缺陷，要求补加 bug 标签，至今无回复。11:50 UTC，@Rebbanpalli_Naveen 回复称桌面端与 CLI 默认在约 250K–256K 处压缩以“维持延迟、可靠性和 Token 效率”，暂不支持配置，并把需求改述为“可配置阈值 + /context 触发提示”转交工程团队；不再提及前一天 #1432 中的“每轮配额消耗”，也未回应文档披露、base = 0 缺陷与 512K/900K 白名单档位。",
+      },
+      en: {
+        catLabel: "Forum #198430 Official Reply",
+        title: "Forum Support Confirms ~250K–256K Compaction in Both App 2.29.0 and CLI 1.5.1, Citing Latency, Reliability, and Token Efficiency",
+        summary:
+          "@A_Feng posts the archive's findings to the developer forum at 16:21 UTC on Nov 5 (#198430, tags bug, billing, terms-of-service); eight seconds later discourse_ai_spam unlists the topic, and it is relisted at 04:09 UTC on Nov 6. At 10:24 UTC on Nov 6, @magiccodelab posts a follow-up in #1432 arguing that the base = 0 parser, the 1.0M /context display, and the near three-month silence on #743 and #878 are defects, and asks for the bug label; it has no reply. At 11:50 UTC, @Rebbanpalli_Naveen replies that App and CLI compact by default at ~250K–256K \"to maintain latency, reliability, and token efficiency,\" that the threshold is not user-configurable, and that a configurable threshold and clearer /context indicators have been requested from engineering. The per-turn quota rationale given in #1432 the day before is no longer mentioned, and documentation disclosure, the base = 0 defect, and the whitelisted 512K/900K options go unaddressed.",
+      },
+      quote:
+        '"~256K Auto-Compaction Threshold: In Antigravity App (2.29.0) and Antigravity CLI (1.5.1), automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable. We have shared your feedback requesting a configurable compaction threshold and clearer trigger indicators in /context with our engineering team." — @Rebbanpalli_Naveen (#198430 Post #4, 2026-11-06 11:50 UTC)',
+      link: "https://discuss.ai.google.dev/t/1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1/198430",
+    },
   ];
 
   // Official Binaries & Cryptographic Hashes
@@ -3257,7 +3278,7 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
   let currentTab = "gates";
   let currentFilter = "all";
   let searchQuery = "";
-  const openQuotes = new Set(["tl-2026-10-05-codex", "tl-2026-10-08-rev", "tl-2026-10-27", "tl-2026-11-05-1432"]);
+  const openQuotes = new Set(["tl-2026-10-05-codex", "tl-2026-10-08-rev", "tl-2026-10-27", "tl-2026-11-05-1432", "tl-2026-11-06-forum"]);
 
   // Inject static data-icon placeholders
   function injectStaticIcons() {
