@@ -92,5 +92,52 @@
     },
     "performed_via_github_app": null,
     "minimized": null
+  },
+  {
+    "url": "https://api.github.com/repos/google-antigravity/antigravity-cli/issues/comments/6682650504",
+    "html_url": "https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6682650504",
+    "issue_url": "https://api.github.com/repos/google-antigravity/antigravity-cli/issues/1432",
+    "id": 6682650504,
+    "node_id": "IC_kwDOScoSV88AAAABjlEniA",
+    "user": {
+      "login": "magiccodelab",
+      "id": 262961041,
+      "node_id": "U_kgDOD6x3kQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/262961041?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/magiccodelab",
+      "html_url": "https://github.com/magiccodelab",
+      "followers_url": "https://api.github.com/users/magiccodelab/followers",
+      "following_url": "https://api.github.com/users/magiccodelab/following{/other_user}",
+      "gists_url": "https://api.github.com/users/magiccodelab/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/magiccodelab/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/magiccodelab/subscriptions",
+      "organizations_url": "https://api.github.com/users/magiccodelab/orgs",
+      "repos_url": "https://api.github.com/users/magiccodelab/repos",
+      "events_url": "https://api.github.com/users/magiccodelab/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/magiccodelab/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "created_at": "2026-11-06T10:24:40Z",
+    "updated_at": "2026-11-06T10:24:40Z",
+    "body": "Thank you for the clear confirmation, @chandrashakherkamasani. Having an official on-the-record statement that:\n\n1. Antigravity CLI intentionally clamps `1,048,576`-token models at `256,000` tokens (`0x3E800`) to curb per-turn quota consumption on repeated agent steps, and\n2. `/context` reports the underlying `1.0M` capacity (`1,048,576` tokens) without surfacing the active `256,000`-token compaction threshold,\n\nclarifies the product rationale behind the `0x3E800` clamp.\n\nHowever, reclassifying this report solely as a `feature request` / `feedback` and marking it as a duplicate of #878 and #1245 leaves three concrete **defects (`bug`)** in `v1.5.1` unaddressed:\n\n1. **Broken `AGY_CLI_AUTO_COMPACT_OVERRIDE` implementation in `v1.5.0`–`v1.5.1` (`xor %eax,%eax` passes `base = 0`)**:\n   Even if `256,000` is the intended default threshold, `v1.5.0` and `v1.5.1` quietly restored `os.LookupEnv(\"AGY_CLI_AUTO_COMPACT_OVERRIDE\")` in `google3/third_party/jetski/cli/store/store.AutoCompactOverride` (VA `0x9c49d00`). That parser explicitly implements two branches: an absolute integer branch (`strconv.Atoi`) and a `\"%\"` suffix percentage branch (`(base * pct) / 100`). Yet both call sites in `v1.5.1`—`store.(*Store).ContextWindow()` at VA `0x9c34c9a` and `model.NewSelectorModel()` at VA `0x9e875aa`—execute `xor %eax,%eax` immediately before `call 0x9c49d00`, hardcoding `base = 0` so that every percentage override (e.g., `AGY_CLI_AUTO_COMPACT_OVERRIDE=80%`) evaluates to `0` and is discarded. Moreover, any absolute value above `256,000` returned by `Store.ContextWindow()` is still overwritten downstream by `cmp $0x3e800,%edx; mov $0x3e800,%esi; cmovb %edx,%esi` in `cortex/utils/utils.GetCheckpointConfig` (file offset `0x7fb0fe2`). Passing `base = 0` into a percentage parser and clamping an explicit override setting downstream are code defects, not feature requests.\n2. **False capacity and free-space calculation in `/context` and published documentation**:\n   As you noted in point 2, `/context` displays `1.0M` and calculates remaining free space against `1,048,576` tokens (for example, reporting ~`78%` free space at `222K` tokens right before forced compaction triggers at ~`250K`–`256K`). When the product's own UI and documentation state a `1,048,576`-token window while the shipped binary enforces a `256,000`-token ceiling (25%), the discrepancy between the displayed specification and actual runtime behavior is a UI/specification defect (`bug`).\n3. **Not covered by #878 or #1245, and left unaddressed for nearly three months**:\n   #743 (filed August 16, 2026) and #878 (filed August 26, 2026) were opened **nearly three months ago**, and #1245 was filed on October 14 against `v1.3.5` when `AGY_CLI_AUTO_COMPACT_OVERRIDE` was compiled out as an empty string (`\"\"`). Across nearly three months and dozens of CLI and Desktop releases (`v1.1.x` through `v1.5.1` / Desktop `v2.29.0`), none of those issues received a single engineering comment on GitHub, nor was even a basic UI fix shipped so `/context` would stop reporting `1.0M` (`78%` free) right before compacting at `256,000`. For a flagship developer tool from Google, users should not have to wait nearly three months and disassemble a 240 MB production binary down to exact file offsets (`0x7fb0fe2`) just to receive an acknowledgement that the advertised `1.0M` window is capped at `256,000`—only to have the report folded back into an unscheduled `feature request` queue.\n\nCould you please apply the `bug` label to this issue alongside the existing labels so that:\n- the `1.0M` vs. `256K` `/context` and documentation discrepancy, and\n- the broken `base = 0` call sites and `0x3E800` downstream clamp on `AGY_CLI_AUTO_COMPACT_OVERRIDE` in `v1.5.1`\n\nare tracked and prioritized as defects rather than left in an open-ended feature request backlog?\n",
+    "author_association": "NONE",
+    "pin": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/google-antigravity/antigravity-cli/issues/comments/6682650504/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "performed_via_github_app": null,
+    "minimized": null
   }
 ]
