@@ -14,6 +14,7 @@ Google Antigravity（包括 Antigravity 2.0 桌面端应用、Antigravity IDE �
 > 2. **配额倍率**：订阅配额消耗与 Agent 工作的复杂度和规模相关，并随系统容量动态调整，因此不公布固定的分模型倍率。
 > 3. **`agy -p`**：《服务条款》第 6 条与官方 FAQ“共同适用（apply together）”，消费者订阅下不允许把 `agy` 包装进第三方编程 Agent。
 > 4. **未回应的部分**：在文档和模型列表中写明 256K 限制的要求、`AGY_CLI_AUTO_COMPACT_OVERRIDE` 传入 `base = 0` 的解析缺陷、以及仅含一项白名单的 512K/900K 档位。2026-11-06 10:24 UTC 在 [`#1432`](https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6682650504) 发出的追加评论至今没有回复。
+> 5. **我方追问（2026-11-06 15:44 UTC，第 5 楼）**：`@A_Feng` 回帖指出任何设置都无法抬高的阈值是硬上限而不是“默认值”，指出前后两天理由不一致，并提出四个只需回答“是 / 否 / 日期”的问题：App 2.29.0 与 CLI 1.5.1 中是否有任何受支持的设置能让会话在压缩前超过 256,000 Tokens；哪个公开页面在用户购买前告知标称 1M 的模型会在 256K 压缩；两个理由中哪个是官方口径；文档、模型列表与 `/context` 是否会改为显示 256,000，以及在哪个版本。
 
 > [!NOTE]
 > **官方进展（2026-11-05 19:56–20:00 UTC —— [GitHub Issue #1432](https://github.com/google-antigravity/antigravity-cli/issues/1432)）**：在本档案库的反汇编证据作为 `[Bug]` 提交至官方仓库 [`google-antigravity/antigravity-cli#1432`](https://github.com/google-antigravity/antigravity-cli/issues/1432) 约 5 小时后（接口快照见 [`evidence/raw/issue_1432.json`](./evidence/raw/issue_1432.json) 与 [`evidence/raw/issue_1432_comments.json`](./evidence/raw/issue_1432_comments.json)），官方仓库协作者 `@chandrashakherkamasani` 认领了该工单，将其打上 `duplicate`（重复）、`feature request`（功能请求）与 `feedback`（反馈）三个标签（未加 `bug` 标签，但保持工单为 `OPEN` 开启状态），并给出了官方在 GitHub 上的首次公开书面回应，正面确认了 `256,000` 压缩限制系有意设定以及 `/context` 显示存在误导：

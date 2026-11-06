@@ -4,9 +4,9 @@
   "slug": "1m-advertised-context-vs-a-256k-compaction-clamp-in-the-shipped-binaries-plus-quota-and-agy-p-policy-questions-desktop-2-29-0-cli-1-5-1",
   "category_id": 64,
   "created_at": "2026-11-05T16:21:42.630Z",
-  "last_posted_at": "2026-11-06T11:50:05.380Z",
-  "posts_count": 2,
-  "views": 32,
+  "last_posted_at": "2026-11-06T15:43:59.159Z",
+  "posts_count": 3,
+  "views": 33,
   "tags": [
     {
       "id": 7,
@@ -88,6 +88,21 @@
         "version": 1,
         "reply_to_post_number": null,
         "cooked": "<p>HI <a class=\"mention\" href=\"/u/a_feng\">@A_Feng</a>,</p>\n<p>Welcome to the Forum.</p>\n<p>Thank you for the detailed feedback across all three topics. Here is how each item currently works:</p>\n<ol>\n<li><strong>~256K Auto-Compaction Threshold:</strong> In <strong>Antigravity App (2.29.0)</strong> and <strong>Antigravity CLI (1.5.1)</strong>, automatic context compaction triggers by default around ~250K–256K tokens to maintain latency, reliability, and token efficiency, and is not currently user-configurable. We have shared your feedback requesting a configurable compaction threshold and clearer trigger indicators in <code>/context</code> with our engineering team.</li>\n<li><strong>Subscription Quota Multipliers:</strong> As noted in the <a href=\"https://antigravity.google/docs/plans#baseline-quota\">Plans documentation</a>, subscription quota consumption correlates with the complexity and volume of agent work and adjusts dynamically based on system capacity, so fixed per-model multipliers are not published.</li>\n<li><strong>Using <code>agy -p</code> in Third-Party Agents:</strong> The <a href=\"https://antigravity.google/terms\">Google Antigravity Terms of Service</a> (Section 6) and <a href=\"https://antigravity.google/docs/faq#can-i-use-antigravity-cli-headless-mode-in-third-party-coding-agents-or-automate-account-switching\">Official FAQ</a> apply together: <a href=\"https://antigravity.google/docs/cli/headless\">Headless mode (<code>agy -p</code>)</a> is supported for your own direct scripting and CI/CD pipelines, whereas wrapping <code>agy</code> inside third-party coding agents is not permitted under consumer plans (use a pay-as-you-go <a href=\"https://antigravity.google/docs/install#using-a-gemini-api-key\">Gemini API key</a> or Gemini Enterprise instead).</li>\n</ol>"
+      },
+      {
+        "id": 367639,
+        "post_number": 5,
+        "username": "A_Feng",
+        "name": "A Feng",
+        "user_title": null,
+        "staff": false,
+        "moderator": false,
+        "admin": false,
+        "created_at": "2026-11-06T15:43:59.159Z",
+        "updated_at": "2026-11-06T15:43:59.159Z",
+        "version": 1,
+        "reply_to_post_number": 4,
+        "cooked": "<p>Thanks for the reply. I’ll keep this to the context threshold.</p>\n<p><strong>1. “Default” does not describe what ships.</strong> A default is something a user can change. In App 2.29.0 and CLI 1.5.1, <code>GetCheckpointConfig</code> takes whatever threshold it computes and applies <code>min(value, 256000)</code> (<code>cmp $0x3e800; cmovb</code>). Nothing a user can set gets past that line: <code>AGY_CLI_AUTO_COMPACT_OVERRIDE</code> values above 256,000 are overwritten by the same instruction, and its percentage form always evaluates to 0. A limit that nothing can raise is the effective context window, and today that number is 256,000, not 1,048,576.</p>\n<p><strong>2. The stated reason changed in two days.</strong> On Nov 5 in <span class=\"hashtag-raw\">#1432</span> it was “multi-step reasoning quality, turn latency, and per-turn quota consumption.” Today it is “latency, reliability, and token efficiency.” Both are reasonable product goals. Neither explains why the model listing, the docs, and <code>/context</code> still say 1M.</p>\n<p><strong>3. Early compaction has its own costs on those same axes.</strong> Google staff said so in <span class=\"hashtag-raw\">#198191:</span> “compacting this early costs both cache efficiency and detail.” Logs in <span class=\"hashtag-raw\">#1291</span> show each compaction pausing the session for a median of 70 seconds, discarding a 240K+ cached prefix, and leaving the summary call’s tokens out of usage records. That is a trade-off, and users pay for it, so users should be told about it.</p>\n<p><strong>4. The cost concern already has an answer in the product.</strong> The binary ships 512K (1.3x quota) and 900K (1.8x, <code>Expensive: true</code>) options, restricted to a whitelist with a single entry. Keeping them off is a product decision, which is fine, but it is not a latency or reliability limit.</p>\n<p><strong>5. My request was restated.</strong> I did not mainly ask for a configurable threshold. I asked that, if 256K is the intended limit, the documentation, the model listings, and <code>/context</code> say so. That is a documentation change, not an engineering project.</p>\n<p>Four questions, each answerable with yes, no, or a date:</p>\n<ol>\n<li>In App 2.29.0 and CLI 1.5.1, is there any supported setting that lets a session exceed 256,000 tokens before compaction?</li>\n<li>Which public page tells a subscriber, before purchase, that a model listed at 1M compacts at 256K?</li>\n<li>Which of the two stated reasons is the official one?</li>\n<li>Will the docs, model listings, and <code>/context</code> be corrected to show 256,000, and in which release?</li>\n</ol>"
       }
     ]
   }
