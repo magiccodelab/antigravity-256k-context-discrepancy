@@ -1743,6 +1743,29 @@
           Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).
         </p>
 
+        <div class="mt-6 rounded-card border border-line bg-surface p-5 shadow-card">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-warning-soft px-2.5 py-0.5 font-mono text-micro font-semibold text-warning-ink" data-i18n="latestUpdateBadge">
+              Latest Official Response · 2026-11-05 19:56 UTC · Issue #1432
+            </span>
+            <a
+              href="https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6667844362"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 font-mono text-caption font-medium text-accent-ink hover:underline"
+            >
+              <span data-i18n="latestUpdateLink">google-antigravity/antigravity-cli#1432</span>
+              <span class="flex size-3.5" aria-hidden="true" data-icon="externalLink"></span>
+            </a>
+          </div>
+          <h2 class="mt-2.5 text-headline text-ink text-balance" data-i18n="latestUpdateTitle">
+            Official Collaborator @chandrashakherkamasani Confirms the 256,000 Clamp Is Intentional for Per-Turn Quota Control and Reclassifies the Defect as a Feature Request
+          </h2>
+          <p class="mt-2 text-subhead text-ink-muted text-pretty" data-i18n="latestUpdateBody">
+            Five hours after this archive's disassembly report was filed as a [Bug] in #1432, @chandrashakherkamasani self-assigned the issue, labeled it duplicate, feature request, and feedback (omitting bug while keeping state OPEN), and confirmed on the record: (1) Antigravity CLI "intentionally sets the default automatic compaction threshold to 256,000 tokens" on 1M-context models to balance reasoning quality, turn latency, and "per-turn quota consumption," with tiers above 256K "not available yet"; (2) "/context currently reports the selected model's total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap." The reply did not address why AGY_CLI_AUTO_COMPACT_OVERRIDE in v1.5.1 passes base = 0 (xor %eax,%eax) to its percentage parser.
+          </p>
+        </div>
+
         <div class="mt-6 flex flex-wrap items-center gap-3">
           <a
             href="#timeline"
@@ -2111,10 +2134,16 @@
       navTimeline: "事件时间线",
       navVerification: "哈希与档案",
       repoBtn: "GitHub 仓库",
-      heroBadge: "技术取证与时间线记录 · 更新至 2026-11-05 (CLI v1.5.1)",
+      heroBadge: "技术取证与时间线记录 · 更新至 2026-11-06 (Issue #1432 官方回应)",
       heroTitle: "Google Antigravity 256K 上下文硬编码限制与无头模式政策变更档案",
       heroDesc:
         "Google Antigravity 在对外说明与客户端界面中均标称 Gemini 4 Argon 及 Gemini 3.8 Flash 支持 1,048,576（1M）Tokens 上下文窗口。但对官方客户端二进制的静态反汇编与本地会话数据库统计表明，底层代码通过硬编码机器码指令将自动上下文压缩触发阈值限制在 256,000 Tokens（标称窗口的 25%）；同期，官方支持人员在未修改正式《附加服务条款（ToS）》正文的情况下，通过更新 FAQ 页面撤回了此前连续 10 次关于“第三方工具通过本地子进程调用 agy -p 合规”的书面答复。",
+      latestUpdateBadge: "官方最新书面回应 · 2026-11-05 19:56 UTC · Issue #1432",
+      latestUpdateLink: "google-antigravity/antigravity-cli#1432",
+      latestUpdateTitle:
+        "官方协作者 @chandrashakherkamasani 书面承认 256,000 压缩限制是为控制每轮配额消耗而有意设定，并将缺陷报告改标为功能请求",
+      latestUpdateBody:
+        "在本档案库的反汇编证据作为 [Bug] 提交至 #1432 约 5 小时后，@chandrashakherkamasani 认领该单，打上 duplicate、feature request 与 feedback 标签（未加 bug，但保持 OPEN 开启状态），并首次在 GitHub 公开确认：(1) 即便在 1M (1,048,576) 上下文模型上，CLI 也是“有意（intentionally）将默认自动压缩阈值设为 256,000 Tokens”，理由是智能体每一步都会重发活跃上下文，256K 用于平衡推理质量、单轮延迟与“每轮配额消耗”，256K 以上档位暂未开放；(2) 承认“/context 显示的是底层总容量 1,048,576 而非实际生效的 256,000 自动压缩阈值，同意只显示 1.0M 会让它看起来像一个意外上限”。但回复回避了 v1.5.1 中 AGY_CLI_AUTO_COMPACT_OVERRIDE 百分比解析传入 base = 0 (xor %eax,%eax) 的代码级缺陷。",
       demoAdvertised: "标称窗口",
       demoUsable: "实际可用",
       demoStamp: "已压缩 · −70s",
@@ -2178,10 +2207,16 @@
       navTimeline: "Timeline",
       navVerification: "Hashes & Index",
       repoBtn: "GitHub Repo",
-      heroBadge: "Technical Forensics & Timeline · Updated 2026-11-05 (CLI v1.5.1)",
+      heroBadge: "Technical Forensics & Timeline · Updated 2026-11-06 (Issue #1432 Official Reply)",
       heroTitle: "Google Antigravity 256K Context Limit & Headless Policy Change Archive",
       heroDesc:
         "Google Antigravity advertises and displays in its client interface a 1,048,576 (1M) token context window for Gemini 4 Argon and Gemini 3.8 Flash. However, static disassembly of the official client binaries and local SQLite session databases show that a hardcoded machine-code instruction clamps the automatic context compaction threshold at 256,000 tokens (25% of the advertised window). Around the same period, Google support staff reversed 10 prior written forum confirmations regarding local subprocess invocations of agy -p from third-party tools by updating a non-contractual FAQ page without amending the formal Additional Terms of Service (ToS).",
+      latestUpdateBadge: "Latest Official Response · 2026-11-05 19:56 UTC · Issue #1432",
+      latestUpdateLink: "google-antigravity/antigravity-cli#1432",
+      latestUpdateTitle:
+        "Official Collaborator @chandrashakherkamasani Confirms the 256,000 Clamp Is Intentional for Per-Turn Quota Control and Reclassifies the Defect as a Feature Request",
+      latestUpdateBody:
+        'Five hours after this archive\'s disassembly report was filed as a [Bug] in #1432, @chandrashakherkamasani self-assigned the issue, labeled it duplicate, feature request, and feedback (omitting bug while keeping state OPEN), and confirmed on the record: (1) Antigravity CLI "intentionally sets the default automatic compaction threshold to 256,000 tokens" on 1M-context models to balance reasoning quality, turn latency, and "per-turn quota consumption," with tiers above 256K "not available yet"; (2) "/context currently reports the selected model\'s total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap." The reply did not address why AGY_CLI_AUTO_COMPACT_OVERRIDE in v1.5.1 passes base = 0 (xor %eax,%eax) to its percentage parser.',
       demoAdvertised: "Advertised window",
       demoUsable: "Usable",
       demoStamp: "COMPACTED · −70s",
@@ -3088,6 +3123,27 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
       },
       link: "https://github.com/google-antigravity/antigravity-cli/blob/main/CHANGELOG.md",
     },
+    {
+      id: "tl-2026-11-05-1432",
+      date: "2026-11-05 19:56 UTC",
+      cat: "context",
+      badgeTone: "warning",
+      zh: {
+        catLabel: "GitHub #1432 官方回应",
+        title: "官方协作者 @chandrashakherkamasani 承认 CLI 有意将 1M 模型默认压缩阈值限制在 256,000 以控制每轮配额消耗，但拒绝标为 Bug",
+        summary:
+          "@magiccodelab 提交 #1432 记录 v1.5.1 中 0x7fb0fe2 处的 0x3e800 钳制指令及 AGY_CLI_AUTO_COMPACT_OVERRIDE 百分比解析传入 base = 0 (xor %eax,%eax) 的缺陷。5 小时后，@chandrashakherkamasani 认领该单，打上 duplicate、feature request、feedback 标签（未加 bug，保持 OPEN 未关闭），首次在 GitHub 书面承认 256,000 阈值是为了控制多步重发的“每轮配额消耗”而有意设定，并同意 /context 只显示 1.0M 会误导用户，但对 base = 0 的代码级缺陷未作回应。",
+      },
+      en: {
+        catLabel: "GitHub #1432 Official Reply",
+        title: "Collaborator @chandrashakherkamasani Confirms CLI Intentionally Clamps 1M Models at 256,000 for Quota Control, Labels Bug Report as Feature Request",
+        summary:
+          "@magiccodelab files #1432 documenting the 0x3e800 clamp at 0x7fb0fe2 in v1.5.1 and the xor %eax,%eax (base = 0) bug in AGY_CLI_AUTO_COMPACT_OVERRIDE. Five hours later, @chandrashakherkamasani self-assigns #1432, applies duplicate, feature request, and feedback labels (omitting bug while leaving state OPEN), and confirms on the record that the 256,000 threshold is set intentionally to limit per-turn quota consumption and that /context showing 1.0M looks like an unexpected cap, without addressing the base = 0 parser defect.",
+      },
+      quote:
+        '"1. Why auto-compaction triggers around ~256K tokens by default: Even on models with a 1M-token (1,048,576) context window, Antigravity CLI intentionally sets the default automatic compaction threshold to 256,000 tokens. Because agentic turns re-send the active conversation context on every step, compacting at ~256K balances multi-step reasoning quality, turn latency, and per-turn quota consumption (larger active windows consume significantly more quota on every subsequent turn). As noted in the forum thread you linked, user-selectable context window tiers above 256K are not available yet. 2. Why /context displays 1.0M: /context currently reports the selected model\'s total underlying context capacity (1,048,576 tokens) rather than the active 256,000-token auto-compaction threshold. We agree that showing 1.0M without surfacing where automatic compaction will trigger makes this look like an unexpected cap rather than a compaction threshold." — @chandrashakherkamasani (GitHub Issue #1432, 2026-11-05 19:56 UTC)',
+      link: "https://github.com/google-antigravity/antigravity-cli/issues/1432#issuecomment-6667844362",
+    },
   ];
 
   // Official Binaries & Cryptographic Hashes
@@ -3201,7 +3257,7 @@ call strings.TrimSpace        ; followed by parser @ VA 0x9c49d40</code></pre>
   let currentTab = "gates";
   let currentFilter = "all";
   let searchQuery = "";
-  const openQuotes = new Set(["tl-2026-10-05-codex", "tl-2026-10-08-rev", "tl-2026-10-27"]);
+  const openQuotes = new Set(["tl-2026-10-05-codex", "tl-2026-10-08-rev", "tl-2026-10-27", "tl-2026-11-05-1432"]);
 
   // Inject static data-icon placeholders
   function injectStaticIcons() {

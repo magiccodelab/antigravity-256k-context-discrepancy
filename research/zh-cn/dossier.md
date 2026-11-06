@@ -27,6 +27,11 @@
 
 ## 1. 一句话概览
 
+> [!IMPORTANT]
+> **官方最新进展（2026-11-05 19:56–20:00 UTC —— [GitHub Issue #1432](https://github.com/google-antigravity/antigravity-cli/issues/1432)）**：在本档案库的反汇编证据作为 `[Bug]` 提交至官方仓库 [`google-antigravity/antigravity-cli#1432`](https://github.com/google-antigravity/antigravity-cli/issues/1432) 约 5 小时后（接口快照见 [`../../evidence/raw/issue_1432.json`](../../evidence/raw/issue_1432.json) 与 [`../../evidence/raw/issue_1432_comments.json`](../../evidence/raw/issue_1432_comments.json)），官方仓库协作者 `@chandrashakherkamasani` 认领了该工单，将其打上 `duplicate`、`feature request` 与 `feedback` 三个标签（未加 `bug`，但保持 `OPEN` 开启状态），并首次在 GitHub 上书面确认：
+> 1. Antigravity CLI 在 1M（`1,048,576`）上下文模型上**有意（intentionally）**将默认自动压缩阈值设为 `256,000` Tokens，理由是智能体每一步都会重发当前活跃上下文，256K 用于平衡多步推理质量、单轮延迟与**每轮配额消耗**；256K 以上的用户可选档位暂未开放。
+> 2. 承认 `/context` 目前显示的是所选模型的底层总容量（`1,048,576`）而非实际生效的 `256,000` 自动压缩阈值，同意这种展示方式会让用户误以为遇到了意外上限。
+
 本报告汇总了 Google Antigravity（含桌面端 Antigravity 2.0 至 `v2.29.0`、Antigravity IDE 及命令行工具 `agy` 至 `v1.5.0–v1.5.1`）[^11][^12]在官方说明与 `/context` 面板标称 `Gemini 4 Argon` 及 `Gemini 3.8 Flash` 支持 100 万（`1,048,576`）Tokens 上下文窗口的情况下，客户端通过设置模型白名单以及在底层 Cortex 引擎 `cortex/utils/utils.GetCheckpointConfig` 中硬编码 `cmp $0x3e800, %edx; cmovb %edx, %esi` 汇编指令，将实际自动压缩触发阈值限制在 `256,000` Tokens（标称值的 25%），同时以公开 API 价格的 3.0 倍（Web 端纯输入为 7.64–9.25 倍）扣减 `Gemini 4 Argon` 订阅配额并内置 `512K`（`1.3x`）与 `900K`（`1.8x Expensive`）档位的技术记录[^1][^2][^3][^4][^18][^42]；以及 Google 官方支持工程师在开发者论坛连续 10 帖书面回复确认“第三方工具、Codex 或 Claude Code 通过本地子进程调用原版 `agy -p` 符合条款”后，在未修改正式《附加服务条款（ToS）》正文的情况下，于 10 月 8 日（距最后一次确认 71 分钟）改变口径、随后以 10 月中旬更新的 FAQ 页面为依据限制跨工具本地调用的完整记录，以及社区与官方对该限制的应对[^9][^13][^14][^31][^32][^34][^35][^36][^38]。
 
 ---
